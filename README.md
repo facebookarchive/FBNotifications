@@ -117,7 +117,7 @@ For example:
 
 ## Contributing
 
-We want to make contributing to this project as easy and transparent as possible. Please refer to the [Contribution Guidelines](https://github.com/facebook/).
+We want to make contributing to this project as easy and transparent as possible. Please refer to the [Contribution Guidelines](https://github.com/facebook/FBNotifications/blob/master/CONTRIBUTING.md).
 
 ## License
 
