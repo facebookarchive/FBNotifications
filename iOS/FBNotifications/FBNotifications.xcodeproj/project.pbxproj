@@ -1,0 +1,962 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		811E17161CB75034009AAE22 /* FBNCardActionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494BE1CA9CB1B00201C4B /* FBNCardActionConfiguration.m */; };
+		811E17171CB75034009AAE22 /* FBNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE791C59653600D79E1A /* FBNConstants.m */; };
+		811E17181CB75034009AAE22 /* FBNCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE7D1C59653600D79E1A /* FBNCardViewController.m */; };
+		811E17191CB75034009AAE22 /* FBNCardDismissButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEAF1C59653600D79E1A /* FBNCardDismissButton.m */; };
+		811E171A1CB75034009AAE22 /* FBNCardTextAlignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D61CA9CB1B00201C4B /* FBNCardTextAlignment.m */; };
+		811E171B1CB75034009AAE22 /* FBNColorAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49DE1C6C098B0074B2B4 /* FBNColorAsset.m */; };
+		811E171C1CB75034009AAE22 /* FBNCardTextContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D81CA9CB1B00201C4B /* FBNCardTextContent.m */; };
+		811E171D1CB75034009AAE22 /* FBNCardPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA91C59653600D79E1A /* FBNCardPayload.m */; };
+		811E171E1CB75034009AAE22 /* FBNImageAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A311C6C159B0074B2B4 /* FBNImageAssetController.m */; };
+		811E171F1CB75034009AAE22 /* FBNCardError.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA51C59653600D79E1A /* FBNCardError.m */; };
+		811E17201CB75034009AAE22 /* FBNCardBodyConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C51CA9CB1B00201C4B /* FBNCardBodyConfiguration.m */; };
+		811E17211CB75034009AAE22 /* FBNCardActionsStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C21CA9CB1B00201C4B /* FBNCardActionsStyle.m */; };
+		811E17221CB75034009AAE22 /* FBNAssetContentCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A641C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m */; };
+		811E17231CB75034009AAE22 /* FBNAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494CD1CA9CB1B00201C4B /* FBNAnimatedImage.m */; };
+		811E17241CB75034009AAE22 /* FBNCardActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsView.m */; };
+		811E17251CB75034009AAE22 /* FBNCardSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A495071CA9CC2900201C4B /* FBNCardSize.m */; };
+		811E17261CB75034009AAE22 /* FBNCardHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEBA1C59653600D79E1A /* FBNCardHeroView.m */; };
+		811E17271CB75034009AAE22 /* FBNCardAppEventsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE821C59653600D79E1A /* FBNCardAppEventsLogger.m */; };
+		811E17281CB75034009AAE22 /* FBNCardActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB31C59653600D79E1A /* FBNCardActionButton.m */; };
+		811E17291CB75034009AAE22 /* FBNCardLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB11C59653600D79E1A /* FBNCardLabel.m */; };
+		811E172A1CB75034009AAE22 /* FBNCardHeroConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494DB1CA9CB1B00201C4B /* FBNCardHeroConfiguration.m */; };
+		811E172B1CB75034009AAE22 /* FBNCardViewUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEAB1C59653600D79E1A /* FBNCardViewUtilities.m */; };
+		811E172C1CB75034009AAE22 /* FBNCardBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB81C59653600D79E1A /* FBNCardBodyView.m */; };
+		811E172D1CB75034009AAE22 /* FBNCardConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C81CA9CB1B00201C4B /* FBNCardConfiguration.m */; };
+		811E172E1CB75034009AAE22 /* FBNImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49E71C6C098B0074B2B4 /* FBNImageAsset.m */; };
+		811E172F1CB75034009AAE22 /* FBNGIFAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49E41C6C098B0074B2B4 /* FBNGIFAsset.m */; };
+		811E17301CB75034009AAE22 /* FBNCardBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494CF1CA9CB1B00201C4B /* FBNCardBackground.m */; };
+		811E17311CB75034009AAE22 /* FBNColorAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A161C6C0CF40074B2B4 /* FBNColorAssetController.m */; };
+		811E17321CB75034009AAE22 /* FBNAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A051C6C0A420074B2B4 /* FBNAssetsController.m */; };
+		811E17331CB75034009AAE22 /* FBNCardHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA71C59653600D79E1A /* FBNCardHash.m */; };
+		811E17341CB75034009AAE22 /* FBNCardActionsConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C01CA9CB1B00201C4B /* FBNCardActionsConfiguration.m */; };
+		811E17351CB75034009AAE22 /* FBNCardColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D11CA9CB1B00201C4B /* FBNCardColor.m */; };
+		811E17361CB75034009AAE22 /* FBNGIFAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A3D1C6C18F30074B2B4 /* FBNGIFAssetController.m */; };
+		811E17371CB75034009AAE22 /* FBNAssetContentCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A621C6C273F0074B2B4 /* FBNAssetContentCache.m */; };
+		811E17381CB75034009AAE22 /* FBNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE7B1C59653600D79E1A /* FBNotificationsManager.m */; };
+		811E173B1CB75034009AAE22 /* FBNAssetsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A041C6C0A420074B2B4 /* FBNAssetsController.h */; };
+		811E173C1CB75034009AAE22 /* FBNColorAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A151C6C0CF40074B2B4 /* FBNColorAssetController.h */; };
+		811E173D1CB75034009AAE22 /* FBNCardLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB01C59653600D79E1A /* FBNCardLabel.h */; };
+		811E173E1CB75034009AAE22 /* FBNGIFAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E31C6C098B0074B2B4 /* FBNGIFAsset.h */; };
+		811E173F1CB75034009AAE22 /* FBNAssetContentCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A631C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h */; };
+		811E17401CB75034009AAE22 /* FBNCardTextAlignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D51CA9CB1B00201C4B /* FBNCardTextAlignment.h */; };
+		811E17411CB75034009AAE22 /* FBNAssetContentCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A611C6C273F0074B2B4 /* FBNAssetContentCache.h */; };
+		811E17421CB75034009AAE22 /* FBNCardBodyConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C41CA9CB1B00201C4B /* FBNCardBodyConfiguration.h */; };
+		811E17431CB75034009AAE22 /* FBNCardHeroConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494DA1CA9CB1B00201C4B /* FBNCardHeroConfiguration.h */; };
+		811E17441CB75034009AAE22 /* FBNCardHeroView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB91C59653600D79E1A /* FBNCardHeroView.h */; };
+		811E17451CB75034009AAE22 /* FBNImageAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A301C6C159B0074B2B4 /* FBNImageAssetController.h */; };
+		811E17461CB75034009AAE22 /* FBNGIFAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A3C1C6C18F30074B2B4 /* FBNGIFAssetController.h */; };
+		811E17471CB75034009AAE22 /* FBNCardActionsStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C11CA9CB1B00201C4B /* FBNCardActionsStyle.h */; };
+		811E17481CB75034009AAE22 /* FBNCardHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA61C59653600D79E1A /* FBNCardHash.h */; };
+		811E17491CB75034009AAE22 /* FBNCardActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB21C59653600D79E1A /* FBNCardActionButton.h */; };
+		811E174A1CB75034009AAE22 /* FBNCardPayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA81C59653600D79E1A /* FBNCardPayload.h */; };
+		811E174B1CB75034009AAE22 /* FBNCardAppEventsLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE811C59653600D79E1A /* FBNCardAppEventsLogger.h */; };
+		811E174C1CB75034009AAE22 /* FBNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE781C59653600D79E1A /* FBNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		811E174D1CB75034009AAE22 /* FBNCardViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE7C1C59653600D79E1A /* FBNCardViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		811E174E1CB75034009AAE22 /* FBNCardSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A495061CA9CC2900201C4B /* FBNCardSize.h */; };
+		811E174F1CB75034009AAE22 /* FBNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE771C59653600D79E1A /* FBNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		811E17501CB75034009AAE22 /* FBNCardViewUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEAA1C59653600D79E1A /* FBNCardViewUtilities.h */; };
+		811E17511CB75034009AAE22 /* FBNImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E61C6C098B0074B2B4 /* FBNImageAsset.h */; };
+		811E17521CB75034009AAE22 /* FBNCardViewController_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 81D632BD1CB3AA6A000921B1 /* FBNCardViewController_Internal.h */; };
+		811E17531CB75034009AAE22 /* FBNotificationsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE7A1C59653600D79E1A /* FBNotificationsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		811E17541CB75034009AAE22 /* FBNCardBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494CE1CA9CB1B00201C4B /* FBNCardBackground.h */; };
+		811E17551CB75034009AAE22 /* FBNColorAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49DD1C6C098B0074B2B4 /* FBNColorAsset.h */; };
+		811E17561CB75034009AAE22 /* FBNCardTextContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D71CA9CB1B00201C4B /* FBNCardTextContent.h */; };
+		811E17571CB75034009AAE22 /* FBNCardButtonAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A4950C1CA9CD2D00201C4B /* FBNCardButtonAction.h */; };
+		811E17581CB75034009AAE22 /* FBNCardBodyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB71C59653600D79E1A /* FBNCardBodyView.h */; };
+		811E17591CB75034009AAE22 /* FBNCardActionsConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494BF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h */; };
+		811E175A1CB75034009AAE22 /* FBNAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494CC1CA9CB1B00201C4B /* FBNAnimatedImage.h */; };
+		811E175B1CB75034009AAE22 /* FBNAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E01C6C098B0074B2B4 /* FBNAsset.h */; };
+		811E175C1CB75034009AAE22 /* FBNCardError.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA41C59653600D79E1A /* FBNCardError.h */; };
+		811E175D1CB75034009AAE22 /* FBNCardConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C71CA9CB1B00201C4B /* FBNCardConfiguration.h */; };
+		811E175E1CB75034009AAE22 /* FBNCardDismissButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEAE1C59653600D79E1A /* FBNCardDismissButton.h */; };
+		811E175F1CB75034009AAE22 /* FBNCardActionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsView.h */; };
+		811E17601CB75034009AAE22 /* FBNCardActionConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494BD1CA9CB1B00201C4B /* FBNCardActionConfiguration.h */; };
+		811E17611CB75034009AAE22 /* FBNAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49F61C6C09C20074B2B4 /* FBNAssetController.h */; };
+		811E17621CB75034009AAE22 /* FBNCardColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D01CA9CB1B00201C4B /* FBNCardColor.h */; };
+		811E17731CB750D2009AAE22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811E17721CB750D2009AAE22 /* UIKit.framework */; };
+		811E17761CB750D5009AAE22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811E17751CB750D5009AAE22 /* CoreGraphics.framework */; };
+		811E17791CB750DA009AAE22 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811E17781CB750DA009AAE22 /* MobileCoreServices.framework */; };
+		811E177C1CB750DE009AAE22 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811E177B1CB750DE009AAE22 /* ImageIO.framework */; };
+		811E17931CB844AD009AAE22 /* FBNCardFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 811E17911CB844AD009AAE22 /* FBNCardFont.h */; };
+		811E17941CB844AD009AAE22 /* FBNCardFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 811E17921CB844AD009AAE22 /* FBNCardFont.m */; };
+		815BAEBE1C59653600D79E1A /* FBNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE771C59653600D79E1A /* FBNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		815BAEBF1C59653600D79E1A /* FBNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE781C59653600D79E1A /* FBNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		815BAEC01C59653600D79E1A /* FBNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE791C59653600D79E1A /* FBNConstants.m */; };
+		815BAEC11C59653600D79E1A /* FBNotificationsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE7A1C59653600D79E1A /* FBNotificationsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		815BAEC21C59653600D79E1A /* FBNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE7B1C59653600D79E1A /* FBNotificationsManager.m */; };
+		815BAEC31C59653600D79E1A /* FBNCardViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE7C1C59653600D79E1A /* FBNCardViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		815BAEC41C59653600D79E1A /* FBNCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE7D1C59653600D79E1A /* FBNCardViewController.m */; };
+		815BAEC61C59653600D79E1A /* FBNCardAppEventsLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAE811C59653600D79E1A /* FBNCardAppEventsLogger.h */; };
+		815BAEC71C59653600D79E1A /* FBNCardAppEventsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE821C59653600D79E1A /* FBNCardAppEventsLogger.m */; };
+		815BAEE51C59653600D79E1A /* FBNCardError.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA41C59653600D79E1A /* FBNCardError.h */; };
+		815BAEE61C59653600D79E1A /* FBNCardError.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA51C59653600D79E1A /* FBNCardError.m */; };
+		815BAEE71C59653600D79E1A /* FBNCardHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA61C59653600D79E1A /* FBNCardHash.h */; };
+		815BAEE81C59653600D79E1A /* FBNCardHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA71C59653600D79E1A /* FBNCardHash.m */; };
+		815BAEE91C59653600D79E1A /* FBNCardPayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA81C59653600D79E1A /* FBNCardPayload.h */; };
+		815BAEEA1C59653600D79E1A /* FBNCardPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEA91C59653600D79E1A /* FBNCardPayload.m */; };
+		815BAEEB1C59653600D79E1A /* FBNCardViewUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEAA1C59653600D79E1A /* FBNCardViewUtilities.h */; };
+		815BAEEC1C59653600D79E1A /* FBNCardViewUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEAB1C59653600D79E1A /* FBNCardViewUtilities.m */; };
+		815BAEED1C59653600D79E1A /* FBNCardDismissButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEAE1C59653600D79E1A /* FBNCardDismissButton.h */; };
+		815BAEEE1C59653600D79E1A /* FBNCardDismissButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEAF1C59653600D79E1A /* FBNCardDismissButton.m */; };
+		815BAEEF1C59653600D79E1A /* FBNCardLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB01C59653600D79E1A /* FBNCardLabel.h */; };
+		815BAEF01C59653600D79E1A /* FBNCardLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB11C59653600D79E1A /* FBNCardLabel.m */; };
+		815BAEF11C59653600D79E1A /* FBNCardActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB21C59653600D79E1A /* FBNCardActionButton.h */; };
+		815BAEF21C59653600D79E1A /* FBNCardActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB31C59653600D79E1A /* FBNCardActionButton.m */; };
+		815BAEF41C59653600D79E1A /* FBNCardActionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsView.h */; };
+		815BAEF51C59653600D79E1A /* FBNCardActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsView.m */; };
+		815BAEF61C59653600D79E1A /* FBNCardBodyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB71C59653600D79E1A /* FBNCardBodyView.h */; };
+		815BAEF71C59653600D79E1A /* FBNCardBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB81C59653600D79E1A /* FBNCardBodyView.m */; };
+		815BAEF81C59653600D79E1A /* FBNCardHeroView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB91C59653600D79E1A /* FBNCardHeroView.h */; };
+		815BAEF91C59653600D79E1A /* FBNCardHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEBA1C59653600D79E1A /* FBNCardHeroView.m */; };
+		816A91ED1CB865A900A5DA85 /* FBNCardFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 811E17921CB844AD009AAE22 /* FBNCardFont.m */; };
+		816A91EF1CB865AC00A5DA85 /* FBNCardFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 811E17911CB844AD009AAE22 /* FBNCardFont.h */; };
+		81A494DC1CA9CB1B00201C4B /* FBNCardActionConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494BD1CA9CB1B00201C4B /* FBNCardActionConfiguration.h */; };
+		81A494DD1CA9CB1B00201C4B /* FBNCardActionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494BE1CA9CB1B00201C4B /* FBNCardActionConfiguration.m */; };
+		81A494DE1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494BF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h */; };
+		81A494DF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C01CA9CB1B00201C4B /* FBNCardActionsConfiguration.m */; };
+		81A494E01CA9CB1B00201C4B /* FBNCardActionsStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C11CA9CB1B00201C4B /* FBNCardActionsStyle.h */; };
+		81A494E11CA9CB1B00201C4B /* FBNCardActionsStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C21CA9CB1B00201C4B /* FBNCardActionsStyle.m */; };
+		81A494E21CA9CB1B00201C4B /* FBNCardBodyConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C41CA9CB1B00201C4B /* FBNCardBodyConfiguration.h */; };
+		81A494E31CA9CB1B00201C4B /* FBNCardBodyConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C51CA9CB1B00201C4B /* FBNCardBodyConfiguration.m */; };
+		81A494E41CA9CB1B00201C4B /* FBNCardConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C71CA9CB1B00201C4B /* FBNCardConfiguration.h */; };
+		81A494E51CA9CB1B00201C4B /* FBNCardConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C81CA9CB1B00201C4B /* FBNCardConfiguration.m */; };
+		81A494E81CA9CB1B00201C4B /* FBNAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494CC1CA9CB1B00201C4B /* FBNAnimatedImage.h */; };
+		81A494E91CA9CB1B00201C4B /* FBNAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494CD1CA9CB1B00201C4B /* FBNAnimatedImage.m */; };
+		81A494EA1CA9CB1B00201C4B /* FBNCardBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494CE1CA9CB1B00201C4B /* FBNCardBackground.h */; };
+		81A494EB1CA9CB1B00201C4B /* FBNCardBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494CF1CA9CB1B00201C4B /* FBNCardBackground.m */; };
+		81A494EC1CA9CB1B00201C4B /* FBNCardColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D01CA9CB1B00201C4B /* FBNCardColor.h */; };
+		81A494ED1CA9CB1B00201C4B /* FBNCardColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D11CA9CB1B00201C4B /* FBNCardColor.m */; };
+		81A494F11CA9CB1B00201C4B /* FBNCardTextAlignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D51CA9CB1B00201C4B /* FBNCardTextAlignment.h */; };
+		81A494F21CA9CB1B00201C4B /* FBNCardTextAlignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D61CA9CB1B00201C4B /* FBNCardTextAlignment.m */; };
+		81A494F31CA9CB1B00201C4B /* FBNCardTextContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D71CA9CB1B00201C4B /* FBNCardTextContent.h */; };
+		81A494F41CA9CB1B00201C4B /* FBNCardTextContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494D81CA9CB1B00201C4B /* FBNCardTextContent.m */; };
+		81A494F51CA9CB1B00201C4B /* FBNCardHeroConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494DA1CA9CB1B00201C4B /* FBNCardHeroConfiguration.h */; };
+		81A494F61CA9CB1B00201C4B /* FBNCardHeroConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494DB1CA9CB1B00201C4B /* FBNCardHeroConfiguration.m */; };
+		81A495081CA9CC2900201C4B /* FBNCardSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A495061CA9CC2900201C4B /* FBNCardSize.h */; };
+		81A495091CA9CC2900201C4B /* FBNCardSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A495071CA9CC2900201C4B /* FBNCardSize.m */; };
+		81A4950D1CA9CD2D00201C4B /* FBNCardButtonAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A4950C1CA9CD2D00201C4B /* FBNCardButtonAction.h */; };
+		81D632BE1CB3AA6A000921B1 /* FBNCardViewController_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 81D632BD1CB3AA6A000921B1 /* FBNCardViewController_Internal.h */; };
+		81EF49E81C6C098B0074B2B4 /* FBNColorAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49DD1C6C098B0074B2B4 /* FBNColorAsset.h */; };
+		81EF49E91C6C098B0074B2B4 /* FBNColorAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49DE1C6C098B0074B2B4 /* FBNColorAsset.m */; };
+		81EF49EA1C6C098B0074B2B4 /* FBNAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E01C6C098B0074B2B4 /* FBNAsset.h */; };
+		81EF49EC1C6C098B0074B2B4 /* FBNGIFAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E31C6C098B0074B2B4 /* FBNGIFAsset.h */; };
+		81EF49ED1C6C098B0074B2B4 /* FBNGIFAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49E41C6C098B0074B2B4 /* FBNGIFAsset.m */; };
+		81EF49EE1C6C098B0074B2B4 /* FBNImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49E61C6C098B0074B2B4 /* FBNImageAsset.h */; };
+		81EF49EF1C6C098B0074B2B4 /* FBNImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF49E71C6C098B0074B2B4 /* FBNImageAsset.m */; };
+		81EF49F81C6C09C20074B2B4 /* FBNAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49F61C6C09C20074B2B4 /* FBNAssetController.h */; };
+		81EF4A061C6C0A420074B2B4 /* FBNAssetsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A041C6C0A420074B2B4 /* FBNAssetsController.h */; };
+		81EF4A071C6C0A420074B2B4 /* FBNAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A051C6C0A420074B2B4 /* FBNAssetsController.m */; };
+		81EF4A171C6C0CF40074B2B4 /* FBNColorAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A151C6C0CF40074B2B4 /* FBNColorAssetController.h */; };
+		81EF4A181C6C0CF40074B2B4 /* FBNColorAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A161C6C0CF40074B2B4 /* FBNColorAssetController.m */; };
+		81EF4A321C6C159B0074B2B4 /* FBNImageAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A301C6C159B0074B2B4 /* FBNImageAssetController.h */; };
+		81EF4A331C6C159B0074B2B4 /* FBNImageAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A311C6C159B0074B2B4 /* FBNImageAssetController.m */; };
+		81EF4A3E1C6C18F30074B2B4 /* FBNGIFAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A3C1C6C18F30074B2B4 /* FBNGIFAssetController.h */; };
+		81EF4A3F1C6C18F30074B2B4 /* FBNGIFAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A3D1C6C18F30074B2B4 /* FBNGIFAssetController.m */; };
+		81EF4A651C6C273F0074B2B4 /* FBNAssetContentCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A611C6C273F0074B2B4 /* FBNAssetContentCache.h */; };
+		81EF4A661C6C273F0074B2B4 /* FBNAssetContentCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A621C6C273F0074B2B4 /* FBNAssetContentCache.m */; };
+		81EF4A671C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF4A631C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h */; };
+		81EF4A681C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A641C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		811E17671CB75034009AAE22 /* FBNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		811E176C1CB7506A009AAE22 /* FBNotifications-iOS-Dynamic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "FBNotifications-iOS-Dynamic.xcconfig"; sourceTree = "<group>"; };
+		811E17721CB750D2009AAE22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		811E17751CB750D5009AAE22 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		811E17781CB750DA009AAE22 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		811E177B1CB750DE009AAE22 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		811E17911CB844AD009AAE22 /* FBNCardFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardFont.h; sourceTree = "<group>"; };
+		811E17921CB844AD009AAE22 /* FBNCardFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardFont.m; sourceTree = "<group>"; };
+		812B7CC41C587CDB00F79BC1 /* FBNotifications-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "FBNotifications-iOS.xcconfig"; sourceTree = "<group>"; };
+		812B7CC61C587CDB00F79BC1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		812B7CC81C587CDB00F79BC1 /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
+		812B7CC91C587CDB00F79BC1 /* OSX.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OSX.xcconfig; sourceTree = "<group>"; };
+		812B7CCA1C587CDB00F79BC1 /* tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tvOS.xcconfig; sourceTree = "<group>"; };
+		812B7CCB1C587CDB00F79BC1 /* watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = watchOS.xcconfig; sourceTree = "<group>"; };
+		812B7CCD1C587CDB00F79BC1 /* Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Application.xcconfig; sourceTree = "<group>"; };
+		812B7CCE1C587CDB00F79BC1 /* Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
+		812B7CCF1C587CDB00F79BC1 /* UnitTest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UnitTest.xcconfig; sourceTree = "<group>"; };
+		812B7CD11C587CDB00F79BC1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		812B7CD21C587CDB00F79BC1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		812B7CD31C587CDB00F79BC1 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		815BAE771C59653600D79E1A /* FBNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNotifications.h; sourceTree = "<group>"; };
+		815BAE781C59653600D79E1A /* FBNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNConstants.h; sourceTree = "<group>"; };
+		815BAE791C59653600D79E1A /* FBNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNConstants.m; sourceTree = "<group>"; };
+		815BAE7A1C59653600D79E1A /* FBNotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNotificationsManager.h; sourceTree = "<group>"; };
+		815BAE7B1C59653600D79E1A /* FBNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNotificationsManager.m; sourceTree = "<group>"; };
+		815BAE7C1C59653600D79E1A /* FBNCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardViewController.h; sourceTree = "<group>"; };
+		815BAE7D1C59653600D79E1A /* FBNCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardViewController.m; sourceTree = "<group>"; };
+		815BAE811C59653600D79E1A /* FBNCardAppEventsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardAppEventsLogger.h; sourceTree = "<group>"; };
+		815BAE821C59653600D79E1A /* FBNCardAppEventsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardAppEventsLogger.m; sourceTree = "<group>"; };
+		815BAEA41C59653600D79E1A /* FBNCardError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardError.h; sourceTree = "<group>"; };
+		815BAEA51C59653600D79E1A /* FBNCardError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardError.m; sourceTree = "<group>"; };
+		815BAEA61C59653600D79E1A /* FBNCardHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardHash.h; sourceTree = "<group>"; };
+		815BAEA71C59653600D79E1A /* FBNCardHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardHash.m; sourceTree = "<group>"; };
+		815BAEA81C59653600D79E1A /* FBNCardPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardPayload.h; sourceTree = "<group>"; };
+		815BAEA91C59653600D79E1A /* FBNCardPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardPayload.m; sourceTree = "<group>"; };
+		815BAEAA1C59653600D79E1A /* FBNCardViewUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardViewUtilities.h; sourceTree = "<group>"; };
+		815BAEAB1C59653600D79E1A /* FBNCardViewUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardViewUtilities.m; sourceTree = "<group>"; };
+		815BAEAE1C59653600D79E1A /* FBNCardDismissButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardDismissButton.h; sourceTree = "<group>"; };
+		815BAEAF1C59653600D79E1A /* FBNCardDismissButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardDismissButton.m; sourceTree = "<group>"; };
+		815BAEB01C59653600D79E1A /* FBNCardLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardLabel.h; sourceTree = "<group>"; };
+		815BAEB11C59653600D79E1A /* FBNCardLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardLabel.m; sourceTree = "<group>"; };
+		815BAEB21C59653600D79E1A /* FBNCardActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionButton.h; sourceTree = "<group>"; };
+		815BAEB31C59653600D79E1A /* FBNCardActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionButton.m; sourceTree = "<group>"; };
+		815BAEB51C59653600D79E1A /* FBNCardActionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionsView.h; sourceTree = "<group>"; };
+		815BAEB61C59653600D79E1A /* FBNCardActionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionsView.m; sourceTree = "<group>"; };
+		815BAEB71C59653600D79E1A /* FBNCardBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardBodyView.h; sourceTree = "<group>"; };
+		815BAEB81C59653600D79E1A /* FBNCardBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardBodyView.m; sourceTree = "<group>"; };
+		815BAEB91C59653600D79E1A /* FBNCardHeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardHeroView.h; sourceTree = "<group>"; };
+		815BAEBA1C59653600D79E1A /* FBNCardHeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardHeroView.m; sourceTree = "<group>"; };
+		815BAEBD1C59653600D79E1A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81A494BD1CA9CB1B00201C4B /* FBNCardActionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionConfiguration.h; sourceTree = "<group>"; };
+		81A494BE1CA9CB1B00201C4B /* FBNCardActionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionConfiguration.m; sourceTree = "<group>"; };
+		81A494BF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionsConfiguration.h; sourceTree = "<group>"; };
+		81A494C01CA9CB1B00201C4B /* FBNCardActionsConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionsConfiguration.m; sourceTree = "<group>"; };
+		81A494C11CA9CB1B00201C4B /* FBNCardActionsStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionsStyle.h; sourceTree = "<group>"; };
+		81A494C21CA9CB1B00201C4B /* FBNCardActionsStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionsStyle.m; sourceTree = "<group>"; };
+		81A494C41CA9CB1B00201C4B /* FBNCardBodyConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardBodyConfiguration.h; sourceTree = "<group>"; };
+		81A494C51CA9CB1B00201C4B /* FBNCardBodyConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardBodyConfiguration.m; sourceTree = "<group>"; };
+		81A494C71CA9CB1B00201C4B /* FBNCardConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardConfiguration.h; sourceTree = "<group>"; };
+		81A494C81CA9CB1B00201C4B /* FBNCardConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardConfiguration.m; sourceTree = "<group>"; };
+		81A494CC1CA9CB1B00201C4B /* FBNAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAnimatedImage.h; sourceTree = "<group>"; };
+		81A494CD1CA9CB1B00201C4B /* FBNAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNAnimatedImage.m; sourceTree = "<group>"; };
+		81A494CE1CA9CB1B00201C4B /* FBNCardBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardBackground.h; sourceTree = "<group>"; };
+		81A494CF1CA9CB1B00201C4B /* FBNCardBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardBackground.m; sourceTree = "<group>"; };
+		81A494D01CA9CB1B00201C4B /* FBNCardColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardColor.h; sourceTree = "<group>"; };
+		81A494D11CA9CB1B00201C4B /* FBNCardColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardColor.m; sourceTree = "<group>"; };
+		81A494D51CA9CB1B00201C4B /* FBNCardTextAlignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardTextAlignment.h; sourceTree = "<group>"; };
+		81A494D61CA9CB1B00201C4B /* FBNCardTextAlignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardTextAlignment.m; sourceTree = "<group>"; };
+		81A494D71CA9CB1B00201C4B /* FBNCardTextContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardTextContent.h; sourceTree = "<group>"; };
+		81A494D81CA9CB1B00201C4B /* FBNCardTextContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardTextContent.m; sourceTree = "<group>"; };
+		81A494DA1CA9CB1B00201C4B /* FBNCardHeroConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardHeroConfiguration.h; sourceTree = "<group>"; };
+		81A494DB1CA9CB1B00201C4B /* FBNCardHeroConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardHeroConfiguration.m; sourceTree = "<group>"; };
+		81A495061CA9CC2900201C4B /* FBNCardSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardSize.h; sourceTree = "<group>"; };
+		81A495071CA9CC2900201C4B /* FBNCardSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardSize.m; sourceTree = "<group>"; };
+		81A4950C1CA9CD2D00201C4B /* FBNCardButtonAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardButtonAction.h; sourceTree = "<group>"; };
+		81D632BD1CB3AA6A000921B1 /* FBNCardViewController_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBNCardViewController_Internal.h; path = Internal/FBNCardViewController_Internal.h; sourceTree = "<group>"; };
+		81EF49DD1C6C098B0074B2B4 /* FBNColorAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNColorAsset.h; sourceTree = "<group>"; };
+		81EF49DE1C6C098B0074B2B4 /* FBNColorAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNColorAsset.m; sourceTree = "<group>"; };
+		81EF49E01C6C098B0074B2B4 /* FBNAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAsset.h; sourceTree = "<group>"; };
+		81EF49E31C6C098B0074B2B4 /* FBNGIFAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNGIFAsset.h; sourceTree = "<group>"; };
+		81EF49E41C6C098B0074B2B4 /* FBNGIFAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNGIFAsset.m; sourceTree = "<group>"; };
+		81EF49E61C6C098B0074B2B4 /* FBNImageAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNImageAsset.h; sourceTree = "<group>"; };
+		81EF49E71C6C098B0074B2B4 /* FBNImageAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNImageAsset.m; sourceTree = "<group>"; };
+		81EF49F61C6C09C20074B2B4 /* FBNAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAssetController.h; sourceTree = "<group>"; };
+		81EF4A041C6C0A420074B2B4 /* FBNAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAssetsController.h; sourceTree = "<group>"; };
+		81EF4A051C6C0A420074B2B4 /* FBNAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNAssetsController.m; sourceTree = "<group>"; };
+		81EF4A151C6C0CF40074B2B4 /* FBNColorAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNColorAssetController.h; sourceTree = "<group>"; };
+		81EF4A161C6C0CF40074B2B4 /* FBNColorAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNColorAssetController.m; sourceTree = "<group>"; };
+		81EF4A301C6C159B0074B2B4 /* FBNImageAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNImageAssetController.h; sourceTree = "<group>"; };
+		81EF4A311C6C159B0074B2B4 /* FBNImageAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNImageAssetController.m; sourceTree = "<group>"; };
+		81EF4A3C1C6C18F30074B2B4 /* FBNGIFAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNGIFAssetController.h; sourceTree = "<group>"; };
+		81EF4A3D1C6C18F30074B2B4 /* FBNGIFAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNGIFAssetController.m; sourceTree = "<group>"; };
+		81EF4A611C6C273F0074B2B4 /* FBNAssetContentCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAssetContentCache.h; sourceTree = "<group>"; };
+		81EF4A621C6C273F0074B2B4 /* FBNAssetContentCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNAssetContentCache.m; sourceTree = "<group>"; };
+		81EF4A631C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNAssetContentCacheOperation.h; sourceTree = "<group>"; };
+		81EF4A641C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNAssetContentCacheOperation.m; sourceTree = "<group>"; };
+		81F0B10A1C4ED4FE00160CCD /* FBNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		811E17391CB75034009AAE22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811E177C1CB750DE009AAE22 /* ImageIO.framework in Frameworks */,
+				811E17791CB750DA009AAE22 /* MobileCoreServices.framework in Frameworks */,
+				811E17761CB750D5009AAE22 /* CoreGraphics.framework in Frameworks */,
+				811E17731CB750D2009AAE22 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F0B1061C4ED4FE00160CCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		811E177E1CB750E6009AAE22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				811E177B1CB750DE009AAE22 /* ImageIO.framework */,
+				811E17781CB750DA009AAE22 /* MobileCoreServices.framework */,
+				811E17751CB750D5009AAE22 /* CoreGraphics.framework */,
+				811E17721CB750D2009AAE22 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		812B7CC31C587CDB00F79BC1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				812B7CC41C587CDB00F79BC1 /* FBNotifications-iOS.xcconfig */,
+				811E176C1CB7506A009AAE22 /* FBNotifications-iOS-Dynamic.xcconfig */,
+				812B7CC51C587CDB00F79BC1 /* Shared */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		812B7CC51C587CDB00F79BC1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				812B7CC61C587CDB00F79BC1 /* Common.xcconfig */,
+				812B7CC71C587CDB00F79BC1 /* Platform */,
+				812B7CCC1C587CDB00F79BC1 /* Product */,
+				812B7CD01C587CDB00F79BC1 /* Project */,
+				812B7CD31C587CDB00F79BC1 /* Warnings.xcconfig */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		812B7CC71C587CDB00F79BC1 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				812B7CC81C587CDB00F79BC1 /* iOS.xcconfig */,
+				812B7CC91C587CDB00F79BC1 /* OSX.xcconfig */,
+				812B7CCA1C587CDB00F79BC1 /* tvOS.xcconfig */,
+				812B7CCB1C587CDB00F79BC1 /* watchOS.xcconfig */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		812B7CCC1C587CDB00F79BC1 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				812B7CCD1C587CDB00F79BC1 /* Application.xcconfig */,
+				812B7CCE1C587CDB00F79BC1 /* Framework.xcconfig */,
+				812B7CCF1C587CDB00F79BC1 /* UnitTest.xcconfig */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		812B7CD01C587CDB00F79BC1 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				812B7CD11C587CDB00F79BC1 /* Debug.xcconfig */,
+				812B7CD21C587CDB00F79BC1 /* Release.xcconfig */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		815BAE761C59653600D79E1A /* FBNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				815BAE771C59653600D79E1A /* FBNotifications.h */,
+				815BAE7A1C59653600D79E1A /* FBNotificationsManager.h */,
+				815BAE7B1C59653600D79E1A /* FBNotificationsManager.m */,
+				815BAE781C59653600D79E1A /* FBNConstants.h */,
+				815BAE791C59653600D79E1A /* FBNConstants.m */,
+				815BAE7C1C59653600D79E1A /* FBNCardViewController.h */,
+				81D632BD1CB3AA6A000921B1 /* FBNCardViewController_Internal.h */,
+				815BAE7D1C59653600D79E1A /* FBNCardViewController.m */,
+				815BAE7F1C59653600D79E1A /* Internal */,
+				815BAEBC1C59653600D79E1A /* Resources */,
+			);
+			path = FBNotifications;
+			sourceTree = SOURCE_ROOT;
+		};
+		815BAE7F1C59653600D79E1A /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				81EF49DB1C6C098B0074B2B4 /* Asset */,
+				815BAE801C59653600D79E1A /* AppEvents */,
+				81A494BB1CA9CB1B00201C4B /* Models */,
+				815BAEA31C59653600D79E1A /* Utilities */,
+				815BAEAC1C59653600D79E1A /* Views */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		815BAE801C59653600D79E1A /* AppEvents */ = {
+			isa = PBXGroup;
+			children = (
+				815BAE811C59653600D79E1A /* FBNCardAppEventsLogger.h */,
+				815BAE821C59653600D79E1A /* FBNCardAppEventsLogger.m */,
+			);
+			path = AppEvents;
+			sourceTree = "<group>";
+		};
+		815BAEA31C59653600D79E1A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				815BAEA41C59653600D79E1A /* FBNCardError.h */,
+				815BAEA51C59653600D79E1A /* FBNCardError.m */,
+				815BAEA61C59653600D79E1A /* FBNCardHash.h */,
+				815BAEA71C59653600D79E1A /* FBNCardHash.m */,
+				815BAEA81C59653600D79E1A /* FBNCardPayload.h */,
+				815BAEA91C59653600D79E1A /* FBNCardPayload.m */,
+				815BAEAA1C59653600D79E1A /* FBNCardViewUtilities.h */,
+				815BAEAB1C59653600D79E1A /* FBNCardViewUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		815BAEAC1C59653600D79E1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				815BAEB71C59653600D79E1A /* FBNCardBodyView.h */,
+				815BAEB81C59653600D79E1A /* FBNCardBodyView.m */,
+				815BAEB91C59653600D79E1A /* FBNCardHeroView.h */,
+				815BAEBA1C59653600D79E1A /* FBNCardHeroView.m */,
+				815BAEB51C59653600D79E1A /* FBNCardActionsView.h */,
+				815BAEB61C59653600D79E1A /* FBNCardActionsView.m */,
+				815BAEB21C59653600D79E1A /* FBNCardActionButton.h */,
+				815BAEB31C59653600D79E1A /* FBNCardActionButton.m */,
+				815BAEAD1C59653600D79E1A /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		815BAEAD1C59653600D79E1A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				815BAEAE1C59653600D79E1A /* FBNCardDismissButton.h */,
+				815BAEAF1C59653600D79E1A /* FBNCardDismissButton.m */,
+				815BAEB01C59653600D79E1A /* FBNCardLabel.h */,
+				815BAEB11C59653600D79E1A /* FBNCardLabel.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		815BAEBC1C59653600D79E1A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				815BAEBD1C59653600D79E1A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		81A494BB1CA9CB1B00201C4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				81A494C61CA9CB1B00201C4B /* Card */,
+				81A494D91CA9CB1B00201C4B /* Hero */,
+				81A494BC1CA9CB1B00201C4B /* Actions */,
+				81A494C31CA9CB1B00201C4B /* Body */,
+				81A494CB1CA9CB1B00201C4B /* Components */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		81A494BC1CA9CB1B00201C4B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				81A494BF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h */,
+				81A494C01CA9CB1B00201C4B /* FBNCardActionsConfiguration.m */,
+				81A494BD1CA9CB1B00201C4B /* FBNCardActionConfiguration.h */,
+				81A494BE1CA9CB1B00201C4B /* FBNCardActionConfiguration.m */,
+				81A494C11CA9CB1B00201C4B /* FBNCardActionsStyle.h */,
+				81A494C21CA9CB1B00201C4B /* FBNCardActionsStyle.m */,
+				81A4950C1CA9CD2D00201C4B /* FBNCardButtonAction.h */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		81A494C31CA9CB1B00201C4B /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				81A494C41CA9CB1B00201C4B /* FBNCardBodyConfiguration.h */,
+				81A494C51CA9CB1B00201C4B /* FBNCardBodyConfiguration.m */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		81A494C61CA9CB1B00201C4B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				81A494C71CA9CB1B00201C4B /* FBNCardConfiguration.h */,
+				81A494C81CA9CB1B00201C4B /* FBNCardConfiguration.m */,
+				81A495061CA9CC2900201C4B /* FBNCardSize.h */,
+				81A495071CA9CC2900201C4B /* FBNCardSize.m */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		81A494CB1CA9CB1B00201C4B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				81A494CC1CA9CB1B00201C4B /* FBNAnimatedImage.h */,
+				81A494CD1CA9CB1B00201C4B /* FBNAnimatedImage.m */,
+				81A494CE1CA9CB1B00201C4B /* FBNCardBackground.h */,
+				81A494CF1CA9CB1B00201C4B /* FBNCardBackground.m */,
+				81A494D01CA9CB1B00201C4B /* FBNCardColor.h */,
+				81A494D11CA9CB1B00201C4B /* FBNCardColor.m */,
+				81A494D51CA9CB1B00201C4B /* FBNCardTextAlignment.h */,
+				81A494D61CA9CB1B00201C4B /* FBNCardTextAlignment.m */,
+				81A494D71CA9CB1B00201C4B /* FBNCardTextContent.h */,
+				81A494D81CA9CB1B00201C4B /* FBNCardTextContent.m */,
+				811E17911CB844AD009AAE22 /* FBNCardFont.h */,
+				811E17921CB844AD009AAE22 /* FBNCardFont.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		81A494D91CA9CB1B00201C4B /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				81A494DA1CA9CB1B00201C4B /* FBNCardHeroConfiguration.h */,
+				81A494DB1CA9CB1B00201C4B /* FBNCardHeroConfiguration.m */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		81EF49DB1C6C098B0074B2B4 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				81EF4A041C6C0A420074B2B4 /* FBNAssetsController.h */,
+				81EF4A051C6C0A420074B2B4 /* FBNAssetsController.m */,
+				81EF49DF1C6C098B0074B2B4 /* Common */,
+				81EF49DC1C6C098B0074B2B4 /* Color */,
+				81EF49E51C6C098B0074B2B4 /* Image */,
+				81EF49E21C6C098B0074B2B4 /* GIF */,
+				81EF4A601C6C273F0074B2B4 /* Cache */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		81EF49DC1C6C098B0074B2B4 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				81EF49DD1C6C098B0074B2B4 /* FBNColorAsset.h */,
+				81EF49DE1C6C098B0074B2B4 /* FBNColorAsset.m */,
+				81EF4A151C6C0CF40074B2B4 /* FBNColorAssetController.h */,
+				81EF4A161C6C0CF40074B2B4 /* FBNColorAssetController.m */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		81EF49DF1C6C098B0074B2B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				81EF49E01C6C098B0074B2B4 /* FBNAsset.h */,
+				81EF49F61C6C09C20074B2B4 /* FBNAssetController.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		81EF49E21C6C098B0074B2B4 /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+				81EF49E31C6C098B0074B2B4 /* FBNGIFAsset.h */,
+				81EF49E41C6C098B0074B2B4 /* FBNGIFAsset.m */,
+				81EF4A3C1C6C18F30074B2B4 /* FBNGIFAssetController.h */,
+				81EF4A3D1C6C18F30074B2B4 /* FBNGIFAssetController.m */,
+			);
+			path = GIF;
+			sourceTree = "<group>";
+		};
+		81EF49E51C6C098B0074B2B4 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				81EF49E61C6C098B0074B2B4 /* FBNImageAsset.h */,
+				81EF49E71C6C098B0074B2B4 /* FBNImageAsset.m */,
+				81EF4A301C6C159B0074B2B4 /* FBNImageAssetController.h */,
+				81EF4A311C6C159B0074B2B4 /* FBNImageAssetController.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		81EF4A601C6C273F0074B2B4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				81EF4A611C6C273F0074B2B4 /* FBNAssetContentCache.h */,
+				81EF4A621C6C273F0074B2B4 /* FBNAssetContentCache.m */,
+				81EF4A631C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h */,
+				81EF4A641C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		81F0B1001C4ED4FE00160CCD = {
+			isa = PBXGroup;
+			children = (
+				812B7CC31C587CDB00F79BC1 /* Configurations */,
+				815BAE761C59653600D79E1A /* FBNotifications */,
+				81F0B10B1C4ED4FE00160CCD /* Products */,
+				811E177E1CB750E6009AAE22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		81F0B10B1C4ED4FE00160CCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81F0B10A1C4ED4FE00160CCD /* FBNotifications.framework */,
+				811E17671CB75034009AAE22 /* FBNotifications.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		811E173A1CB75034009AAE22 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811E173B1CB75034009AAE22 /* FBNAssetsController.h in Headers */,
+				811E173C1CB75034009AAE22 /* FBNColorAssetController.h in Headers */,
+				811E173D1CB75034009AAE22 /* FBNCardLabel.h in Headers */,
+				811E173E1CB75034009AAE22 /* FBNGIFAsset.h in Headers */,
+				811E173F1CB75034009AAE22 /* FBNAssetContentCacheOperation.h in Headers */,
+				811E17401CB75034009AAE22 /* FBNCardTextAlignment.h in Headers */,
+				811E17411CB75034009AAE22 /* FBNAssetContentCache.h in Headers */,
+				811E17421CB75034009AAE22 /* FBNCardBodyConfiguration.h in Headers */,
+				811E17431CB75034009AAE22 /* FBNCardHeroConfiguration.h in Headers */,
+				811E17441CB75034009AAE22 /* FBNCardHeroView.h in Headers */,
+				811E17451CB75034009AAE22 /* FBNImageAssetController.h in Headers */,
+				811E17461CB75034009AAE22 /* FBNGIFAssetController.h in Headers */,
+				811E17471CB75034009AAE22 /* FBNCardActionsStyle.h in Headers */,
+				811E17481CB75034009AAE22 /* FBNCardHash.h in Headers */,
+				811E17491CB75034009AAE22 /* FBNCardActionButton.h in Headers */,
+				811E174A1CB75034009AAE22 /* FBNCardPayload.h in Headers */,
+				811E174B1CB75034009AAE22 /* FBNCardAppEventsLogger.h in Headers */,
+				811E174C1CB75034009AAE22 /* FBNConstants.h in Headers */,
+				811E174D1CB75034009AAE22 /* FBNCardViewController.h in Headers */,
+				811E174E1CB75034009AAE22 /* FBNCardSize.h in Headers */,
+				811E174F1CB75034009AAE22 /* FBNotifications.h in Headers */,
+				811E17501CB75034009AAE22 /* FBNCardViewUtilities.h in Headers */,
+				811E17511CB75034009AAE22 /* FBNImageAsset.h in Headers */,
+				811E17521CB75034009AAE22 /* FBNCardViewController_Internal.h in Headers */,
+				811E17531CB75034009AAE22 /* FBNotificationsManager.h in Headers */,
+				811E17541CB75034009AAE22 /* FBNCardBackground.h in Headers */,
+				811E17551CB75034009AAE22 /* FBNColorAsset.h in Headers */,
+				811E17561CB75034009AAE22 /* FBNCardTextContent.h in Headers */,
+				811E17571CB75034009AAE22 /* FBNCardButtonAction.h in Headers */,
+				811E17581CB75034009AAE22 /* FBNCardBodyView.h in Headers */,
+				811E17591CB75034009AAE22 /* FBNCardActionsConfiguration.h in Headers */,
+				811E175A1CB75034009AAE22 /* FBNAnimatedImage.h in Headers */,
+				816A91EF1CB865AC00A5DA85 /* FBNCardFont.h in Headers */,
+				811E175B1CB75034009AAE22 /* FBNAsset.h in Headers */,
+				811E175C1CB75034009AAE22 /* FBNCardError.h in Headers */,
+				811E175D1CB75034009AAE22 /* FBNCardConfiguration.h in Headers */,
+				811E175E1CB75034009AAE22 /* FBNCardDismissButton.h in Headers */,
+				811E175F1CB75034009AAE22 /* FBNCardActionsView.h in Headers */,
+				811E17601CB75034009AAE22 /* FBNCardActionConfiguration.h in Headers */,
+				811E17611CB75034009AAE22 /* FBNAssetController.h in Headers */,
+				811E17621CB75034009AAE22 /* FBNCardColor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F0B1071C4ED4FE00160CCD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81EF4A061C6C0A420074B2B4 /* FBNAssetsController.h in Headers */,
+				81EF4A171C6C0CF40074B2B4 /* FBNColorAssetController.h in Headers */,
+				815BAEEF1C59653600D79E1A /* FBNCardLabel.h in Headers */,
+				81EF49EC1C6C098B0074B2B4 /* FBNGIFAsset.h in Headers */,
+				81EF4A671C6C273F0074B2B4 /* FBNAssetContentCacheOperation.h in Headers */,
+				81A494F11CA9CB1B00201C4B /* FBNCardTextAlignment.h in Headers */,
+				81EF4A651C6C273F0074B2B4 /* FBNAssetContentCache.h in Headers */,
+				81A494E21CA9CB1B00201C4B /* FBNCardBodyConfiguration.h in Headers */,
+				81A494F51CA9CB1B00201C4B /* FBNCardHeroConfiguration.h in Headers */,
+				815BAEF81C59653600D79E1A /* FBNCardHeroView.h in Headers */,
+				81EF4A321C6C159B0074B2B4 /* FBNImageAssetController.h in Headers */,
+				81EF4A3E1C6C18F30074B2B4 /* FBNGIFAssetController.h in Headers */,
+				81A494E01CA9CB1B00201C4B /* FBNCardActionsStyle.h in Headers */,
+				815BAEE71C59653600D79E1A /* FBNCardHash.h in Headers */,
+				815BAEF11C59653600D79E1A /* FBNCardActionButton.h in Headers */,
+				815BAEE91C59653600D79E1A /* FBNCardPayload.h in Headers */,
+				815BAEC61C59653600D79E1A /* FBNCardAppEventsLogger.h in Headers */,
+				815BAEBF1C59653600D79E1A /* FBNConstants.h in Headers */,
+				815BAEC31C59653600D79E1A /* FBNCardViewController.h in Headers */,
+				81A495081CA9CC2900201C4B /* FBNCardSize.h in Headers */,
+				815BAEBE1C59653600D79E1A /* FBNotifications.h in Headers */,
+				815BAEEB1C59653600D79E1A /* FBNCardViewUtilities.h in Headers */,
+				81EF49EE1C6C098B0074B2B4 /* FBNImageAsset.h in Headers */,
+				81D632BE1CB3AA6A000921B1 /* FBNCardViewController_Internal.h in Headers */,
+				815BAEC11C59653600D79E1A /* FBNotificationsManager.h in Headers */,
+				81A494EA1CA9CB1B00201C4B /* FBNCardBackground.h in Headers */,
+				81EF49E81C6C098B0074B2B4 /* FBNColorAsset.h in Headers */,
+				81A494F31CA9CB1B00201C4B /* FBNCardTextContent.h in Headers */,
+				81A4950D1CA9CD2D00201C4B /* FBNCardButtonAction.h in Headers */,
+				815BAEF61C59653600D79E1A /* FBNCardBodyView.h in Headers */,
+				81A494DE1CA9CB1B00201C4B /* FBNCardActionsConfiguration.h in Headers */,
+				81A494E81CA9CB1B00201C4B /* FBNAnimatedImage.h in Headers */,
+				811E17931CB844AD009AAE22 /* FBNCardFont.h in Headers */,
+				81EF49EA1C6C098B0074B2B4 /* FBNAsset.h in Headers */,
+				815BAEE51C59653600D79E1A /* FBNCardError.h in Headers */,
+				81A494E41CA9CB1B00201C4B /* FBNCardConfiguration.h in Headers */,
+				815BAEED1C59653600D79E1A /* FBNCardDismissButton.h in Headers */,
+				815BAEF41C59653600D79E1A /* FBNCardActionsView.h in Headers */,
+				81A494DC1CA9CB1B00201C4B /* FBNCardActionConfiguration.h in Headers */,
+				81EF49F81C6C09C20074B2B4 /* FBNAssetController.h in Headers */,
+				81A494EC1CA9CB1B00201C4B /* FBNCardColor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		811E17141CB75034009AAE22 /* FBNotifications-iOS-Dynamic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 811E17641CB75034009AAE22 /* Build configuration list for PBXNativeTarget "FBNotifications-iOS-Dynamic" */;
+			buildPhases = (
+				811E17151CB75034009AAE22 /* Sources */,
+				811E17391CB75034009AAE22 /* Frameworks */,
+				811E173A1CB75034009AAE22 /* Headers */,
+				811E17631CB75034009AAE22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FBNotifications-iOS-Dynamic";
+			productName = FBPushCards;
+			productReference = 811E17671CB75034009AAE22 /* FBNotifications.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		81F0B1091C4ED4FE00160CCD /* FBNotifications-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81F0B1121C4ED4FE00160CCD /* Build configuration list for PBXNativeTarget "FBNotifications-iOS" */;
+			buildPhases = (
+				81F0B1051C4ED4FE00160CCD /* Sources */,
+				81F0B1061C4ED4FE00160CCD /* Frameworks */,
+				81F0B1071C4ED4FE00160CCD /* Headers */,
+				81F0B1081C4ED4FE00160CCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FBNotifications-iOS";
+			productName = FBPushCards;
+			productReference = 81F0B10A1C4ED4FE00160CCD /* FBNotifications.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81F0B1011C4ED4FE00160CCD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Facebook Inc";
+				TargetAttributes = {
+					81F0B1091C4ED4FE00160CCD = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 81F0B1041C4ED4FE00160CCD /* Build configuration list for PBXProject "FBNotifications" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 81F0B1001C4ED4FE00160CCD;
+			productRefGroup = 81F0B10B1C4ED4FE00160CCD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81F0B1091C4ED4FE00160CCD /* FBNotifications-iOS */,
+				811E17141CB75034009AAE22 /* FBNotifications-iOS-Dynamic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		811E17631CB75034009AAE22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F0B1081C4ED4FE00160CCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		811E17151CB75034009AAE22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811E17161CB75034009AAE22 /* FBNCardActionConfiguration.m in Sources */,
+				811E17171CB75034009AAE22 /* FBNConstants.m in Sources */,
+				811E17181CB75034009AAE22 /* FBNCardViewController.m in Sources */,
+				811E17191CB75034009AAE22 /* FBNCardDismissButton.m in Sources */,
+				811E171A1CB75034009AAE22 /* FBNCardTextAlignment.m in Sources */,
+				811E171B1CB75034009AAE22 /* FBNColorAsset.m in Sources */,
+				811E171C1CB75034009AAE22 /* FBNCardTextContent.m in Sources */,
+				811E171D1CB75034009AAE22 /* FBNCardPayload.m in Sources */,
+				811E171E1CB75034009AAE22 /* FBNImageAssetController.m in Sources */,
+				811E171F1CB75034009AAE22 /* FBNCardError.m in Sources */,
+				811E17201CB75034009AAE22 /* FBNCardBodyConfiguration.m in Sources */,
+				811E17211CB75034009AAE22 /* FBNCardActionsStyle.m in Sources */,
+				811E17221CB75034009AAE22 /* FBNAssetContentCacheOperation.m in Sources */,
+				811E17231CB75034009AAE22 /* FBNAnimatedImage.m in Sources */,
+				811E17241CB75034009AAE22 /* FBNCardActionsView.m in Sources */,
+				811E17251CB75034009AAE22 /* FBNCardSize.m in Sources */,
+				811E17261CB75034009AAE22 /* FBNCardHeroView.m in Sources */,
+				811E17271CB75034009AAE22 /* FBNCardAppEventsLogger.m in Sources */,
+				811E17281CB75034009AAE22 /* FBNCardActionButton.m in Sources */,
+				811E17291CB75034009AAE22 /* FBNCardLabel.m in Sources */,
+				811E172A1CB75034009AAE22 /* FBNCardHeroConfiguration.m in Sources */,
+				811E172B1CB75034009AAE22 /* FBNCardViewUtilities.m in Sources */,
+				811E172C1CB75034009AAE22 /* FBNCardBodyView.m in Sources */,
+				816A91ED1CB865A900A5DA85 /* FBNCardFont.m in Sources */,
+				811E172D1CB75034009AAE22 /* FBNCardConfiguration.m in Sources */,
+				811E172E1CB75034009AAE22 /* FBNImageAsset.m in Sources */,
+				811E172F1CB75034009AAE22 /* FBNGIFAsset.m in Sources */,
+				811E17301CB75034009AAE22 /* FBNCardBackground.m in Sources */,
+				811E17311CB75034009AAE22 /* FBNColorAssetController.m in Sources */,
+				811E17321CB75034009AAE22 /* FBNAssetsController.m in Sources */,
+				811E17331CB75034009AAE22 /* FBNCardHash.m in Sources */,
+				811E17341CB75034009AAE22 /* FBNCardActionsConfiguration.m in Sources */,
+				811E17351CB75034009AAE22 /* FBNCardColor.m in Sources */,
+				811E17361CB75034009AAE22 /* FBNGIFAssetController.m in Sources */,
+				811E17371CB75034009AAE22 /* FBNAssetContentCache.m in Sources */,
+				811E17381CB75034009AAE22 /* FBNotificationsManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F0B1051C4ED4FE00160CCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81A494DD1CA9CB1B00201C4B /* FBNCardActionConfiguration.m in Sources */,
+				815BAEC01C59653600D79E1A /* FBNConstants.m in Sources */,
+				815BAEC41C59653600D79E1A /* FBNCardViewController.m in Sources */,
+				815BAEEE1C59653600D79E1A /* FBNCardDismissButton.m in Sources */,
+				81A494F21CA9CB1B00201C4B /* FBNCardTextAlignment.m in Sources */,
+				81EF49E91C6C098B0074B2B4 /* FBNColorAsset.m in Sources */,
+				81A494F41CA9CB1B00201C4B /* FBNCardTextContent.m in Sources */,
+				815BAEEA1C59653600D79E1A /* FBNCardPayload.m in Sources */,
+				81EF4A331C6C159B0074B2B4 /* FBNImageAssetController.m in Sources */,
+				815BAEE61C59653600D79E1A /* FBNCardError.m in Sources */,
+				81A494E31CA9CB1B00201C4B /* FBNCardBodyConfiguration.m in Sources */,
+				81A494E11CA9CB1B00201C4B /* FBNCardActionsStyle.m in Sources */,
+				81EF4A681C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m in Sources */,
+				81A494E91CA9CB1B00201C4B /* FBNAnimatedImage.m in Sources */,
+				815BAEF51C59653600D79E1A /* FBNCardActionsView.m in Sources */,
+				81A495091CA9CC2900201C4B /* FBNCardSize.m in Sources */,
+				815BAEF91C59653600D79E1A /* FBNCardHeroView.m in Sources */,
+				815BAEC71C59653600D79E1A /* FBNCardAppEventsLogger.m in Sources */,
+				815BAEF21C59653600D79E1A /* FBNCardActionButton.m in Sources */,
+				815BAEF01C59653600D79E1A /* FBNCardLabel.m in Sources */,
+				81A494F61CA9CB1B00201C4B /* FBNCardHeroConfiguration.m in Sources */,
+				815BAEEC1C59653600D79E1A /* FBNCardViewUtilities.m in Sources */,
+				815BAEF71C59653600D79E1A /* FBNCardBodyView.m in Sources */,
+				811E17941CB844AD009AAE22 /* FBNCardFont.m in Sources */,
+				81A494E51CA9CB1B00201C4B /* FBNCardConfiguration.m in Sources */,
+				81EF49EF1C6C098B0074B2B4 /* FBNImageAsset.m in Sources */,
+				81EF49ED1C6C098B0074B2B4 /* FBNGIFAsset.m in Sources */,
+				81A494EB1CA9CB1B00201C4B /* FBNCardBackground.m in Sources */,
+				81EF4A181C6C0CF40074B2B4 /* FBNColorAssetController.m in Sources */,
+				81EF4A071C6C0A420074B2B4 /* FBNAssetsController.m in Sources */,
+				815BAEE81C59653600D79E1A /* FBNCardHash.m in Sources */,
+				81A494DF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.m in Sources */,
+				81A494ED1CA9CB1B00201C4B /* FBNCardColor.m in Sources */,
+				81EF4A3F1C6C18F30074B2B4 /* FBNGIFAssetController.m in Sources */,
+				81EF4A661C6C273F0074B2B4 /* FBNAssetContentCache.m in Sources */,
+				815BAEC21C59653600D79E1A /* FBNotificationsManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		811E17651CB75034009AAE22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 811E176C1CB7506A009AAE22 /* FBNotifications-iOS-Dynamic.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		811E17661CB75034009AAE22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 811E176C1CB7506A009AAE22 /* FBNotifications-iOS-Dynamic.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		81F0B1101C4ED4FE00160CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812B7CD11C587CDB00F79BC1 /* Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		81F0B1111C4ED4FE00160CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812B7CD21C587CDB00F79BC1 /* Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		81F0B1131C4ED4FE00160CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812B7CC41C587CDB00F79BC1 /* FBNotifications-iOS.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81F0B1141C4ED4FE00160CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812B7CC41C587CDB00F79BC1 /* FBNotifications-iOS.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		811E17641CB75034009AAE22 /* Build configuration list for PBXNativeTarget "FBNotifications-iOS-Dynamic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				811E17651CB75034009AAE22 /* Debug */,
+				811E17661CB75034009AAE22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81F0B1041C4ED4FE00160CCD /* Build configuration list for PBXProject "FBNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81F0B1101C4ED4FE00160CCD /* Debug */,
+				81F0B1111C4ED4FE00160CCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81F0B1121C4ED4FE00160CCD /* Build configuration list for PBXNativeTarget "FBNotifications-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81F0B1131C4ED4FE00160CCD /* Debug */,
+				81F0B1141C4ED4FE00160CCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81F0B1011C4ED4FE00160CCD /* Project object */;
+}

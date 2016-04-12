@@ -1,0 +1,66 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "1"
+  },
+  "fb_push_card": {
+    "version" : "1.0",
+    "dismissColor": "#334D5CFF",
+    "size": "small",
+    "cornerRadius": 12.0,
+    "contentInset" : 10,
+    "backdropColor": "#000000CC",
+    "hero": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 17,
+        "text": "There are item(s) in your cart",
+        "align": "left",
+        "color": "#334D5CFF"
+      },
+      "contentAlign" : "bottom"
+    },
+    "body": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 15,
+        "text": "Oops! It seems like you left some item(s) in your cart. You can remove them or checkout.",
+        "align": "left",
+        "color": "#334D5CFF"
+      }
+    },
+    "alert" : {
+      "title": "Oops!",
+      "body" : "There are item(s) in your cart!"
+    },
+    "actions": {
+      "style": "attached",
+      "layoutStyle" : "vertical",
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "contentInset" : 10,
+      "cornerRadius" : 8,
+      "actions": [
+        {
+          "backgroundColor": "#61B6E5FF",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "GO TO CART",
+            "color": "#FFFFFFFF"
+          },
+          "url": "https://parse.com/"
+        }
+      ]
+    }
+  }
+}

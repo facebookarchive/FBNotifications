@@ -1,0 +1,70 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "2"
+  },
+  "fb_push_card": {
+    "version": "1.0",
+    "size": "medium",
+    "cornerRadius": 12,
+    "contentInset" : 16,
+    "backdropColor": "#334D5CF5",
+    "hero": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#50CCB4FF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 24,
+        "text": "Introducing Messaging!",
+        "font": "system-bold",
+        "align": "center",
+        "color": "#FFFFFFFF"
+      }
+    },
+    "body": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 16,
+        "text": "The AnyApp team is proud to launch our in app messaging feature! Give it a try today and message your friends.",
+        "align": "left",
+        "font": "system-light",
+        "color": "#334D5CFF"
+      }
+    },
+    "alert" : {
+      "body" : "Introducing Messaging!"
+    },
+    "actions": {
+      "style": "attached",
+      "layoutStyle" : "horizontal",
+      "actionsHeight" : 60.0,
+      "actions": [
+        {
+          "backgroundColor": "#C6D9E0FF",
+          "title": "Not Now",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Not Now",
+            "color": "#FFFFFFFF"
+          }
+        },
+        {
+          "backgroundColor": "#9167EFFF",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Try It",
+            "color": "#FFFFFFFF"
+          },
+          "url": "https://messenger.com"
+        }
+      ]
+    }
+  }
+}

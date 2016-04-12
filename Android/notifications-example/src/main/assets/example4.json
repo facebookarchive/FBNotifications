@@ -1,0 +1,41 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "4"
+  },
+  "fb_push_card": {
+    "version": "1.0",
+    "size": "medium",
+    "cornerRadius": 20,
+    "backdropColor": "#332D2DF0",
+    "dismissColor": "#000000FF",
+    "hero": {
+      "background": {
+        "_type": "Image",
+        "url": "https://s3.amazonaws.com/f.cl.ly/items/3n2d2G3V3w2h261x0r0i/pizzzza.png"
+      }
+    },
+    "alert" : {
+      "title": "Yum!",
+      "body" : "Bob's now delivers!"
+    },
+    "actions": {
+      "style": "detached",
+      "layoutStyle" : "horizontal",   
+      "topInset": 20,
+      "cornerRadius": 20,
+      "actions": [
+        {
+          "borderColor": "#FFC84DFF",
+          "borderWidth" : 2,
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Deliver Me Pizzza",
+            "color": "#FFC84DFF"
+          },
+          "url": "https://facebook.com/"
+        }
+      ]
+    }
+  }
+}

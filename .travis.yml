@@ -1,0 +1,53 @@
+branches:
+  only:
+    - master
+matrix:
+  include:
+    - language: objective-c
+      os: osx
+      osx_image: xcode7.3
+      env: TEST_TYPE=iOS
+    - language: objective-c
+      os: osx
+      osx_image: xcode7.3
+      env: TEST_TYPE=CocoaPods
+    - language: objective-c
+      os: osx
+      osx_image: xcode7.3
+      env: TEST_TYPE=Carthage
+    - language: android
+      sudo: false
+      env: TEST_TYPE=Android
+      android:
+        components:
+          - tools
+          - build-tools-23.0.3
+          - android-23
+          - doc-23
+          - extra-android-support
+          - extra-android-m2repository
+          - extra-google-m2repository
+          - extra-google-google_play_services
+install:
+- |
+  if [ "$TEST_TYPE" = "iOS" ]; then
+    gem install xcpretty -N --no-ri --no-rdoc
+  elif [ "$TEST_TYPE" = Carthage ]; then
+    brew install carthage || brew upgrade carthage
+  fi
+script:
+- |
+  if [ "$TEST_TYPE" = "iOS" ]; then
+    cd iOS
+    set -o pipefail
+    xcodebuild build -workspace FBNotifications.xcworkspace -scheme FBNotifications-iOS -sdk iphonesimulator -configuration Release | xcpretty -c
+    xcodebuild build -workspace FBNotifications.xcworkspace -scheme FBNotificationsExample -sdk iphonesimulator -configuration Release | xcpretty -c
+  elif [ "$TEST_TYPE" = Android ]; then
+    cd Android
+    ./gradlew clean assemble -p notifications
+  elif [ "$TEST_TYPE" = CocoaPods ]; then
+    pod lib lint FBNotifications.podspec
+    pod lib lint --use-libraries FBNotifications.podspec
+  elif [ "$TEST_TYPE" = Carthage ]; then
+    carthage build --no-skip-current
+  fi

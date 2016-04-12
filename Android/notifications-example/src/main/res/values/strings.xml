@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FBNotificationsSample</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="example_1">Show Example #1</string>
+    <string name="example_2">Show Example #2</string>
+    <string name="example_3">Show Example #3</string>
+    <string name="example_4">Show Example #4</string>
+    <string name="example_5">Show Example #5</string>
+
+    <string name="notification_1">Show Notification #1</string>
+    <string name="notification_2">Show Notification #2</string>
+    <string name="notification_3">Show Notification #3</string>
+    <string name="notification_4">Show Notification #4</string>
+    <string name="notification_5">Show Notification #5</string>
+</resources>

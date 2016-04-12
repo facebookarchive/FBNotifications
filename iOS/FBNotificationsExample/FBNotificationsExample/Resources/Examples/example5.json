@@ -1,0 +1,49 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "5"
+  },
+  "fb_push_card": {
+    "version": "1.0",
+    "size": "large",
+    "contentInset" : 20,
+    "backdropColor": "#FFF9F8F5",
+    "hero": {
+      "background": {
+        "_type": "Image",
+        "url": "https://s3.amazonaws.com/f.cl.ly/items/2s0J0S1a0B2G1n0b421R/PirateBooty.png"
+      }
+    },
+    "alert" : {
+      "title": "Yarr!",
+      "body" : "Get the free pirate expansion!"
+    },
+    "actions": {
+      "style": "attached",
+      "layoutStyle" : "vertical", 
+      "contentInset" : 10.0,
+      "height" : 50,
+      "cornerRadius" : 8,
+      "actions": [
+        {
+          "backgroundColor": "#EF5B5BFF",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Get the free pirate expansion",
+            "color": "#FFFFFFFF"
+          },
+          "url": "http://worth1000.s3.amazonaws.com/submissions/384000/384447_858b_625x1000.jpg"
+        },
+        {
+          "backgroundColor": "#00000000",
+          "content": {
+            "_type": "StyledText",
+            "size": 14,
+            "text": "Nah, I don't like free",
+            "color": "#EF5B5BFF"
+          }
+        }
+      ]
+    }
+  }
+}

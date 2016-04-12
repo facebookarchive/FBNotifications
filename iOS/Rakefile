@@ -1,0 +1,90 @@
+# Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
+#
+# You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
+# copy, modify, and distribute this software in source code or binary form for use
+# in connection with the web services and APIs provided by Facebook.
+#
+# As with any software that integrates with the Facebook platform, your use of
+# this software is subject to the Facebook Developer Principles and Policies
+# [http://developers.facebook.com/policy/]. This copyright notice shall be
+# included in all copies or substantial portions of the software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+require_relative 'Vendor/xctoolchain/Scripts/xctask/build_task'
+require_relative 'Vendor/xctoolchain/Scripts/xctask/build_framework_task'
+
+script_folder = File.expand_path(File.dirname(__FILE__))
+framework_source_folder = File.join(script_folder, 'FBNotifications')
+build_folder = File.join(script_folder, 'build')
+release_folder = File.join(build_folder, 'release')
+
+namespace :build do
+
+  desc 'Build Frameworks'
+  task :frameworks do |_, _|
+    task = XCTask::BuildFrameworkTask.new do |t|
+      t.directory = framework_source_folder
+      t.build_directory = build_folder
+      t.framework_type = XCTask::FrameworkType::IOS
+      t.framework_name = 'FBNotifications.framework'
+
+      t.project = 'FBNotifications.xcodeproj'
+      t.scheme = 'FBNotifications-iOS'
+      t.configuration = 'Release'
+    end
+    result = task.execute
+    unless result
+      puts 'Failed to build iOS Framework.'
+      exit(1)
+    end
+  end
+end
+
+namespace :package do
+  
+  framework_path = File.join(build_folder, 'FBNotifications.framework')
+  
+  task :prepare do
+    `rm -rf #{build_folder} && mkdir -p #{build_folder}`
+  end
+  
+  desc 'Package Frameworks for Release'
+  task :frameworks => :prepare do |_, _|
+    Rake::Task['build:frameworks'].invoke
+    make_package(release_folder, [framework_path], 'FBNotifications-iOS.zip')
+  end
+  
+  desc 'Package Sample for Release'
+  task :sample => :frameworks do |_, _|
+    sample_folder = File.join(script_folder, 'FBNotificationsExample')
+    `git clean -xfd #{sample_folder}`
+    cp_r(framework_path, sample_folder)
+    
+    make_package(release_folder, [sample_folder], 'FBNotifications-iOS-Sample.zip')
+  end
+  
+  def make_package(target_path, items, archive_name)
+    temp_folder = File.join(target_path, 'tmp')
+    `mkdir -p #{temp_folder}`
+
+    item_list = ''
+    items.each do |item|
+      `cp -R #{item} #{temp_folder}`
+
+      file_name = File.basename(item)
+      item_list << " #{file_name}"
+    end
+
+    archive_path = File.join(target_path, archive_name)
+    `cd #{temp_folder}; zip -r --symlinks #{archive_path} #{item_list}`
+    `rm -rf #{temp_folder}`
+    puts "Release archive created: #{File.join(target_path, archive_name)}"
+  end
+end
+

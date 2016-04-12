@@ -1,0 +1,66 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "3"
+  },
+  "fb_push_card": {
+    "version": "1.0",
+    "size": "medium",
+    "cornerRadius": 16,
+    "contentInset" : 16,
+    "backdropColor": "#332D2DF0",
+    "hero": {
+      "background": {
+        "_type": "GIF",
+        "url": "https://s3.amazonaws.com/f.cl.ly/items/3S3a3I0a0l2w3M2v2h30/fall.gif"
+      }
+    },
+    "body": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 14,
+        "text": "September 22nd marks the first day of fall and the release of our new fall clothing line. We’re celebrating with a 20% off sale!",
+        "align": "left",
+        "color": "#33251FFF"
+      }
+    },
+    "alert" : {
+      "title": "New Clothing Line",
+      "body" : "20% fall sale!"
+    },
+    "actions": {
+      "style": "attached",
+      "layoutStyle" : "horizontal", 
+      "contentInset" : 16.0,
+      "cornerRadius" : 6,
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "actions": [
+        {
+          "backgroundColor": "#690200FF",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Yes, please!",
+            "color": "#FFFFFFFF"
+          },
+          "url": "https://parse.com/"
+        },
+        {
+          "backgroundColor": "#CCC4BCFF",
+          "content": {
+            "_type": "StyledText",
+            "size": 18,
+            "text": "No, thanks!",
+            "color": "#FFFFFFFF"
+          }
+        }
+      ]
+    }
+  }
+}

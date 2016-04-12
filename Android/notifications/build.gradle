@@ -1,0 +1,136 @@
+apply plugin: 'com.android.library'
+
+group = 'com.facebook.android'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName project.version
+    }
+}
+
+configurations {
+    javadoc
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    javadoc 'com.android.support:appcompat-v7:23.2.1'
+}
+
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def isSnapshot = version.endsWith('-SNAPSHOT')
+def ossrhUsername = hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : System.getenv('CI_NEXUS_USERNAME')
+def ossrhPassword = hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : System.getenv('CI_NEXUS_PASSWORD')
+
+task setVersion {
+    // The version will be derived from source
+    project.version = null
+    def sdkVersionFile = file('src/main/java/com/facebook/notifications/NotificationsManager.java')
+    sdkVersionFile.eachLine{
+        def matcher = (it =~ /(?:.*LIBRARY_VERSION = \")(.*)(?:\".*)/)
+        if (matcher.matches()) {
+            project.version = matcher[0][1]
+            return
+        }
+    }
+    if (project.version.is('unspecified')) {
+        throw new GradleScriptException('Version could not be found.', null)
+    }
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+
+        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+
+        pom.project {
+            name 'In-App Notifications Framework'
+            artifactId = 'notifications'
+            packaging 'aar'
+            description 'Facebook In-App Notifications Framework for Android'
+            url 'https://github.com/facebook/FBNotifications'
+
+            scm {
+                connection 'scm:git@github.com:facebook/FBNotifications.git'
+                developerConnection 'scm:git@github.com:facebook/FBNotifications.git'
+                url 'https://github.com/facebook/FBNotifications'
+            }
+
+            licenses {
+                license {
+                    name 'Facebook Platform License'
+                    url 'https://github.com/facebook/FBNotifications/blob/master/LICENSE'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'facebook'
+                    name 'Facebook'
+                }
+            }
+        }
+    }
+}
+
+uploadArchives.dependsOn(setVersion)
+
+signing {
+    required { !isSnapshot && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.javadoc
+
+    options.linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference")
+
+    // JDK 1.8 is more strict then 1.7. Have JDK 1.8 behave like 1.7 for javadoc generation
+    if (org.gradle.internal.jvm.Jvm.current().getJavaVersion() == JavaVersion.VERSION_1_8) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+
+    exclude '**/internal/**'
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
