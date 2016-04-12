@@ -28,7 +28,7 @@ To get started on iOS, install the framework using one of these options:
  ```
  Run `carthage update`, and you should now have the latest version of the framework in your Carthage folder.
 
-After you've installed the framework, you would need to add the following ot your application delegate to present the notification:
+After you've installed the framework, you would need to add the following to your application delegate to present the notification:
 
 Using *Objective-C*:
 
@@ -86,7 +86,7 @@ public void onMessageReceived(String from, final Bundle data) {
 ```
 
 Then when all the content for the notification is ready - it will automatically present the notification to the end user with a pending intent to present a card on open.
-To hand-off the necessary data from the intent - you need to handle the notification in `onCreate` function of your Main Activity:
+To hand-off the necessary data from the intent - you need to handle the notification in the `onCreate` function of your Main Activity:
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -105,7 +105,7 @@ For more help on getting started, take a look at our [Facebook Analytics Push Do
 In-app notifications are powered by a custom format that has an open specification available in this repository.
 The format describes all the possible values and combinations of content that can be rendered by the framework.
 
-We are open to accepting the contributions to the format and the format is constantly evolving.
+We are open to accepting contributions to the format and the format is constantly evolving.
 Any version of the framework is compatible with any previous version of the format in the same major version scope.
 
 For example:
@@ -117,7 +117,7 @@ For example:
 
 ## Contributing
 
-We want to make contributing to this project as easy and transparent as possible. Please refer to the [Contribution Guidelines](https://github.com/facebook/).
+We want to make contributing to this project as easy and transparent as possible. Please refer to the [Contribution Guidelines](https://github.com/facebook/FBNotifications/blob/master/CONTRIBUTING.md).
 
 ## License
 
