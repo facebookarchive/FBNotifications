@@ -411,13 +411,27 @@ public final class NotificationsManager {
   }
 
   /**
-   * Present a card from the notification this activity was created from, if the notification exists
+   * Present a card from the notification this activity
+   * was created from, if the notification exists.
    *
-   * @param activity The activity to present from
-   * @return Whether or not a card was presented
+   * @param activity The activity to present from.
+   * @return Whether or not a card was presented.
    */
   public static boolean presentCardFromNotification(@NonNull Activity activity) {
-    Intent notificationIntent = activity.getIntent().getParcelableExtra(EXTRA_PAYLOAD_INTENT);
+    return presentCardFromNotification(activity, activity.getIntent());
+  }
+
+  /**
+   * Present a card from the notification this activity
+   * was relaunched from, if the notification exists.
+   *
+   * @param activity The activity to present from.
+   * @param intent   Intent that was used to re-launch the activity.
+   * @return Whether or not a card was presented.
+   */
+  public static boolean presentCardFromNotification(@NonNull Activity activity,
+                                                    @NonNull Intent intent) {
+    Intent notificationIntent = intent.getParcelableExtra(EXTRA_PAYLOAD_INTENT);
     if (notificationIntent == null) {
       return false;
     }
@@ -429,8 +443,8 @@ public final class NotificationsManager {
   /**
    * Registers an Asset Handler for use.
    *
-   * @param assetType         The type of the asset to register for
-   * @param assetHandler      The asset handler to register
+   * @param assetType         The type of the asset to register for.
+   * @param assetHandler      The asset handler to register.
    */
   private static void registerAssetHandler(
     @NonNull String assetType,
