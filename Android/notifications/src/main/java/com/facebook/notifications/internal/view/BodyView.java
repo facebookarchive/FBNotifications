@@ -58,6 +58,9 @@ public class BodyView extends RelativeLayout {
     int corners = actionsStyle == ActionsConfiguration.ActionsStyle.Detached
       ? RoundedViewHelper.BOTTOM_LEFT | RoundedViewHelper.BOTTOM_RIGHT
       : 0;
+    if (config.getHeroConfiguration() == null && configuration != null) {
+      corners |= RoundedViewHelper.TOP_LEFT | RoundedViewHelper.TOP_RIGHT;
+    }
 
     roundedViewHelper = new RoundedViewHelper(context, config.getCornerRadius(), corners);
 
