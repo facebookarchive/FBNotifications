@@ -116,6 +116,12 @@ public class HeroView extends RelativeLayout {
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     LayoutParams params = (LayoutParams) assetView.getLayoutParams();
+    // Params can return null if the assetView is not yet attached to the screen.
+    if (params == null) {
+      super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+      return;
+    }
+
     params.height = LayoutParams.WRAP_CONTENT;
 
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
