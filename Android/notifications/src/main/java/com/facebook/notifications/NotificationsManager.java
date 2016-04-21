@@ -181,6 +181,10 @@ public final class NotificationsManager {
    */
   public static boolean presentCard(@NonNull Activity activity, @NonNull Bundle notificationBundle) {
     try {
+      if (!notificationBundle.containsKey(CARD_PAYLOAD_KEY) || !notificationBundle.containsKey(PUSH_PAYLOAD_KEY)) {
+        return false;
+      }
+
       Intent presentationIntent = intentForBundle(
         activity,
         getPushJSON(notificationBundle), getCardJSON(notificationBundle),
