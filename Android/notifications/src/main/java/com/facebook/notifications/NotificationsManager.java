@@ -164,6 +164,15 @@ public final class NotificationsManager {
   }
 
   /**
+   * Returns whether or not a notification bundle has a valid push payload.
+   *
+   * @param notificationBundle The bundle to check for a push payload
+   */
+  public static boolean canPresentCard(@NonNull Bundle notificationBundle) {
+    return notificationBundle.containsKey(CARD_PAYLOAD_KEY);
+  }
+
+  /**
    * Present an intent from a given activity to show the notification bundle contained in notificationBundle.
    *
    * @param activity           The activity to present from
@@ -172,6 +181,10 @@ public final class NotificationsManager {
    */
   public static boolean presentCard(@NonNull Activity activity, @NonNull Bundle notificationBundle) {
     try {
+      if (!notificationBundle.containsKey(CARD_PAYLOAD_KEY) || !notificationBundle.containsKey(PUSH_PAYLOAD_KEY)) {
+        return false;
+      }
+
       Intent presentationIntent = intentForBundle(
         activity,
         getPushJSON(notificationBundle), getCardJSON(notificationBundle),
@@ -347,7 +360,11 @@ public final class NotificationsManager {
     try {
       String payload = notificationBundle.getString(CARD_PAYLOAD_KEY);
 
-      alert = new JSONObject(payload).getJSONObject("alert");
+      JSONObject payloadObject = new JSONObject(payload);
+      alert = payloadObject.optJSONObject("alert") != null
+        ? payloadObject.optJSONObject("alert")
+        : new JSONObject();
+
       payloadHash = payload == null
         ? 0
         : payload.hashCode();
