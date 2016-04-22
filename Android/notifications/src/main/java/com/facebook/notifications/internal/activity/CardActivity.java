@@ -119,6 +119,8 @@ public class CardActivity extends Activity implements ActionsView.Delegate {
     } else {
       displayConfiguration(configuration);
     }
+
+    appEventsLogger.logPushOpen(campaignIdentifier);
   }
 
   @Override

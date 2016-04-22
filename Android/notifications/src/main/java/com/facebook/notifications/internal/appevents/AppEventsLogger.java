@@ -37,6 +37,9 @@ import java.lang.reflect.Method;
 public class AppEventsLogger {
   private static final String LOG_TAG = AppEventsLogger.class.getCanonicalName();
 
+  private static final String PUSH_OPEN_EVENT = "fb_mobile_push_opened";
+  private static final String PUSH_CAMPAIGN_KEY = "fb_mobile_push_opened";
+
   private @Nullable Object fbSDKLogger;
   private @Nullable Method fbSDKLogMethod;
 
@@ -75,20 +78,25 @@ public class AppEventsLogger {
     }
   }
 
-  public void logButtonAction(ActionButton.Type action, @Nullable String campaignIdentifier) {
-    if (campaignIdentifier == null || campaignIdentifier.equals("")) {
-      return;
-    }
+  public void logPushOpen(@Nullable String campaignIdentifier) {
+    logEvent(PUSH_OPEN_EVENT, campaignIdentifier);
+  }
 
-    if (fbSDKLogger == null || fbSDKLogMethod == null) {
+  public void logButtonAction(ActionButton.Type action, @Nullable String campaignIdentifier) {
+    logEvent(getAppEventName(action), campaignIdentifier);
+  }
+
+  private void logEvent(@NonNull String eventName, @Nullable String campaignIdentifier) {
+    if (campaignIdentifier == null || campaignIdentifier.equals("") ||
+      fbSDKLogger == null || fbSDKLogMethod == null) {
       return;
     }
 
     Bundle parameters = new Bundle();
-    parameters.putString("fb_push_campaign", campaignIdentifier);
+    parameters.putString(PUSH_CAMPAIGN_KEY, campaignIdentifier);
 
     try {
-      fbSDKLogMethod.invoke(fbSDKLogger, getAppEventName(action), parameters);
+      fbSDKLogMethod.invoke(fbSDKLogger, eventName, parameters);
     } catch (Exception ex) {
       Log.w(
         LOG_TAG,
