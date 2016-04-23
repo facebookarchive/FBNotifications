@@ -36,7 +36,7 @@
 
 @interface FBNCardViewController () <FBNCardActionsViewDelegate>
 
-@property (nonatomic, copy, readonly) NSString *campaignIdentifier;
+@property (nullable, nonatomic, copy, readonly) NSString *campaignIdentifier;
 @property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 
 @property (nonatomic, strong) FBNCardConfiguration *configuration;
@@ -76,6 +76,24 @@
 
 - (void)dealloc {
     [self.dismissButton removeTarget:nil action:nil forControlEvents:UIControlEventAllEvents];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+///--------------------------------------
+#pragma mark - View
+///--------------------------------------
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+        [self _logPushOpen];
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(_applicationWillEnterForeground)
+                                                     name:UIApplicationWillEnterForegroundNotification
+                                                   object:nil];
+    }
 }
 
 ///--------------------------------------
@@ -244,6 +262,23 @@
     self.actionsView.frame = actionsFrame;
     self.dismissButton.frame = dismissButtonFrame;
     self.loadingIndicatorView.center = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+}
+
+///--------------------------------------
+#pragma mark - Application State Changes
+///--------------------------------------
+
+- (void)_applicationWillEnterForeground {
+    [self _logPushOpen];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+///--------------------------------------
+#pragma mark - Logging Events
+///--------------------------------------
+
+- (void)_logPushOpen {
+    [FBNCardAppEventsLogger logCardOpenWithCampaignIdentifier:self.campaignIdentifier];
 }
 
 ///--------------------------------------
