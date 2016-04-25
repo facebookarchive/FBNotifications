@@ -36,23 +36,33 @@ NS_ASSUME_NONNULL_BEGIN
     return payload[@"fb_push_payload"][@"campaign"];
 }
 
-+ (void)logButtonAction:(FBNCardButtonAction)action forCardWithCampaignIdentifier:(NSString *)identifier {
++ (void)logCardOpenWithCampaignIdentifier:(nullable NSString *)identifier {
+    if (!identifier) {
+        return;
+    }
+    [self _logAppEventWithName:@"fb_mobile_push_opened" campaignIdentifier:identifier];
+}
+
++ (void)logButtonAction:(FBNCardButtonAction)action forCardWithCampaignIdentifier:(nullable NSString *)identifier {
+    NSString *eventName = [self _appEventNameForButtonAction:action];
+    [self _logAppEventWithName:eventName campaignIdentifier:identifier];
+}
+
+///--------------------------------------
+#pragma mark - Private
+///--------------------------------------
+
++ (void)_logAppEventWithName:(NSString *)name campaignIdentifier:(NSString *)identifier {
     if (!identifier) {
         return;
     }
 
     Class loggerClass = NSClassFromString(@"FBSDKAppEvents");
     if (loggerClass && [loggerClass respondsToSelector:@selector(logEvent:parameters:)]) {
-        NSString *eventName = [self _appEventNameForButtonAction:action];
-        if (eventName) {
-            [loggerClass logEvent:eventName parameters:@{ @"fb_push_campaign" : identifier }];
-        }
+        [loggerClass logEvent:name
+                   parameters:@{ @"fb_push_campaign" : identifier }];
     }
 }
-
-///--------------------------------------
-#pragma mark - Private
-///--------------------------------------
 
 + (nullable NSString *)_appEventNameForButtonAction:(FBNCardButtonAction)action {
     switch (action) {

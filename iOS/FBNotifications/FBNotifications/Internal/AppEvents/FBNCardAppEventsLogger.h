@@ -26,7 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable NSString *)campaignIdentifierFromRemoteNotificationPayload:(NSDictionary *)payload;
 
-+ (void)logButtonAction:(FBNCardButtonAction)action forCardWithCampaignIdentifier:(NSString *)identifier;
++ (void)logCardOpenWithCampaignIdentifier:(nullable NSString *)identifier;
++ (void)logButtonAction:(FBNCardButtonAction)action forCardWithCampaignIdentifier:(nullable NSString *)identifier;
 
 @end
 
