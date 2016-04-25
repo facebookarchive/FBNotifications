@@ -119,6 +119,8 @@ public class CardActivity extends Activity implements ActionsView.Delegate {
     } else {
       displayConfiguration(configuration);
     }
+
+    appEventsLogger.logPushOpen(campaignIdentifier);
   }
 
   @Override
@@ -197,6 +199,8 @@ public class CardActivity extends Activity implements ActionsView.Delegate {
 
   @Override
   public void onBackPressed() {
+    appEventsLogger.logButtonAction(ActionButton.Type.Dismiss, campaignIdentifier);
+
     Intent resultIntent = new Intent();
     resultIntent.putExtra(EXTRA_NOTIFICATION_CARD_RESULT, new NotificationCardResult(null));
     setResult(RESULT_OK, resultIntent);
