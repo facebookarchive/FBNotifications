@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FBNotifications'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.license          =  { :type => 'Facebook Platform License', :file => 'LICENSE' }
   s.summary          = 'Facebook In-App Notifications Framework'
   s.homepage         = 'https://developers.facebook.com/products/analytics'
