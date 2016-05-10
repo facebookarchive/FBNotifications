@@ -1,3 +1,0 @@
-[submodule "iOS/Vendor/xctoolchain"]
-	path = iOS/Vendor/xctoolchain
-	url = https://github.com/ParsePlatform/xctoolchain.git
