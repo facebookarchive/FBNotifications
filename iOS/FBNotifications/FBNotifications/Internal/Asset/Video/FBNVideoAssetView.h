@@ -16,24 +16,12 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#import "FBNCardPayload.h"
+@class FBNVideoAsset;
 
-@class FBNAssetsController;
+@interface FBNVideoAssetView : UIView
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface FBNAssetContentCache : NSObject
-
-- (void)cacheContentForURLs:(NSSet<NSURL *> *)urls completion:(dispatch_block_t)completion;
-- (void)clearContentForURLs:(nullable NSSet<NSURL *> *)urls;
-
-- (nullable NSData *)cachedDataForContentURL:(NSURL *)url;
-- (nullable NSURL *)cachedContentURLForRemoteContentURL:(NSURL *)url;
-
-- (BOOL)hasCachedContentForURLs:(nullable NSSet<NSURL *> *)urls;
+- (instancetype)initWithAsset:(FBNVideoAsset *)asset;
 
 @end
-
-NS_ASSUME_NONNULL_END

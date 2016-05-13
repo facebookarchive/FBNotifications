@@ -18,21 +18,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBNCardPayload.h"
-
-@class FBNAssetsController;
+#import "FBNAssetController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNAssetContentCache : NSObject
-
-- (void)cacheContentForURLs:(NSSet<NSURL *> *)urls completion:(dispatch_block_t)completion;
-- (void)clearContentForURLs:(nullable NSSet<NSURL *> *)urls;
-
-- (nullable NSData *)cachedDataForContentURL:(NSURL *)url;
-- (nullable NSURL *)cachedContentURLForRemoteContentURL:(NSURL *)url;
-
-- (BOOL)hasCachedContentForURLs:(nullable NSSet<NSURL *> *)urls;
+@interface FBNVideoAssetController : NSObject <FBNAssetController>
 
 @end
 

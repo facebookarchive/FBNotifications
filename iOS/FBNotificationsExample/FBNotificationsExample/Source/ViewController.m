@@ -140,6 +140,7 @@ static const CGFloat FBNotificationsExampleButtonHeight = 44.0;
         [array addObject:[bundle pathForResource:@"example3" ofType:@"json"]];
         [array addObject:[bundle pathForResource:@"example4" ofType:@"json"]];
         [array addObject:[bundle pathForResource:@"example5" ofType:@"json"]];
+        [array addObject:[bundle pathForResource:@"example6" ofType:@"json"]];
         _examplePaths = [array copy];
     }
     return _examplePaths;
