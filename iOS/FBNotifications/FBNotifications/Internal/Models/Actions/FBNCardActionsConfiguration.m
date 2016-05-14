@@ -22,21 +22,23 @@
 #import "FBNCardActionConfiguration.h"
 #import "FBNCardViewUtilities.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation FBNCardActionsConfiguration
 
 ///--------------------------------------
 #pragma mark - Init
 ///--------------------------------------
 
-- (instancetype)initFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                  assetsController:(FBNAssetsController *)controller {
+- (instancetype)initFromDictionary:(NSDictionary<NSString *, id> *)dictionary
+                    withBackground:(nullable id<FBNAsset>)background {
     self = [super init];
     if (!self) return self;
 
     _style = FBNCardActionsStyleFromString(dictionary[@"style"]);
     _layoutStyle = FBNCardActionsLayoutStyleFromString(dictionary[@"layoutStyle"]);
-    
-    _background = [controller assetFromDictionary:dictionary[@"background"]];
+
+    _background = background;
 
     NSNumber *height = dictionary[@"height"] ?: @(44.0); // Defaults to 44.0
     _height = FBNCGFloatFromNumber(height);
@@ -55,12 +57,19 @@
     return self;
 }
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)controller {
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *,id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardActionsConfiguration * _Nullable configuration))completion {
     if (!dictionary) {
-        return nil;
+        completion(nil);
+        return;
     }
-    return [[self alloc] initFromDictionary:dictionary assetsController:controller];
+    [controller loadAssetFromDictionary:dictionary[@"background"] completion:^(id<FBNAsset> _Nullable asset) {
+        FBNCardActionsConfiguration *configuration = [[self alloc] initFromDictionary:dictionary withBackground:asset];
+        completion(configuration);
+    }];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

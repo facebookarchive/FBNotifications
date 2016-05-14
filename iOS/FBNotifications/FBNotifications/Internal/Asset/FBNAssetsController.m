@@ -64,14 +64,15 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Assets
 ///--------------------------------------
 
-- (nullable id<FBNAsset>)assetFromDictionary:(NSDictionary *)dictionary {
+- (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion {
     NSString *type = [self _assetTypeFromDictionary:dictionary];
     if (!type) {
-        return nil;
+        completion(nil);
+        return;
     }
 
     id<FBNAssetController> controller = [self assetControllerForAssetType:type];
-    return [controller assetFromDictionary:dictionary contentCache:self.contentCache];
+    [controller loadAssetFromDictionary:dictionary contentCache:self.contentCache completion:completion];
 }
 
 - (nullable UIView *)viewForAsset:(id<FBNAsset>)asset {

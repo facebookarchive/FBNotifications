@@ -21,6 +21,7 @@
 #import "FBNCardSize.h"
 
 @class FBNAssetsController;
+@class FBNCardDisplayOptions;
 @class FBNCardHeroConfiguration;
 @class FBNCardBodyConfiguration;
 @class FBNCardActionsConfiguration;
@@ -29,19 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FBNCardConfiguration : NSObject
 
-@property (nonatomic, assign, readonly) FBNCardSize size;
-@property (nonatomic, assign, readonly) CGFloat cornerRadius;
-@property (nonatomic, assign, readonly) CGFloat contentInset;
-
-@property (nullable, nonatomic, strong, readonly) UIColor *backdropColor;
-@property (nonatomic, strong, readonly) UIColor *dismissButtonColor;
-
+@property (nonatomic, strong, readonly) FBNCardDisplayOptions *displayOptions;
 @property (nullable, nonatomic, strong, readonly) FBNCardHeroConfiguration *heroConfiguration;
 @property (nullable, nonatomic, strong, readonly) FBNCardBodyConfiguration *bodyConfiguration;
 @property (nullable, nonatomic, strong, readonly) FBNCardActionsConfiguration *actionsConfiguration;
 
-+ (instancetype)configurationFromDictionary:(NSDictionary *)payload
-                           assetsController:(FBNAssetsController *)assetsController;
++ (void)loadFromDictionary:(NSDictionary *)dictionary
+        withDisplayOptions:(FBNCardDisplayOptions *)displayOptions
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardConfiguration * _Nullable configuration))completion;
 
 @end
 

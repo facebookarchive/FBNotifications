@@ -21,6 +21,8 @@
 #import "FBNAssetsController.h"
 #import "FBNCardTextContent.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation FBNCardBodyConfiguration
 
 ///--------------------------------------
@@ -28,22 +30,29 @@
 ///--------------------------------------
 
 - (instancetype)initFromDictionary:(NSDictionary<NSString *, id> *)dictionary
-                  assetsController:(FBNAssetsController *)assetsController {
+                    withBackground:(nullable id<FBNAsset>)background {
     self = [super init];
     if (!self) return self;
 
-    _background = [assetsController assetFromDictionary:dictionary[@"background"]];
+    _background = background;
     _content = [FBNCardTextContent contentFromDictionary:dictionary[@"content"]];
 
     return self;
 }
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)assetsController {
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *,id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardBodyConfiguration *_Nullable configuration))completion {
     if (!dictionary) {
-        return nil;
+        completion(nil);
+        return;
     }
-    return [[self alloc] initFromDictionary:dictionary assetsController:assetsController];
+    [controller loadAssetFromDictionary:dictionary[@"background"] completion:^(id<FBNAsset> _Nullable asset) {
+        FBNCardBodyConfiguration *configuration = [[self alloc] initFromDictionary:dictionary withBackground:asset];
+        completion(configuration);
+    }];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
