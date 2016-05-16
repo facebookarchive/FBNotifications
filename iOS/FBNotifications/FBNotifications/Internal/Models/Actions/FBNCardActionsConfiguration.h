@@ -52,8 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)controller;
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardActionsConfiguration *_Nullable configuration))completion;
 
 @end
 

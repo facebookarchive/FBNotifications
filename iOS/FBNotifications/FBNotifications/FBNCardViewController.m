@@ -21,6 +21,7 @@
 
 #import "FBNAssetsController.h"
 #import "FBNAssetContentCache.h"
+#import "FBNCardDisplayOptions.h"
 #import "FBNCardHeroView.h"
 #import "FBNCardBodyView.h"
 #import "FBNCardActionsView.h"
@@ -39,7 +40,8 @@
 @property (nullable, nonatomic, copy, readonly) NSString *campaignIdentifier;
 @property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 
-@property (nonatomic, strong) FBNCardConfiguration *configuration;
+@property (nonatomic, strong, readonly) FBNCardDisplayOptions *cardDisplayOptions;
+@property (nullable, nonatomic, strong) FBNCardConfiguration *configuration;
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nullable, nonatomic, strong) UIActivityIndicatorView *loadingIndicatorView;
@@ -63,6 +65,7 @@
     if (!self) return self;
 
     _payload = [payload copy];
+    _cardDisplayOptions = [FBNCardDisplayOptions displayOptionsFromDictionary:payload];
     _campaignIdentifier = [campaignIdentifier copy];
     _assetsController = assetsController;
 
@@ -101,11 +104,23 @@
 ///--------------------------------------
 
 - (void)_reloadConfiguration {
-    _configuration = [FBNCardConfiguration configurationFromDictionary:self.payload assetsController:self.assetsController];
     if ([self.assetsController hasCachedContentForCardPayload:self.payload]) {
-        if ([self isViewLoaded]) {
-            [self _reloadSubviews];
-        }
+        [FBNCardConfiguration loadFromDictionary:self.payload
+                              withDisplayOptions:self.cardDisplayOptions
+                                assetsController:self.assetsController
+                                      completion:^(FBNCardConfiguration * _Nullable configuration) {
+                                          dispatch_block_t reloadBlock = ^{
+                                              self.configuration = configuration;
+                                              if ([self isViewLoaded]) {
+                                                  [self _reloadSubviews];
+                                              }
+                                          };
+                                          if ([NSThread isMainThread]) {
+                                              reloadBlock();
+                                          } else {
+                                              dispatch_async(dispatch_get_main_queue(), reloadBlock);
+                                          }
+                                      }];
     } else {
         __weak typeof(self) wself = self;
         [self.assetsController cacheAssetContentForCardPayload:self.payload completion:^{
@@ -119,14 +134,14 @@
 ///--------------------------------------
 
 - (void)_reloadSubviews {
-    self.view.backgroundColor = self.configuration.backdropColor;
+    self.view.backgroundColor = self.cardDisplayOptions.backdropColor;
 
     self.contentView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.contentView.layer.cornerRadius = self.configuration.cornerRadius;
+    self.contentView.layer.cornerRadius = self.cardDisplayOptions.cornerRadius;
     self.contentView.clipsToBounds = YES;
     [self.view addSubview:self.contentView];
 
-    if ([self.assetsController hasCachedContentForCardPayload:self.payload]) {
+    if (self.configuration) {
         [self.loadingIndicatorView stopAnimating];
         [self.loadingIndicatorView removeFromSuperview];
         self.loadingIndicatorView = nil;
@@ -147,13 +162,13 @@
     if (self.configuration.heroConfiguration) {
         self.heroView = [[FBNCardHeroView alloc] initWithConfiguration:self.configuration.heroConfiguration
                                                       assetsController:self.assetsController
-                                                          contentInset:self.configuration.contentInset];
+                                                          contentInset:self.cardDisplayOptions.contentInset];
         [self.contentView addSubview:self.heroView];
     }
     if (self.configuration.bodyConfiguration) {
         self.bodyView = [[FBNCardBodyView alloc] initWithConfiguration:self.configuration.bodyConfiguration
                                                       assetsController:self.assetsController
-                                                          contentInset:self.configuration.contentInset];
+                                                          contentInset:self.cardDisplayOptions.contentInset];
         [self.contentView addSubview:self.bodyView];
     }
     if (self.configuration.actionsConfiguration) {
@@ -183,7 +198,7 @@
     }
     if (showsDismissButton) {
         self.dismissButton = [[FBNCardDismissButton alloc] initWithFrame:CGRectZero];
-        self.dismissButton.imageColor = self.configuration.dismissButtonColor;
+        self.dismissButton.imageColor = self.cardDisplayOptions.dismissButtonColor;
         [self.dismissButton addTarget:self action:@selector(_dismissButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.dismissButton];
     }
@@ -209,12 +224,12 @@
     [super viewWillLayoutSubviews];
 
     CGRect bounds = self.view.bounds;
-    if (self.configuration.size == FBNCardSizeLarge) {
+    if (self.cardDisplayOptions.size == FBNCardSizeLarge) {
         bounds.size.height -= self.topLayoutGuide.length;
         bounds.origin.y += self.topLayoutGuide.length;
     }
 
-    CGSize availableSize = FBNCardLayoutSizeThatFits(self.configuration.size, bounds.size);
+    CGSize availableSize = FBNCardLayoutSizeThatFits(self.cardDisplayOptions.size, bounds.size);
 
     const CGSize bodySize = CGSizeMake(availableSize.width, [self.bodyView sizeThatFits:availableSize].height);
     availableSize.height -= bodySize.height;
@@ -253,8 +268,8 @@
         default:break;
     }
     CGRect dismissButtonFrame = FBNRectMakeWithOriginSize(CGPointZero, [self.dismissButton sizeThatFits:bounds.size]);
-    dismissButtonFrame.origin.x = CGRectGetMaxX(contentFrame) - CGRectGetWidth(dismissButtonFrame) - self.configuration.contentInset;
-    dismissButtonFrame.origin.y = CGRectGetMinY(contentFrame) + self.configuration.contentInset;
+    dismissButtonFrame.origin.x = CGRectGetMaxX(contentFrame) - CGRectGetWidth(dismissButtonFrame) - self.cardDisplayOptions.contentInset;
+    dismissButtonFrame.origin.y = CGRectGetMinY(contentFrame) + self.cardDisplayOptions.contentInset;
 
     self.contentView.frame = contentFrame;
     self.heroView.frame = heroFrame;

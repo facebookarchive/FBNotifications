@@ -16,23 +16,24 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol FBNAsset;
-@class FBNAssetContentCache;
+#import "FBNCardSize.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol FBNAssetController <NSObject>
+@interface FBNCardDisplayOptions : NSObject
 
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
-                   contentCache:(nonnull FBNAssetContentCache *)cache
-                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion;
+@property (nonatomic, assign, readonly) FBNCardSize size;
+@property (nonatomic, assign, readonly) CGFloat cornerRadius;
+@property (nonatomic, assign, readonly) CGFloat contentInset;
 
-- (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary;
-- (BOOL)isValidAssetDictionary:(NSDictionary *)dictionary;
+@property (nullable, nonatomic, strong, readonly) UIColor *backdropColor;
+@property (nonatomic, strong, readonly) UIColor *dismissButtonColor;
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
++ (instancetype)displayOptionsFromDictionary:(NSDictionary *)dictionary;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

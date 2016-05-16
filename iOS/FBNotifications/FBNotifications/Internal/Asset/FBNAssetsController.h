@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Assets
 ///--------------------------------------
 
-- (nullable id<FBNAsset>)assetFromDictionary:(NSDictionary *)dictionary;
+- (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion;
 - (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
 
 ///--------------------------------------

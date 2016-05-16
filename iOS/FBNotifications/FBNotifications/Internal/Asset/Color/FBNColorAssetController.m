@@ -30,13 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - FBNAssetController
 ///--------------------------------------
 
-- (nullable id<FBNAsset>)assetFromDictionary:(NSDictionary *)dictionary contentCache:(FBNAssetContentCache *)cache {
+- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
+                   contentCache:(nonnull FBNAssetContentCache *)cache
+                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion
+{
     if (![self isValidAssetDictionary:dictionary]) {
-        return nil;
+        return;
     }
 
     NSString *rgbaHex = dictionary[@"rgbaHex"];
-    return [[FBNColorAsset alloc] initWithRGBAHex:rgbaHex];
+    completion([[FBNColorAsset alloc] initWithRGBAHex:rgbaHex]);
 }
 
 - (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary {

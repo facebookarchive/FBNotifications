@@ -24,6 +24,8 @@
 
 const CGFloat FBNCardHeroHeightUnspecified = CGFLOAT_MAX;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation FBNCardHeroConfiguration
 
 ///--------------------------------------
@@ -31,13 +33,13 @@ const CGFloat FBNCardHeroHeightUnspecified = CGFLOAT_MAX;
 ///--------------------------------------
 
 - (instancetype)initFromDictionary:(NSDictionary<NSString *, id> *)dictionary
-                  assetsController:(FBNAssetsController *)assetsController {
+                    withBackground:(nullable id <FBNAsset>)background {
     self = [super init];
     if (!self) return self;
 
     NSNumber *height = dictionary[@"height"] ?: @(FBNCardHeroHeightUnspecified);
     _height = FBNCGFloatFromNumber(height);
-    _background = [assetsController assetFromDictionary:dictionary[@"background"]];
+    _background = background;
 
     _content = [FBNCardTextContent contentFromDictionary:dictionary[@"content"]];
     _contentVerticalAlignment = FBNCardContentVerticalAlignmentFromString(dictionary[@"contentAlign"]);
@@ -45,12 +47,19 @@ const CGFloat FBNCardHeroHeightUnspecified = CGFLOAT_MAX;
     return self;
 }
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)assetsController {
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *,id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardHeroConfiguration * _Nullable))completion {
     if (!dictionary) {
-        return nil;
+        completion(nil);
+        return;
     }
-    return [[self alloc] initFromDictionary:dictionary assetsController:assetsController];
+    [controller loadAssetFromDictionary:dictionary[@"background"] completion:^(id<FBNAsset> _Nullable asset) {
+        FBNCardHeroConfiguration *configuration = [[self alloc] initFromDictionary:dictionary withBackground:asset];
+        completion(configuration);
+    }];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

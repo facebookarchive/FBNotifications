@@ -19,11 +19,9 @@
 #import "FBNCardConfiguration.h"
 
 #import "FBNAssetsController.h"
-#import "FBNCardColor.h"
 #import "FBNCardHeroConfiguration.h"
 #import "FBNCardBodyConfiguration.h"
 #import "FBNCardActionsConfiguration.h"
-#import "FBNCardViewUtilities.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,27 +32,64 @@ NS_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 - (instancetype)initFromDictionary:(NSDictionary *)dictionary
-                  assetsController:(FBNAssetsController *)assetsController {
+                withDisplayOptions:(FBNCardDisplayOptions *)displayOptions
+                 heroConfiguration:(FBNCardHeroConfiguration *)heroConfiguration
+                 bodyConfiguration:(FBNCardBodyConfiguration *)bodyConfiguration
+              actionsConfiguration:(FBNCardActionsConfiguration *)actionsConfiguration {
     self = [super init];
     if (!self) return self;
 
-    _size = FBNCardSizeFromString(dictionary[@"size"]);
-    _cornerRadius = FBNCGFloatFromNumber(dictionary[@"cornerRadius"]); // Defaults to 0
-    _contentInset = FBNCGFloatFromNumber(dictionary[@"contentInset"] ?: @(10.0)); // Defaults to 10.0
-
-    _backdropColor = FBNCardColorFromRGBAHex(dictionary[@"backdropColor"]);
-    _dismissButtonColor = FBNCardColorFromRGBAHex(dictionary[@"dismissColor"]) ?: [UIColor blackColor];
-
-    _heroConfiguration = [FBNCardHeroConfiguration configurationFromDictionary:dictionary[@"hero"] assetsController:assetsController];
-    _bodyConfiguration = [FBNCardBodyConfiguration configurationFromDictionary:dictionary[@"body"] assetsController:assetsController];
-    _actionsConfiguration = [FBNCardActionsConfiguration configurationFromDictionary:dictionary[@"actions"] assetsController:assetsController];
+    _displayOptions = displayOptions;
+    _heroConfiguration = heroConfiguration;
+    _bodyConfiguration = bodyConfiguration;
+    _actionsConfiguration = actionsConfiguration;
 
     return self;
 }
 
-+ (instancetype)configurationFromDictionary:(NSDictionary *)payload
-                           assetsController:(FBNAssetsController *)assetsController {
-    return [[self alloc] initFromDictionary:payload assetsController:assetsController];
++ (void)loadFromDictionary:(NSDictionary *)dictionary
+        withDisplayOptions:(FBNCardDisplayOptions *)displayOptions
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardConfiguration * _Nullable configuration))completion {
+    dispatch_group_t group = dispatch_group_create();
+
+    dispatch_group_enter(group);
+    __block FBNCardHeroConfiguration *heroConfiguration = nil;
+    [FBNCardHeroConfiguration loadFromDictionary:dictionary[@"hero"]
+                                assetsController:controller
+                                      completion:^(FBNCardHeroConfiguration * _Nullable configuration) {
+                                          heroConfiguration = configuration;
+                                          dispatch_group_leave(group);
+                                      }];
+
+
+    dispatch_group_enter(group);
+    __block FBNCardBodyConfiguration *bodyConfiguration = nil;
+    [FBNCardBodyConfiguration loadFromDictionary:dictionary[@"body"]
+                                assetsController:controller
+                                      completion:^(FBNCardBodyConfiguration * _Nullable configuration) {
+                                          bodyConfiguration = configuration;
+                                          dispatch_group_leave(group);
+                                      }];
+
+    dispatch_group_enter(group);
+    __block FBNCardActionsConfiguration *actionsConfiguration = nil;
+    [FBNCardActionsConfiguration loadFromDictionary:dictionary[@"actions"]
+                                   assetsController:controller
+                                         completion:^(FBNCardActionsConfiguration * _Nullable configuration) {
+                                             actionsConfiguration = configuration;
+                                             dispatch_group_leave(group);
+                                         }];
+
+
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        FBNCardConfiguration *configuration = [[FBNCardConfiguration alloc] initFromDictionary:dictionary
+                                                                            withDisplayOptions:displayOptions
+                                                                             heroConfiguration:heroConfiguration
+                                                                             bodyConfiguration:bodyConfiguration
+                                                                          actionsConfiguration:actionsConfiguration];
+        completion(configuration);
+    });
 }
 
 @end

@@ -39,8 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Init
 ///--------------------------------------
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)assetsController;
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *,id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardBodyConfiguration *_Nullable configuration))completion;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

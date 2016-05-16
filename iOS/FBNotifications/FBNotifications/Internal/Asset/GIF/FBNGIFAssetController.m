@@ -30,14 +30,21 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - FBNAssetController
 ///--------------------------------------
 
-- (nullable id<FBNAsset>)assetFromDictionary:(NSDictionary *)dictionary contentCache:(FBNAssetContentCache *)cache {
+- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
+                   contentCache:(nonnull FBNAssetContentCache *)cache
+                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion {
     if (![self isValidAssetDictionary:dictionary]) {
-        return nil;
+        completion(nil);
+        return;
     }
 
     NSURL *url = [NSURL URLWithString:dictionary[@"url"]];
-    UIImage *image = FBNAnimatedImageFromData([cache cachedDataForContentURL:url]);
-    return [[FBNGIFAsset alloc] initWithImage:image];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSData *data = [cache cachedDataForContentURL:url];
+        UIImage *image = FBNAnimatedImageFromData(data);
+        FBNGIFAsset *asset = [[FBNGIFAsset alloc] initWithImage:image];
+        completion(asset);
+    });
 }
 
 - (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary {

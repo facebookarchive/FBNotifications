@@ -45,8 +45,9 @@ extern const CGFloat FBNCardHeroHeightUnspecified;
 #pragma mark - Init
 ///--------------------------------------
 
-+ (nullable instancetype)configurationFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary
-                                    assetsController:(FBNAssetsController *)assetsController;
++ (void)loadFromDictionary:(nullable NSDictionary<NSString *,id> *)dictionary
+          assetsController:(FBNAssetsController *)controller
+                completion:(void (^)(FBNCardHeroConfiguration *_Nullable configuration))completion;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

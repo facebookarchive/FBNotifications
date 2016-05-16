@@ -16,23 +16,32 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "FBNCardDisplayOptions.h"
 
-@protocol FBNAsset;
-@class FBNAssetContentCache;
+#import "FBNCardColor.h"
+#import "FBNCardViewUtilities.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol FBNAssetController <NSObject>
+@implementation FBNCardDisplayOptions
 
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
-                   contentCache:(nonnull FBNAssetContentCache *)cache
-                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion;
+- (instancetype)initFromDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (!self) return nil;
 
-- (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary;
-- (BOOL)isValidAssetDictionary:(NSDictionary *)dictionary;
+    _size = FBNCardSizeFromString(dictionary[@"size"]);
+    _cornerRadius = FBNCGFloatFromNumber(dictionary[@"cornerRadius"]); // Defaults to 0
+    _contentInset = FBNCGFloatFromNumber(dictionary[@"contentInset"] ?: @(10.0)); // Defaults to 10.0
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
+    _backdropColor = FBNCardColorFromRGBAHex(dictionary[@"backdropColor"]);
+    _dismissButtonColor = FBNCardColorFromRGBAHex(dictionary[@"dismissColor"]) ?: [UIColor blackColor];
+
+    return self;
+}
+
++ (instancetype)displayOptionsFromDictionary:(NSDictionary *)dictionary {
+    return [[self alloc] initFromDictionary:dictionary];
+}
 
 @end
 
