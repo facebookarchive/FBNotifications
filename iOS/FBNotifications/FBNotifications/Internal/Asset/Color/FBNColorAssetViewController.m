@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 - (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
-    return fitSize;
+    return CGSizeZero;
 }
 
 @end

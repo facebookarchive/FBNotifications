@@ -23,6 +23,7 @@
 @protocol FBNAsset;
 @protocol FBNAssetController;
 @class FBNAssetContentCache;
+@protocol FBNContentSizeProvider;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 - (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion;
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
+- (nullable UIViewController <FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
 
 ///--------------------------------------
 #pragma mark - Cache

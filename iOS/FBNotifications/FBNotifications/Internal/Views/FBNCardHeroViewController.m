@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) FBNCardHeroConfiguration *configuration;
 @property (nonatomic, assign, readonly) CGFloat contentInset;
 
-@property (nullable, nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, strong) UIViewController <FBNContentSizeProvider> *backgroundViewController;
 @property (nullable, nonatomic, strong) UILabel *textLabel;
 
 @end
@@ -68,8 +68,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.backgroundView = [self.assetsController viewForAsset:self.configuration.background];
-    [self.view addSubview:self.backgroundView];
+    id<FBNAsset> background = self.configuration.background;
+    if (background) {
+        self.backgroundViewController = [self.assetsController viewControllerForAsset:background];
+        [self addChildViewController:self.backgroundViewController];
+        [self.view addSubview:self.backgroundViewController.view];
+        [self.backgroundViewController didMoveToParentViewController:self];
+    }
 
     if (self.configuration.content) {
         self.textLabel = [FBNCardLabel labelFromTextContent:self.configuration.content];
@@ -82,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     const CGRect bounds = self.view.bounds;
 
-    self.backgroundView.frame = bounds;
+    self.backgroundViewController.view.frame = bounds;
 
     CGRect contentBounds = CGRectInset(bounds, self.contentInset, self.contentInset);
 
@@ -120,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
         textSize.height += self.contentInset * 2;
     }
 
-    CGSize imageSize = [self.backgroundView sizeThatFits:fitSize];
+    CGSize imageSize = [self.backgroundViewController contentSizeThatFitsParentContainerSize:fitSize];
     if (imageSize.width != 0 && imageSize.height != 0) {
         CGFloat imageScale = FBNAspectFillScaleThatFits(imageSize, fitSize);
         imageSize.width *= imageScale;

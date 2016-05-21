@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 @property (nonatomic, strong, readonly) FBNCardActionsConfiguration *configuration;
 
-@property (nullable, nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, strong) UIViewController <FBNContentSizeProvider> *backgroundViewController;
 @property (nullable, nonatomic, copy) NSArray<FBNCardActionButton *> *actionButtons;
 
 @end
@@ -68,8 +68,10 @@ NS_ASSUME_NONNULL_BEGIN
 
     id<FBNAsset> background = self.configuration.background;
     if (background) {
-        self.backgroundView = [self.assetsController viewForAsset:background];
-        [self.view addSubview:self.backgroundView];
+        self.backgroundViewController = [self.assetsController viewControllerForAsset:background];
+        [self addChildViewController:self.backgroundViewController];
+        [self.view addSubview:self.backgroundViewController.view];
+        [self.backgroundViewController didMoveToParentViewController:self];
     }
 
     self.actionButtons = [[self class] _actionButtonsFromConfiguration:self.configuration];
@@ -88,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     const CGRect bounds = self.view.bounds;
 
-    self.backgroundView.frame = bounds;
+    self.backgroundViewController.view.frame = bounds;
 
     CGSize buttonSize = { .width = 0.0f, .height = self.configuration.height };
     switch (self.configuration.layoutStyle) {

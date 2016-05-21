@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) FBNCardBodyConfiguration *configuration;
 @property (nonatomic, assign, readonly) CGFloat contentInset;
 
-@property (nullable, nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, strong) UIViewController <FBNContentSizeProvider> *backgroundViewController;
 @property (nullable, nonatomic, strong) UILabel *textLabel;
 
 @end
@@ -72,8 +72,10 @@ NS_ASSUME_NONNULL_BEGIN
 
     id<FBNAsset> background = self.configuration.background;
     if (background) {
-        self.backgroundView = [self.assetsController viewForAsset:background];
-        [self.view addSubview:self.backgroundView];
+        self.backgroundViewController = [self.assetsController viewControllerForAsset:background];
+        [self addChildViewController:self.backgroundViewController];
+        [self.view addSubview:self.backgroundViewController.view];
+        [self.backgroundViewController didMoveToParentViewController:self];
     }
 
     if (self.configuration.content) {
@@ -91,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     const CGRect bounds = self.view.bounds;
 
-    self.backgroundView.frame = bounds;
+    self.backgroundViewController.view.frame = bounds;
 
     CGRect contentBounds = CGRectInset(bounds, self.contentInset, self.contentInset);
     self.textLabel.frame = FBNRectAdjustToScreenScale(FBNRectMakeWithSizeCenteredInRect(contentBounds.size, bounds), NSRoundUp);

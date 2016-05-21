@@ -34,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary;
 - (BOOL)isValidAssetDictionary:(NSDictionary *)dictionary;
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
 - (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
 
 @end

@@ -75,9 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
     [controller loadAssetFromDictionary:dictionary contentCache:self.contentCache completion:completion];
 }
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset {
+- (nullable UIViewController <FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset {
     id<FBNAssetController> controller = [self assetControllerForAssetType:asset.type];
-    return [controller viewForAsset:asset];
+    return [controller viewControllerForAsset:asset];
 }
 
 - (nullable NSString *)_assetTypeFromDictionary:(NSDictionary *)dictionary {
