@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0699F2131CF038750076241D /* FBNColorAssetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0699F2111CF038750076241D /* FBNColorAssetViewController.h */; };
+		0699F2141CF038750076241D /* FBNColorAssetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0699F2111CF038750076241D /* FBNColorAssetViewController.h */; };
+		0699F2151CF038750076241D /* FBNColorAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0699F2121CF038750076241D /* FBNColorAssetViewController.m */; };
+		0699F2161CF038750076241D /* FBNColorAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0699F2121CF038750076241D /* FBNColorAssetViewController.m */; };
 		06DCCB081CF02F4600E2A0AF /* FBNContentSizeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 06DCCB071CF02F4600E2A0AF /* FBNContentSizeProvider.h */; };
 		06DCCB091CF02F4600E2A0AF /* FBNContentSizeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 06DCCB071CF02F4600E2A0AF /* FBNContentSizeProvider.h */; };
 		811E17161CB75034009AAE22 /* FBNCardActionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494BE1CA9CB1B00201C4B /* FBNCardActionConfiguration.m */; };
@@ -174,6 +178,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0699F2111CF038750076241D /* FBNColorAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNColorAssetViewController.h; sourceTree = "<group>"; };
+		0699F2121CF038750076241D /* FBNColorAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNColorAssetViewController.m; sourceTree = "<group>"; };
 		06DCCB071CF02F4600E2A0AF /* FBNContentSizeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNContentSizeProvider.h; sourceTree = "<group>"; };
 		811E17671CB75034009AAE22 /* FBNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811E176C1CB7506A009AAE22 /* FBNotifications-iOS-Dynamic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "FBNotifications-iOS-Dynamic.xcconfig"; sourceTree = "<group>"; };
@@ -545,6 +551,8 @@
 			children = (
 				81EF49DD1C6C098B0074B2B4 /* FBNColorAsset.h */,
 				81EF49DE1C6C098B0074B2B4 /* FBNColorAsset.m */,
+				0699F2111CF038750076241D /* FBNColorAssetViewController.h */,
+				0699F2121CF038750076241D /* FBNColorAssetViewController.m */,
 				81EF4A151C6C0CF40074B2B4 /* FBNColorAssetController.h */,
 				81EF4A161C6C0CF40074B2B4 /* FBNColorAssetController.m */,
 			);
@@ -659,6 +667,7 @@
 				811E175B1CB75034009AAE22 /* FBNAsset.h in Headers */,
 				811E175C1CB75034009AAE22 /* FBNCardError.h in Headers */,
 				811E175D1CB75034009AAE22 /* FBNCardConfiguration.h in Headers */,
+				0699F2141CF038750076241D /* FBNColorAssetViewController.h in Headers */,
 				811E175E1CB75034009AAE22 /* FBNCardDismissButton.h in Headers */,
 				811E175F1CB75034009AAE22 /* FBNCardActionsViewController.h in Headers */,
 				811E17601CB75034009AAE22 /* FBNCardActionConfiguration.h in Headers */,
@@ -709,6 +718,7 @@
 				81EF49EA1C6C098B0074B2B4 /* FBNAsset.h in Headers */,
 				815BAEE51C59653600D79E1A /* FBNCardError.h in Headers */,
 				81A494E41CA9CB1B00201C4B /* FBNCardConfiguration.h in Headers */,
+				0699F2131CF038750076241D /* FBNColorAssetViewController.h in Headers */,
 				815BAEED1C59653600D79E1A /* FBNCardDismissButton.h in Headers */,
 				815BAEF41C59653600D79E1A /* FBNCardActionsViewController.h in Headers */,
 				81A494DC1CA9CB1B00201C4B /* FBNCardActionConfiguration.h in Headers */,
@@ -842,6 +852,7 @@
 				811E17311CB75034009AAE22 /* FBNColorAssetController.m in Sources */,
 				811E17321CB75034009AAE22 /* FBNAssetsController.m in Sources */,
 				811E17331CB75034009AAE22 /* FBNCardHash.m in Sources */,
+				0699F2161CF038750076241D /* FBNColorAssetViewController.m in Sources */,
 				811E17341CB75034009AAE22 /* FBNCardActionsConfiguration.m in Sources */,
 				811E17351CB75034009AAE22 /* FBNCardColor.m in Sources */,
 				811E17361CB75034009AAE22 /* FBNGIFAssetController.m in Sources */,
@@ -886,6 +897,7 @@
 				81EF4A181C6C0CF40074B2B4 /* FBNColorAssetController.m in Sources */,
 				81EF4A071C6C0A420074B2B4 /* FBNAssetsController.m in Sources */,
 				815BAEE81C59653600D79E1A /* FBNCardHash.m in Sources */,
+				0699F2151CF038750076241D /* FBNColorAssetViewController.m in Sources */,
 				81A494DF1CA9CB1B00201C4B /* FBNCardActionsConfiguration.m in Sources */,
 				81A494ED1CA9CB1B00201C4B /* FBNCardColor.m in Sources */,
 				81EF4A3F1C6C18F30074B2B4 /* FBNGIFAssetController.m in Sources */,

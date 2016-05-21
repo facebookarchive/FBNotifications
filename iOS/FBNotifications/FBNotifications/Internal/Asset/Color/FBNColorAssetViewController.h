@@ -20,22 +20,13 @@
 
 #import "FBNContentSizeProvider.h"
 
-@protocol FBNAsset;
-@class FBNAssetContentCache;
+@class FBNColorAsset;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol FBNAssetController <NSObject>
+@interface FBNColorAssetViewController : UIViewController <FBNContentSizeProvider>
 
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
-                   contentCache:(nonnull FBNAssetContentCache *)cache
-                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion;
-
-- (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary;
-- (BOOL)isValidAssetDictionary:(NSDictionary *)dictionary;
-
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset;
-- (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
+- (instancetype)initWithAsset:(FBNColorAsset *)asset;
 
 @end
 

@@ -16,49 +16,48 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "FBNColorAssetController.h"
-
-#import <UIKit/UIKit.h>
+#import "FBNColorAssetViewController.h"
 
 #import "FBNColorAsset.h"
-#import "FBNColorAssetViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation FBNColorAssetController
+@interface FBNColorAssetViewController ()
+
+@property (nonatomic, strong, readonly) FBNColorAsset *asset;
+
+@end
+
+@implementation FBNColorAssetViewController
 
 ///--------------------------------------
-#pragma mark - FBNAssetController
+#pragma mark - Init
 ///--------------------------------------
 
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary
-                   contentCache:(nonnull FBNAssetContentCache *)cache
-                     completion:(void (^)(id <FBNAsset> _Nullable asset))completion
-{
-    if (![self isValidAssetDictionary:dictionary]) {
-        return;
-    }
+- (instancetype)initWithAsset:(FBNColorAsset *)asset {
+    self = [super initWithNibName:nil bundle:nil];
+    if (!self) return self;
 
-    NSString *rgbaHex = dictionary[@"rgbaHex"];
-    completion([[FBNColorAsset alloc] initWithRGBAHex:rgbaHex]);
+    _asset = asset;
+
+    return self;
 }
 
-- (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary {
-    return nil;
+///--------------------------------------
+#pragma mark - View
+///--------------------------------------
+
+- (void)loadView {
+    [super loadView];
+    self.view.backgroundColor = self.asset.color;
 }
 
-- (BOOL)isValidAssetDictionary:(NSDictionary *)dictionary {
-    if (![dictionary isKindOfClass:[NSDictionary class]] ||
-        ![dictionary[@"_type"] isEqualToString:@"Color"] ||
-        ![dictionary[@"rgbaHex"] isKindOfClass:[NSString class]]) {
-        return NO;
-    }
-    return YES;
-}
+///--------------------------------------
+#pragma mark - FBNContentSizeProvider
+///--------------------------------------
 
-- (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset {
-    FBNColorAsset *colorAsset = (FBNColorAsset *)asset;
-    return [[FBNColorAssetViewController alloc] initWithAsset:colorAsset];
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
+    return fitSize;
 }
 
 @end
