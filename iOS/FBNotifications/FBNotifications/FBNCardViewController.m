@@ -22,7 +22,7 @@
 #import "FBNAssetsController.h"
 #import "FBNAssetContentCache.h"
 #import "FBNCardDisplayOptions.h"
-#import "FBNCardHeroView.h"
+#import "FBNCardHeroViewController.h"
 #import "FBNCardBodyView.h"
 #import "FBNCardActionsView.h"
 #import "FBNCardDismissButton.h"
@@ -45,7 +45,7 @@
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nullable, nonatomic, strong) UIActivityIndicatorView *loadingIndicatorView;
-@property (nullable, nonatomic, strong) FBNCardHeroView *heroView;
+@property (nullable, nonatomic, strong) FBNCardHeroViewController *heroViewController;
 @property (nullable, nonatomic, strong) FBNCardBodyView *bodyView;
 @property (nullable, nonatomic, strong) FBNCardActionsView *actionsView;
 @property (nullable, nonatomic, strong) FBNCardDismissButton *dismissButton;
@@ -160,10 +160,12 @@
 
 - (void)_reloadContentViews {
     if (self.configuration.heroConfiguration) {
-        self.heroView = [[FBNCardHeroView alloc] initWithConfiguration:self.configuration.heroConfiguration
-                                                      assetsController:self.assetsController
-                                                          contentInset:self.cardDisplayOptions.contentInset];
-        [self.contentView addSubview:self.heroView];
+        self.heroViewController = [[FBNCardHeroViewController alloc] initWithAssetsController:self.assetsController
+                                                                                configuration:self.configuration.heroConfiguration
+                                                                                 contentInset:self.cardDisplayOptions.contentInset];
+        [self addChildViewController:self.heroViewController];
+        [self.contentView addSubview:self.heroViewController.view];
+        [self.heroViewController didMoveToParentViewController:self];
     }
     if (self.configuration.bodyConfiguration) {
         self.bodyView = [[FBNCardBodyView alloc] initWithConfiguration:self.configuration.bodyConfiguration
@@ -239,7 +241,7 @@
 
     CGSize heroSize = availableSize;
     if (self.configuration.heroConfiguration.height == FBNCardHeroHeightUnspecified) {
-        heroSize.height = [self.heroView sizeThatFits:availableSize].height;
+        heroSize.height = [self.heroViewController contentSizeThatFitsParentContainerSize:availableSize].height;
     } else {
         heroSize.height *= self.configuration.heroConfiguration.height;
     }
@@ -272,7 +274,7 @@
     dismissButtonFrame.origin.y = CGRectGetMinY(contentFrame) + self.cardDisplayOptions.contentInset;
 
     self.contentView.frame = contentFrame;
-    self.heroView.frame = heroFrame;
+    self.heroViewController.view.frame = heroFrame;
     self.bodyView.frame = bodyFrame;
     self.actionsView.frame = actionsFrame;
     self.dismissButton.frame = dismissButtonFrame;

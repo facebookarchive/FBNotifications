@@ -18,16 +18,21 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBNContentSizeProvider.h"
+
 @class FBNAssetsController;
 @class FBNCardHeroConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNCardHeroView : UIView
+@interface FBNCardHeroViewController : UIViewController <FBNContentSizeProvider>
 
-- (instancetype)initWithConfiguration:(FBNCardHeroConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                         contentInset:(CGFloat)contentInset;
+- (instancetype)initWithAssetsController:(FBNAssetsController *)assetsController
+                           configuration:(FBNCardHeroConfiguration *)configuration
+                            contentInset:(CGFloat)contentInset NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
 @end
 
