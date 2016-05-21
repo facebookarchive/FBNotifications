@@ -19,6 +19,7 @@
 #import "FBNGIFAssetController.h"
 
 #import "FBNGIFAsset.h"
+#import "FBNIGIFAssetViewController.h"
 #import "FBNAssetContentCache.h"
 #import "FBNAnimatedImage.h"
 
@@ -65,11 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset {
+- (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset {
     FBNGIFAsset *gifAsset = (FBNGIFAsset *)asset;
-    UIImageView *view = [[UIImageView alloc] initWithImage:gifAsset.image];
-    view.contentMode = UIViewContentModeScaleAspectFill;
-    return view;
+    return [[FBNGIFAssetViewController alloc] initWithAsset:gifAsset];
 }
 
 @end
