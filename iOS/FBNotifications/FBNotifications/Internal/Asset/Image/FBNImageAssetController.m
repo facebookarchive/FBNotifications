@@ -19,6 +19,7 @@
 #import "FBNImageAssetController.h"
 
 #import "FBNImageAsset.h"
+#import "FBNImageAssetViewController.h"
 #import "FBNAssetContentCache.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -64,11 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset {
+- (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset {
     FBNImageAsset *imageAsset = (FBNImageAsset *)asset;
-    UIImageView *view = [[UIImageView alloc] initWithImage:imageAsset.image];
-    view.contentMode = UIViewContentModeScaleAspectFill;
-    return view;
+    return [[FBNImageAssetViewController alloc] initWithAsset:imageAsset];
 }
 
 @end
