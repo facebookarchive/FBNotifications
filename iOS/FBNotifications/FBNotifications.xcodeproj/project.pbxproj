@@ -23,7 +23,7 @@
 		811E17211CB75034009AAE22 /* FBNCardActionsStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494C21CA9CB1B00201C4B /* FBNCardActionsStyle.m */; };
 		811E17221CB75034009AAE22 /* FBNAssetContentCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81EF4A641C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m */; };
 		811E17231CB75034009AAE22 /* FBNAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A494CD1CA9CB1B00201C4B /* FBNAnimatedImage.m */; };
-		811E17241CB75034009AAE22 /* FBNCardActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsView.m */; };
+		811E17241CB75034009AAE22 /* FBNCardActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsViewController.m */; };
 		811E17251CB75034009AAE22 /* FBNCardSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A495071CA9CC2900201C4B /* FBNCardSize.m */; };
 		811E17261CB75034009AAE22 /* FBNCardHeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEBA1C59653600D79E1A /* FBNCardHeroViewController.m */; };
 		811E17271CB75034009AAE22 /* FBNCardAppEventsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAE821C59653600D79E1A /* FBNCardAppEventsLogger.m */; };
@@ -80,7 +80,7 @@
 		811E175C1CB75034009AAE22 /* FBNCardError.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEA41C59653600D79E1A /* FBNCardError.h */; };
 		811E175D1CB75034009AAE22 /* FBNCardConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494C71CA9CB1B00201C4B /* FBNCardConfiguration.h */; };
 		811E175E1CB75034009AAE22 /* FBNCardDismissButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEAE1C59653600D79E1A /* FBNCardDismissButton.h */; };
-		811E175F1CB75034009AAE22 /* FBNCardActionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsView.h */; };
+		811E175F1CB75034009AAE22 /* FBNCardActionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsViewController.h */; };
 		811E17601CB75034009AAE22 /* FBNCardActionConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494BD1CA9CB1B00201C4B /* FBNCardActionConfiguration.h */; };
 		811E17611CB75034009AAE22 /* FBNAssetController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81EF49F61C6C09C20074B2B4 /* FBNAssetController.h */; };
 		811E17621CB75034009AAE22 /* FBNCardColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 81A494D01CA9CB1B00201C4B /* FBNCardColor.h */; };
@@ -113,8 +113,8 @@
 		815BAEF01C59653600D79E1A /* FBNCardLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB11C59653600D79E1A /* FBNCardLabel.m */; };
 		815BAEF11C59653600D79E1A /* FBNCardActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB21C59653600D79E1A /* FBNCardActionButton.h */; };
 		815BAEF21C59653600D79E1A /* FBNCardActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB31C59653600D79E1A /* FBNCardActionButton.m */; };
-		815BAEF41C59653600D79E1A /* FBNCardActionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsView.h */; };
-		815BAEF51C59653600D79E1A /* FBNCardActionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsView.m */; };
+		815BAEF41C59653600D79E1A /* FBNCardActionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB51C59653600D79E1A /* FBNCardActionsViewController.h */; };
+		815BAEF51C59653600D79E1A /* FBNCardActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB61C59653600D79E1A /* FBNCardActionsViewController.m */; };
 		815BAEF61C59653600D79E1A /* FBNCardBodyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB71C59653600D79E1A /* FBNCardBodyViewController.h */; };
 		815BAEF71C59653600D79E1A /* FBNCardBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815BAEB81C59653600D79E1A /* FBNCardBodyViewController.m */; };
 		815BAEF81C59653600D79E1A /* FBNCardHeroViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 815BAEB91C59653600D79E1A /* FBNCardHeroViewController.h */; };
@@ -218,8 +218,8 @@
 		815BAEB11C59653600D79E1A /* FBNCardLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardLabel.m; sourceTree = "<group>"; };
 		815BAEB21C59653600D79E1A /* FBNCardActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionButton.h; sourceTree = "<group>"; };
 		815BAEB31C59653600D79E1A /* FBNCardActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionButton.m; sourceTree = "<group>"; };
-		815BAEB51C59653600D79E1A /* FBNCardActionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionsView.h; sourceTree = "<group>"; };
-		815BAEB61C59653600D79E1A /* FBNCardActionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionsView.m; sourceTree = "<group>"; };
+		815BAEB51C59653600D79E1A /* FBNCardActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardActionsViewController.h; sourceTree = "<group>"; };
+		815BAEB61C59653600D79E1A /* FBNCardActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardActionsViewController.m; sourceTree = "<group>"; };
 		815BAEB71C59653600D79E1A /* FBNCardBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardBodyViewController.h; sourceTree = "<group>"; };
 		815BAEB81C59653600D79E1A /* FBNCardBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBNCardBodyViewController.m; sourceTree = "<group>"; };
 		815BAEB91C59653600D79E1A /* FBNCardHeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNCardHeroViewController.h; sourceTree = "<group>"; };
@@ -422,8 +422,8 @@
 				815BAEB81C59653600D79E1A /* FBNCardBodyViewController.m */,
 				815BAEB91C59653600D79E1A /* FBNCardHeroViewController.h */,
 				815BAEBA1C59653600D79E1A /* FBNCardHeroViewController.m */,
-				815BAEB51C59653600D79E1A /* FBNCardActionsView.h */,
-				815BAEB61C59653600D79E1A /* FBNCardActionsView.m */,
+				815BAEB51C59653600D79E1A /* FBNCardActionsViewController.h */,
+				815BAEB61C59653600D79E1A /* FBNCardActionsViewController.m */,
 				815BAEB21C59653600D79E1A /* FBNCardActionButton.h */,
 				815BAEB31C59653600D79E1A /* FBNCardActionButton.m */,
 				815BAEAD1C59653600D79E1A /* Components */,
@@ -660,7 +660,7 @@
 				811E175C1CB75034009AAE22 /* FBNCardError.h in Headers */,
 				811E175D1CB75034009AAE22 /* FBNCardConfiguration.h in Headers */,
 				811E175E1CB75034009AAE22 /* FBNCardDismissButton.h in Headers */,
-				811E175F1CB75034009AAE22 /* FBNCardActionsView.h in Headers */,
+				811E175F1CB75034009AAE22 /* FBNCardActionsViewController.h in Headers */,
 				811E17601CB75034009AAE22 /* FBNCardActionConfiguration.h in Headers */,
 				811E17611CB75034009AAE22 /* FBNAssetController.h in Headers */,
 				811E17621CB75034009AAE22 /* FBNCardColor.h in Headers */,
@@ -710,7 +710,7 @@
 				815BAEE51C59653600D79E1A /* FBNCardError.h in Headers */,
 				81A494E41CA9CB1B00201C4B /* FBNCardConfiguration.h in Headers */,
 				815BAEED1C59653600D79E1A /* FBNCardDismissButton.h in Headers */,
-				815BAEF41C59653600D79E1A /* FBNCardActionsView.h in Headers */,
+				815BAEF41C59653600D79E1A /* FBNCardActionsViewController.h in Headers */,
 				81A494DC1CA9CB1B00201C4B /* FBNCardActionConfiguration.h in Headers */,
 				81EF49F81C6C09C20074B2B4 /* FBNAssetController.h in Headers */,
 				81A494EC1CA9CB1B00201C4B /* FBNCardColor.h in Headers */,
@@ -825,7 +825,7 @@
 				811E17211CB75034009AAE22 /* FBNCardActionsStyle.m in Sources */,
 				811E17221CB75034009AAE22 /* FBNAssetContentCacheOperation.m in Sources */,
 				811E17231CB75034009AAE22 /* FBNAnimatedImage.m in Sources */,
-				811E17241CB75034009AAE22 /* FBNCardActionsView.m in Sources */,
+				811E17241CB75034009AAE22 /* FBNCardActionsViewController.m in Sources */,
 				811E17251CB75034009AAE22 /* FBNCardSize.m in Sources */,
 				811E17261CB75034009AAE22 /* FBNCardHeroViewController.m in Sources */,
 				811E17271CB75034009AAE22 /* FBNCardAppEventsLogger.m in Sources */,
@@ -869,7 +869,7 @@
 				81A494E11CA9CB1B00201C4B /* FBNCardActionsStyle.m in Sources */,
 				81EF4A681C6C273F0074B2B4 /* FBNAssetContentCacheOperation.m in Sources */,
 				81A494E91CA9CB1B00201C4B /* FBNAnimatedImage.m in Sources */,
-				815BAEF51C59653600D79E1A /* FBNCardActionsView.m in Sources */,
+				815BAEF51C59653600D79E1A /* FBNCardActionsViewController.m in Sources */,
 				81A495091CA9CC2900201C4B /* FBNCardSize.m in Sources */,
 				815BAEF91C59653600D79E1A /* FBNCardHeroViewController.m in Sources */,
 				815BAEC71C59653600D79E1A /* FBNCardAppEventsLogger.m in Sources */,

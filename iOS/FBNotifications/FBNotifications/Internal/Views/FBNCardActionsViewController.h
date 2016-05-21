@@ -18,27 +18,29 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBNContentSizeProvider.h"
 #import "FBNCardButtonAction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class FBNAssetsController;
 @class FBNCardActionsConfiguration;
-@class FBNCardActionsView;
+@class FBNCardActionsViewController;
 
-@protocol FBNCardActionsViewDelegate <NSObject>
+@protocol FBNCardActionsViewControllerDelegate <NSObject>
 
-- (void)actionsView:(FBNCardActionsView *)view didPerformButtonAction:(FBNCardButtonAction)action withOpenURL:(nullable NSURL *)url;
+- (void)actionsViewController:(FBNCardActionsViewController *)viewController
+       didPerformButtonAction:(FBNCardButtonAction)action
+                  withOpenURL:(nullable NSURL *)url;
 
 @end
 
-@interface FBNCardActionsView : UIView
+@interface FBNCardActionsViewController : UIViewController <FBNContentSizeProvider>
 
-@property (nonatomic, weak) id<FBNCardActionsViewDelegate> delegate;
+@property (nonatomic, weak) id<FBNCardActionsViewControllerDelegate> delegate;
 
-- (instancetype)initWithConfiguration:(FBNCardActionsConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                             delegate:(id<FBNCardActionsViewDelegate>)delegate;
+- (instancetype)initWithAssetsController:(FBNAssetsController *)assetsController
+                           configuration:(FBNCardActionsConfiguration *)configuration;
 
 @end
 

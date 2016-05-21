@@ -16,7 +16,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "FBNCardActionsView.h"
+#import "FBNCardActionsViewController.h"
 
 #import "FBNAssetsController.h"
 #import "FBNCardActionsConfiguration.h"
@@ -24,64 +24,58 @@
 #import "FBNCardActionButton.h"
 #import "FBNCardViewUtilities.h"
 
-@interface FBNCardActionsView ()
+NS_ASSUME_NONNULL_BEGIN
 
+@interface FBNCardActionsViewController ()
+
+@property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 @property (nonatomic, strong, readonly) FBNCardActionsConfiguration *configuration;
 
-@property (nonatomic, strong, readonly) UIView *backgroundView;
-@property (nonatomic, copy, readonly) NSArray<FBNCardActionButton *> *actionButtons;
+@property (nullable, nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, copy) NSArray<FBNCardActionButton *> *actionButtons;
 
 @end
 
-@implementation FBNCardActionsView
+@implementation FBNCardActionsViewController
 
 ///--------------------------------------
-#pragma mark - Init
+#pragma mark - Init/Dealloc
 ///--------------------------------------
 
-- (instancetype)initWithConfiguration:(FBNCardActionsConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                             delegate:(id<FBNCardActionsViewDelegate>)delegate {
+- (instancetype)initWithAssetsController:(FBNAssetsController *)assetsController
+                           configuration:(FBNCardActionsConfiguration *)configuration {
     self = [super init];
     if (!self) return self;
 
+    _assetsController = assetsController;
     _configuration = configuration;
-    _delegate = delegate;
-
-    id<FBNAsset> background = configuration.background;
-    if (background) {
-        _backgroundView = [assetsController viewForAsset:background];
-        [self addSubview:_backgroundView];
-    }
-
-    NSMutableArray<FBNCardActionButton *> *actionButtons = [NSMutableArray arrayWithCapacity:configuration.actions.count];
-    FBNCardButtonAction buttonAction = FBNCardButtonActionPrimary;
-    for (FBNCardActionConfiguration *actionConfiguration in configuration.actions) {
-        FBNCardActionButton *button = nil;
-        if (actionConfiguration.actionURL != nil) {
-            button = [FBNCardActionButton buttonFromConfiguration:actionConfiguration
-                                                 withCornerRadius:configuration.cornerRadius
-                                                           action:buttonAction];
-            if (buttonAction == FBNCardButtonActionPrimary) {
-                buttonAction = FBNCardButtonActionSecondary;
-            }
-        } else {
-            button = [FBNCardActionButton buttonFromConfiguration:actionConfiguration
-                                                 withCornerRadius:configuration.cornerRadius
-                                                           action:FBNCardButtonActionDismiss];
-        }
-        [button addTarget:self action:@selector(_buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [actionButtons addObject:button];
-        [self addSubview:button];
-    }
-    _actionButtons = [actionButtons copy];
 
     return self;
 }
 
 - (void)dealloc {
-    for (FBNCardActionButton *button in _actionButtons) {
+    for (FBNCardActionButton *button in self.actionButtons) {
         [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    }
+}
+
+///--------------------------------------
+#pragma mark - View
+///--------------------------------------
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    id<FBNAsset> background = self.configuration.background;
+    if (background) {
+        self.backgroundView = [self.assetsController viewForAsset:background];
+        [self.view addSubview:self.backgroundView];
+    }
+
+    self.actionButtons = [[self class] _actionButtonsFromConfiguration:self.configuration];
+    for (FBNCardActionButton *button in self.actionButtons) {
+        [button addTarget:self action:@selector(_buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
     }
 }
 
@@ -89,10 +83,10 @@
 #pragma mark - Layout
 ///--------------------------------------
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 
-    const CGRect bounds = self.bounds;
+    const CGRect bounds = self.view.bounds;
 
     self.backgroundView.frame = bounds;
 
@@ -138,7 +132,11 @@
     }
 }
 
-- (CGSize)sizeThatFits:(CGSize)fitSize {
+///--------------------------------------
+#pragma mark - FBNContentSizeProvider
+///--------------------------------------
+
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
     CGSize size = CGSizeMake(fitSize.width, self.configuration.topInset);
     switch (self.configuration.layoutStyle) {
         case FBNCardActionsLayoutStyleVertical: {
@@ -155,11 +153,35 @@
 }
 
 ///--------------------------------------
-#pragma mark - Button Action
+#pragma mark - Buttons
 ///--------------------------------------
 
++ (NSArray<FBNCardActionButton *> *)_actionButtonsFromConfiguration:(FBNCardActionsConfiguration *)configuration {
+    NSMutableArray<FBNCardActionButton *> *actionButtons = [NSMutableArray arrayWithCapacity:configuration.actions.count];
+    FBNCardButtonAction buttonAction = FBNCardButtonActionPrimary;
+    for (FBNCardActionConfiguration *actionConfiguration in configuration.actions) {
+        FBNCardActionButton *button = nil;
+        if (actionConfiguration.actionURL != nil) {
+            button = [FBNCardActionButton buttonFromConfiguration:actionConfiguration
+                                                 withCornerRadius:configuration.cornerRadius
+                                                           action:buttonAction];
+            if (buttonAction == FBNCardButtonActionPrimary) {
+                buttonAction = FBNCardButtonActionSecondary;
+            }
+        } else {
+            button = [FBNCardActionButton buttonFromConfiguration:actionConfiguration
+                                                 withCornerRadius:configuration.cornerRadius
+                                                           action:FBNCardButtonActionDismiss];
+        }
+        [actionButtons addObject:button];
+    }
+    return actionButtons;
+}
+
 - (void)_buttonAction:(FBNCardActionButton *)button {
-    [self.delegate actionsView:self didPerformButtonAction:button.action withOpenURL:button.configuration.actionURL];
+    [self.delegate actionsViewController:self didPerformButtonAction:button.action withOpenURL:button.configuration.actionURL];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
