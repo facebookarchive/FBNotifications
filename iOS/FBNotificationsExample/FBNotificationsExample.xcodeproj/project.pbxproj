@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8106E55D1C750D0B00950AAA /* FBNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8106E55C1C750D0B00950AAA /* FBNotifications.framework */; };
+		06AF90D51CF049B400D656F8 /* FBNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AF90D41CF049AB00D656F8 /* FBNotifications.framework */; };
+		06AF90D61CF049B400D656F8 /* FBNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06AF90D41CF049AB00D656F8 /* FBNotifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8106E5671C750D1700950AAA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8106E5661C750D1700950AAA /* MobileCoreServices.framework */; };
 		8106E56C1C750D2000950AAA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8106E56B1C750D2000950AAA /* ImageIO.framework */; };
 		8106E5911C750D7400950AAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8106E57F1C750D7400950AAA /* Assets.xcassets */; };
@@ -23,9 +24,47 @@
 		8106E59C1C750D7400950AAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106E5901C750D7400950AAA /* ViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		06AF90D11CF049AB00D656F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 81F0B10A1C4ED4FE00160CCD;
+			remoteInfo = "FBNotifications-iOS";
+		};
+		06AF90D31CF049AB00D656F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 811E17671CB75034009AAE22;
+			remoteInfo = "FBNotifications-iOS-Dynamic";
+		};
+		06AF90D71CF049B400D656F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 811E17141CB75034009AAE22;
+			remoteInfo = "FBNotifications-iOS-Dynamic";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		06AF90D91CF049B400D656F8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				06AF90D61CF049B400D656F8 /* FBNotifications.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBNotifications.xcodeproj; path = ../FBNotifications/FBNotifications.xcodeproj; sourceTree = "<group>"; };
 		8106E53C1C750B7700950AAA /* FBNotificationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBNotificationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8106E55C1C750D0B00950AAA /* FBNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8106E5661C750D1700950AAA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8106E56B1C750D2000950AAA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8106E57F1C750D7400950AAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,19 +89,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				8106E56C1C750D2000950AAA /* ImageIO.framework in Frameworks */,
+				06AF90D51CF049B400D656F8 /* FBNotifications.framework in Frameworks */,
 				8106E5671C750D1700950AAA /* MobileCoreServices.framework in Frameworks */,
-				8106E55D1C750D0B00950AAA /* FBNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06AF90CD1CF049AB00D656F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06AF90D21CF049AB00D656F8 /* FBNotifications.framework */,
+				06AF90D41CF049AB00D656F8 /* FBNotifications.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8106E5331C750B7700950AAA = {
 			isa = PBXGroup;
 			children = (
 				8106E53E1C750B7700950AAA /* FBNotificationsExample */,
-				8106E55C1C750D0B00950AAA /* FBNotifications.framework */,
 				8106E5751C750D2C00950AAA /* Frameworks */,
 				8106E53D1C750B7700950AAA /* Products */,
 			);
@@ -88,6 +135,7 @@
 		8106E5751C750D2C00950AAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */,
 				8106E56B1C750D2000950AAA /* ImageIO.framework */,
 				8106E5661C750D1700950AAA /* MobileCoreServices.framework */,
 			);
@@ -148,10 +196,12 @@
 				8106E5381C750B7700950AAA /* Sources */,
 				8106E5391C750B7700950AAA /* Frameworks */,
 				8106E53A1C750B7700950AAA /* Resources */,
+				06AF90D91CF049B400D656F8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				06AF90D81CF049B400D656F8 /* PBXTargetDependency */,
 			);
 			name = FBNotificationsExample;
 			productName = FBNotificationsExample;
@@ -192,12 +242,35 @@
 			mainGroup = 8106E5331C750B7700950AAA;
 			productRefGroup = 8106E53D1C750B7700950AAA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 06AF90CD1CF049AB00D656F8 /* Products */;
+					ProjectRef = 06AF90CC1CF049AB00D656F8 /* FBNotifications.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8106E53B1C750B7700950AAA /* FBNotificationsExample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		06AF90D21CF049AB00D656F8 /* FBNotifications.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FBNotifications.framework;
+			remoteRef = 06AF90D11CF049AB00D656F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06AF90D41CF049AB00D656F8 /* FBNotifications.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FBNotifications.framework;
+			remoteRef = 06AF90D31CF049AB00D656F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8106E53A1C750B7700950AAA /* Resources */ = {
@@ -229,6 +302,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06AF90D81CF049B400D656F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FBNotifications-iOS-Dynamic";
+			targetProxy = 06AF90D71CF049B400D656F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8106E5801C750D7400950AAA /* LaunchScreen.storyboard */ = {
