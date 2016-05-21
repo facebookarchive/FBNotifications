@@ -16,7 +16,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "FBNCardBodyView.h"
+#import "FBNCardBodyViewController.h"
 
 #import "FBNAssetsController.h"
 #import "FBNCardBodyConfiguration.h"
@@ -24,62 +24,85 @@
 #import "FBNCardLabel.h"
 #import "FBNCardViewUtilities.h"
 
-@interface FBNCardBodyView ()
+NS_ASSUME_NONNULL_BEGIN
 
+@interface FBNCardBodyViewController ()
+
+@property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 @property (nonatomic, strong, readonly) FBNCardBodyConfiguration *configuration;
 @property (nonatomic, assign, readonly) CGFloat contentInset;
 
-@property (nullable, nonatomic, strong, readonly) UIView *backgroundView;
-@property (nonatomic, strong, readonly) UILabel *textLabel;
+@property (nullable, nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, strong) UILabel *textLabel;
 
 @end
 
-@implementation FBNCardBodyView
+@implementation FBNCardBodyViewController
 
 ///--------------------------------------
 #pragma mark - Init
 ///--------------------------------------
 
-- (instancetype)initWithConfiguration:(FBNCardBodyConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                         contentInset:(CGFloat)contentInset {
+- (instancetype)initWithAssetsController:(FBNAssetsController *)controller
+                           configuration:(FBNCardBodyConfiguration *)configuration
+                            contentInset:(CGFloat)contentInset {
     self = [super init];
     if (!self) return self;
 
-    self.clipsToBounds = YES;
-
+    _assetsController = controller;
     _configuration = configuration;
     _contentInset = contentInset;
 
-    id<FBNAsset> background = configuration.background;
-    if (background) {
-        _backgroundView = [assetsController viewForAsset:background];
-        [self addSubview:_backgroundView];
-    }
-
-    if (configuration.content) {
-        _textLabel = [FBNCardLabel labelFromTextContent:configuration.content];
-        [self addSubview:_textLabel];
-    }
-
     return self;
+}
+
+///--------------------------------------
+#pragma mark - View
+///--------------------------------------
+
+- (void)loadView {
+    [super loadView];
+
+    self.view.clipsToBounds = YES;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+
+    id<FBNAsset> background = self.configuration.background;
+    if (background) {
+        self.backgroundView = [self.assetsController viewForAsset:background];
+        [self.view addSubview:self.backgroundView];
+    }
+
+    if (self.configuration.content) {
+        self.textLabel = [FBNCardLabel labelFromTextContent:self.configuration.content];
+        [self.view addSubview:self.textLabel];
+    }
 }
 
 ///--------------------------------------
 #pragma mark - Layout
 ///--------------------------------------
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 
-    _backgroundView.frame = self.bounds;
+    const CGRect bounds = self.view.bounds;
 
-    CGRect contentBounds = CGRectInset(self.bounds, self.contentInset, self.contentInset);
-    self.textLabel.frame = FBNRectAdjustToScreenScale(FBNRectMakeWithSizeCenteredInRect(contentBounds.size, self.bounds), NSRoundUp);
+    self.backgroundView.frame = bounds;
+
+    CGRect contentBounds = CGRectInset(bounds, self.contentInset, self.contentInset);
+    self.textLabel.frame = FBNRectAdjustToScreenScale(FBNRectMakeWithSizeCenteredInRect(contentBounds.size, bounds), NSRoundUp);
     self.textLabel.frame = CGRectIntegral(self.textLabel.frame);
 }
 
-- (CGSize)sizeThatFits:(CGSize)fitSize {
+///--------------------------------------
+#pragma mark - FBNContentSizeProvider
+///--------------------------------------
+
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
     fitSize.width -= self.contentInset * 2;
     fitSize.height -= self.contentInset * 2;
 
@@ -90,3 +113,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

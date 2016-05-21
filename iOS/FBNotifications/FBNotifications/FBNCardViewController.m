@@ -23,7 +23,7 @@
 #import "FBNAssetContentCache.h"
 #import "FBNCardDisplayOptions.h"
 #import "FBNCardHeroViewController.h"
-#import "FBNCardBodyView.h"
+#import "FBNCardBodyViewController.h"
 #import "FBNCardActionsView.h"
 #import "FBNCardDismissButton.h"
 #import "FBNCardViewUtilities.h"
@@ -46,7 +46,7 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nullable, nonatomic, strong) UIActivityIndicatorView *loadingIndicatorView;
 @property (nullable, nonatomic, strong) FBNCardHeroViewController *heroViewController;
-@property (nullable, nonatomic, strong) FBNCardBodyView *bodyView;
+@property (nullable, nonatomic, strong) FBNCardBodyViewController *bodyViewController;
 @property (nullable, nonatomic, strong) FBNCardActionsView *actionsView;
 @property (nullable, nonatomic, strong) FBNCardDismissButton *dismissButton;
 
@@ -168,10 +168,12 @@
         [self.heroViewController didMoveToParentViewController:self];
     }
     if (self.configuration.bodyConfiguration) {
-        self.bodyView = [[FBNCardBodyView alloc] initWithConfiguration:self.configuration.bodyConfiguration
-                                                      assetsController:self.assetsController
-                                                          contentInset:self.cardDisplayOptions.contentInset];
-        [self.contentView addSubview:self.bodyView];
+        self.bodyViewController = [[FBNCardBodyViewController alloc] initWithAssetsController:self.assetsController
+                                                                                configuration:self.configuration.bodyConfiguration
+                                                                                 contentInset:self.cardDisplayOptions.contentInset];
+        [self addChildViewController:self.bodyViewController];
+        [self.contentView addSubview:self.bodyViewController.view];
+        [self.bodyViewController didMoveToParentViewController:self];
     }
     if (self.configuration.actionsConfiguration) {
         self.actionsView = [[FBNCardActionsView alloc] initWithConfiguration:self.configuration.actionsConfiguration
@@ -233,7 +235,8 @@
 
     CGSize availableSize = FBNCardLayoutSizeThatFits(self.cardDisplayOptions.size, bounds.size);
 
-    const CGSize bodySize = CGSizeMake(availableSize.width, [self.bodyView sizeThatFits:availableSize].height);
+    const CGSize bodySize = CGSizeMake(availableSize.width,
+                                       [self.bodyViewController contentSizeThatFitsParentContainerSize:availableSize].height);
     availableSize.height -= bodySize.height;
 
     const CGSize actionsSize = CGSizeMake(availableSize.width, [self.actionsView sizeThatFits:availableSize].height);
@@ -275,7 +278,7 @@
 
     self.contentView.frame = contentFrame;
     self.heroViewController.view.frame = heroFrame;
-    self.bodyView.frame = bodyFrame;
+    self.bodyViewController.view.frame = bodyFrame;
     self.actionsView.frame = actionsFrame;
     self.dismissButton.frame = dismissButtonFrame;
     self.loadingIndicatorView.center = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
