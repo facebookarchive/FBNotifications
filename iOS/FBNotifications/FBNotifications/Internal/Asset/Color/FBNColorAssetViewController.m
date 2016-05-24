@@ -16,31 +16,50 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "FBNColorAssetViewController.h"
 
-#import "FBNCardButtonAction.h"
+#import "FBNColorAsset.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class FBNAssetsController;
-@class FBNCardActionsConfiguration;
-@class FBNCardActionsView;
+@interface FBNColorAssetViewController ()
 
-@protocol FBNCardActionsViewDelegate <NSObject>
-
-- (void)actionsView:(FBNCardActionsView *)view didPerformButtonAction:(FBNCardButtonAction)action withOpenURL:(nullable NSURL *)url;
+@property (nonatomic, strong, readonly) FBNColorAsset *asset;
 
 @end
 
-@interface FBNCardActionsView : UIView
+@implementation FBNColorAssetViewController
 
-@property (nonatomic, weak) id<FBNCardActionsViewDelegate> delegate;
+///--------------------------------------
+#pragma mark - Init
+///--------------------------------------
 
-- (instancetype)initWithConfiguration:(FBNCardActionsConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                             delegate:(id<FBNCardActionsViewDelegate>)delegate;
+- (instancetype)initWithAsset:(FBNColorAsset *)asset {
+    self = [super initWithNibName:nil bundle:nil];
+    if (!self) return self;
+
+    _asset = asset;
+
+    return self;
+}
+
+///--------------------------------------
+#pragma mark - View
+///--------------------------------------
+
+- (void)loadView {
+    [super loadView];
+    self.view.backgroundColor = self.asset.color;
+}
+
+///--------------------------------------
+#pragma mark - FBNContentSizeProvider
+///--------------------------------------
+
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
+    return CGSizeZero;
+}
 
 @end
-
 
 NS_ASSUME_NONNULL_END

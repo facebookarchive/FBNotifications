@@ -18,38 +18,15 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBNCardPayload.h"
+#import "FBNContentSizeProvider.h"
 
-@protocol FBNAsset;
-@protocol FBNAssetController;
-@class FBNAssetContentCache;
-@protocol FBNContentSizeProvider;
+@class FBNColorAsset;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNAssetsController : NSObject
+@interface FBNColorAssetViewController : UIViewController <FBNContentSizeProvider>
 
-///--------------------------------------
-#pragma mark - Asset Controllers
-///--------------------------------------
-
-- (void)registerAssetController:(id<FBNAssetController>)controller forAssetType:(NSString *)type;
-- (nullable id<FBNAssetController>)assetControllerForAssetType:(NSString *)type;
-
-///--------------------------------------
-#pragma mark - Assets
-///--------------------------------------
-
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion;
-- (nullable UIViewController <FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
-
-///--------------------------------------
-#pragma mark - Cache
-///--------------------------------------
-
-- (void)cacheAssetContentForCardPayload:(FBNCardPayload *)payload completion:(dispatch_block_t)completion;
-- (void)clearAssetContentCacheForCardPayload:(FBNCardPayload *)payload;
-- (BOOL)hasCachedContentForCardPayload:(FBNCardPayload *)payload;
+- (instancetype)initWithAsset:(FBNColorAsset *)asset;
 
 @end
 

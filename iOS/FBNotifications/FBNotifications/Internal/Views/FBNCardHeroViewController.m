@@ -16,47 +16,41 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "FBNCardHeroView.h"
+#import "FBNCardHeroViewController.h"
 
 #import "FBNAssetsController.h"
 #import "FBNCardHeroConfiguration.h"
 #import "FBNCardViewUtilities.h"
 #import "FBNCardLabel.h"
 
-@interface FBNCardHeroView ()
+NS_ASSUME_NONNULL_BEGIN
 
+@interface FBNCardHeroViewController ()
+
+@property (nonatomic, strong, readonly) FBNAssetsController *assetsController;
 @property (nonatomic, strong, readonly) FBNCardHeroConfiguration *configuration;
 @property (nonatomic, assign, readonly) CGFloat contentInset;
 
-@property (nullable, nonatomic, strong, readonly) UIView *backgroundView;
-@property (nonatomic, strong, readonly) UILabel *textLabel;
+@property (nullable, nonatomic, strong) UIViewController <FBNContentSizeProvider> *backgroundViewController;
+@property (nullable, nonatomic, strong) UILabel *textLabel;
 
 @end
 
-@implementation FBNCardHeroView
+@implementation FBNCardHeroViewController
 
 ///--------------------------------------
 #pragma mark - Init
 ///--------------------------------------
 
-- (instancetype)initWithConfiguration:(FBNCardHeroConfiguration *)configuration
-                     assetsController:(FBNAssetsController *)assetsController
-                         contentInset:(CGFloat)contentInset {
-    self = [super init];
+- (instancetype)initWithAssetsController:(FBNAssetsController *)assetsController
+                           configuration:(FBNCardHeroConfiguration *)configuration
+                            contentInset:(CGFloat)contentInset {
+    self = [super initWithNibName:nil bundle:nil];
     if (!self) return self;
 
-    self.clipsToBounds = YES;
-
+    _assetsController = assetsController;
     _configuration = configuration;
     _contentInset = contentInset;
-
-    _backgroundView = [assetsController viewForAsset:configuration.background];
-    [self addSubview:_backgroundView];
-
-    if (configuration.content) {
-        _textLabel = [FBNCardLabel labelFromTextContent:configuration.content];
-        [self addSubview:_textLabel];
-    }
 
     return self;
 }
@@ -65,12 +59,37 @@
 #pragma mark - Layout
 ///--------------------------------------
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)loadView {
+    [super loadView];
 
-    _backgroundView.frame = self.bounds;
+    self.view.clipsToBounds = YES;
+}
 
-    CGRect contentBounds = CGRectInset(self.bounds, self.contentInset, self.contentInset);
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    id<FBNAsset> background = self.configuration.background;
+    if (background) {
+        self.backgroundViewController = [self.assetsController viewControllerForAsset:background];
+        [self addChildViewController:self.backgroundViewController];
+        [self.view addSubview:self.backgroundViewController.view];
+        [self.backgroundViewController didMoveToParentViewController:self];
+    }
+
+    if (self.configuration.content) {
+        self.textLabel = [FBNCardLabel labelFromTextContent:self.configuration.content];
+        [self.view addSubview:self.textLabel];
+    }
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+
+    const CGRect bounds = self.view.bounds;
+
+    self.backgroundViewController.view.frame = bounds;
+
+    CGRect contentBounds = CGRectInset(bounds, self.contentInset, self.contentInset);
 
     const CGSize textLabelSize = CGSizeMake(CGRectGetWidth(contentBounds), [self.textLabel sizeThatFits:contentBounds.size].height);
     CGRect textLabelFrame = CGRectZero;
@@ -91,7 +110,11 @@
     self.textLabel.frame = textLabelFrame;
 }
 
-- (CGSize)sizeThatFits:(CGSize)fitSize {
+///--------------------------------------
+#pragma mark - FBNContentSizeProvider
+///--------------------------------------
+
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
     CGSize labelFitSize = fitSize;
     labelFitSize.width -= self.contentInset * 2;
     labelFitSize.height -= self.contentInset * 2;
@@ -102,7 +125,7 @@
         textSize.height += self.contentInset * 2;
     }
 
-    CGSize imageSize = [self.backgroundView sizeThatFits:fitSize];
+    CGSize imageSize = [self.backgroundViewController contentSizeThatFitsParentContainerSize:fitSize];
     if (imageSize.width != 0 && imageSize.height != 0) {
         CGFloat imageScale = FBNAspectFillScaleThatFits(imageSize, fitSize);
         imageSize.width *= imageScale;
@@ -114,3 +137,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

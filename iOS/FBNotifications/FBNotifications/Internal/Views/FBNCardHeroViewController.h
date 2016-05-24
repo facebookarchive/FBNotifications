@@ -18,38 +18,21 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBNCardPayload.h"
+#import "FBNContentSizeProvider.h"
 
-@protocol FBNAsset;
-@protocol FBNAssetController;
-@class FBNAssetContentCache;
-@protocol FBNContentSizeProvider;
+@class FBNAssetsController;
+@class FBNCardHeroConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNAssetsController : NSObject
+@interface FBNCardHeroViewController : UIViewController <FBNContentSizeProvider>
 
-///--------------------------------------
-#pragma mark - Asset Controllers
-///--------------------------------------
+- (instancetype)initWithAssetsController:(FBNAssetsController *)assetsController
+                           configuration:(FBNCardHeroConfiguration *)configuration
+                            contentInset:(CGFloat)contentInset NS_DESIGNATED_INITIALIZER;
 
-- (void)registerAssetController:(id<FBNAssetController>)controller forAssetType:(NSString *)type;
-- (nullable id<FBNAssetController>)assetControllerForAssetType:(NSString *)type;
-
-///--------------------------------------
-#pragma mark - Assets
-///--------------------------------------
-
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion;
-- (nullable UIViewController <FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
-
-///--------------------------------------
-#pragma mark - Cache
-///--------------------------------------
-
-- (void)cacheAssetContentForCardPayload:(FBNCardPayload *)payload completion:(dispatch_block_t)completion;
-- (void)clearAssetContentCacheForCardPayload:(FBNCardPayload *)payload;
-- (BOOL)hasCachedContentForCardPayload:(FBNCardPayload *)payload;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
 @end
 

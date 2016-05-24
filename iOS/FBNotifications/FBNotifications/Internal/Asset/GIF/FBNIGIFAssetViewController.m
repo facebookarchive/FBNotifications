@@ -16,40 +16,54 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "FBNIGIFAssetViewController.h"
 
-#import "FBNCardPayload.h"
-
-@protocol FBNAsset;
-@protocol FBNAssetController;
-@class FBNAssetContentCache;
-@protocol FBNContentSizeProvider;
+#import "FBNGIFAsset.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNAssetsController : NSObject
+@interface FBNGIFAssetViewController ()
+
+@property (nonatomic, strong, readonly) FBNGIFAsset *asset;
+
+@end
+
+@implementation FBNGIFAssetViewController
 
 ///--------------------------------------
-#pragma mark - Asset Controllers
+#pragma mark - Init
 ///--------------------------------------
 
-- (void)registerAssetController:(id<FBNAssetController>)controller forAssetType:(NSString *)type;
-- (nullable id<FBNAssetController>)assetControllerForAssetType:(NSString *)type;
+- (instancetype)initWithAsset:(FBNGIFAsset *)asset {
+    self = [super initWithNibName:nil bundle:nil];
+    if (!self) return self;
+
+    _asset = asset;
+
+    return self;
+}
 
 ///--------------------------------------
-#pragma mark - Assets
+#pragma mark - View
 ///--------------------------------------
 
-- (void)loadAssetFromDictionary:(NSDictionary *)dictionary completion:(nonnull void (^)(id<FBNAsset> _Nullable asset))completion;
-- (nullable UIViewController <FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset;
+- (void)loadView {
+    //TODO: (nlutsenko) This should be implemented with a custom view, so we can support gifs with custom delays.
+    UIImageView *view = [[UIImageView alloc] initWithImage:self.asset.image];
+    view.contentMode = UIViewContentModeScaleAspectFill;
+    self.view = view;
+}
 
 ///--------------------------------------
-#pragma mark - Cache
+#pragma mark - FBNContentSizeProvider
 ///--------------------------------------
 
-- (void)cacheAssetContentForCardPayload:(FBNCardPayload *)payload completion:(dispatch_block_t)completion;
-- (void)clearAssetContentCacheForCardPayload:(FBNCardPayload *)payload;
-- (BOOL)hasCachedContentForCardPayload:(FBNCardPayload *)payload;
+- (CGSize)contentSizeThatFitsParentContainerSize:(CGSize)fitSize {
+    if ([self isViewLoaded]) {
+        return [self.view sizeThatFits:fitSize];
+    }
+    return self.asset.image.size;
+}
 
 @end
 

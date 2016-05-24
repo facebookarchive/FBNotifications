@@ -21,6 +21,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FBNColorAsset.h"
+#import "FBNColorAssetViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,12 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
-- (nullable UIView *)viewForAsset:(id<FBNAsset>)asset {
+- (nullable UIViewController<FBNContentSizeProvider> *)viewControllerForAsset:(id<FBNAsset>)asset {
     FBNColorAsset *colorAsset = (FBNColorAsset *)asset;
-
-    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = colorAsset.color;
-    return view;
+    return [[FBNColorAssetViewController alloc] initWithAsset:colorAsset];
 }
 
 @end
