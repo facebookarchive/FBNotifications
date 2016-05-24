@@ -38,6 +38,7 @@ import com.facebook.notifications.internal.asset.AssetManager;
 import com.facebook.notifications.internal.asset.handlers.BitmapAssetHandler;
 import com.facebook.notifications.internal.asset.handlers.ColorAssetHandler;
 import com.facebook.notifications.internal.asset.handlers.GifAssetHandler;
+import com.facebook.notifications.internal.asset.handlers.VideoAssetHandler;
 import com.facebook.notifications.internal.configuration.CardConfiguration;
 import com.facebook.notifications.internal.content.ContentManager;
 import com.facebook.notifications.internal.utilities.Version;
@@ -100,6 +101,7 @@ public final class NotificationsManager {
     ASSET_MANAGER.registerHandler(BitmapAssetHandler.TYPE, new BitmapAssetHandler());
     ASSET_MANAGER.registerHandler(ColorAssetHandler.TYPE, new ColorAssetHandler());
     ASSET_MANAGER.registerHandler(GifAssetHandler.TYPE, new GifAssetHandler());
+    ASSET_MANAGER.registerHandler(VideoAssetHandler.TYPE, new VideoAssetHandler());
   }
 
   private NotificationsManager() {
