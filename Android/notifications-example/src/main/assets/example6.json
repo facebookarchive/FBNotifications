@@ -1,0 +1,71 @@
+{
+  "fb_push_payload" : {
+    "campaign" : "3"
+  },
+  "fb_push_card": {
+    "version": "1.0",
+    "size": "medium",
+    "cornerRadius": 6,
+    "contentInset" : 16,
+    "backdropColor": "#332D2DF0",
+    "hero": {
+      "background": {
+        "_type": "Video",
+        "url": "https://scontent-sea1-1.cdninstagram.com/t50.2886-16/13212084_514331255442427_1366336685_n.mp4"
+      }
+    },
+    "body": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "content": {
+        "_type": "StyledText",
+        "size": 14,
+        "text": "Today we’re introducing a new look. You’ll see an updated icon and app design for Instagram.",
+        "align": "left",
+        "color": "#33251FFF"
+      }
+    },
+    "alert" : {
+      "title": "New Clothing Line",
+      "body" : "20% fall sale!"
+    },
+    "actions": {
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
+      "style": "attached",
+      "layoutStyle" : "horizontal",
+      "contentInset" : 16.0,
+      "cornerRadius" : 6,
+      "height" : 35.0,
+      "actions": [
+        {
+          "borderColor": "#3E99EDFF",
+          "borderWidth" : 1,
+          "backgroundColor" : "#FFFFFFFF",
+          "content": {
+            "_type": "StyledText",
+            "size": 16,
+            "text": "Follow",
+            "color": "#3E99EDFF"
+          },
+          "url": "https://parse.com/"
+        },
+        {
+          "backgroundColor" : "#FFFFFFFF",
+          "borderColor" : "#A6A6A6FF",
+          "borderWidth" : 1,
+          "content": {
+            "_type": "StyledText",
+            "size": 16,
+            "text": "Watch Later",
+            "color": "#A6A6A6FF"
+          }
+        }
+      ]
+    }
+  }
+}
