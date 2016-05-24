@@ -19,18 +19,12 @@
 package com.facebook.notifications.internal.asset.handlers;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.os.Parcel;
-import android.provider.MediaStore;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.util.Size;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.facebook.notifications.internal.asset.Asset;
 import com.facebook.notifications.internal.asset.AssetManager;
@@ -41,10 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
@@ -70,18 +61,39 @@ public class VideoAssetHandler implements AssetManager.AssetHandler<VideoAssetHa
       }
     };
     private final @NonNull File createdFrom;
+    private final int frameWidth;
+    private final int frameHeight;
 
     private VideoAsset(@NonNull File createdFrom) {
       this.createdFrom = createdFrom;
+
+      MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
+      metadataRetriever.setDataSource(createdFrom.getAbsolutePath());
+
+      String width = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
+      String height = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
+
+      frameWidth = Integer.valueOf(width);
+      frameHeight = Integer.valueOf(height);
     }
 
     private VideoAsset(@NonNull Parcel parcel) {
       createdFrom = new File(parcel.readString());
+      frameWidth = parcel.readInt();
+      frameHeight = parcel.readInt();
     }
 
     @NonNull
     public File getCreatedFrom() {
       return createdFrom;
+    }
+
+    public int getFrameWidth() {
+      return frameWidth;
+    }
+
+    public int getFrameHeight() {
+      return frameHeight;
     }
 
     @NonNull
@@ -109,6 +121,8 @@ public class VideoAssetHandler implements AssetManager.AssetHandler<VideoAssetHa
     @Override
     public void writeToParcel(Parcel dest, int flags) {
       dest.writeString(createdFrom.getAbsolutePath());
+      dest.writeInt(frameWidth);
+      dest.writeInt(frameHeight);
     }
   }
 
