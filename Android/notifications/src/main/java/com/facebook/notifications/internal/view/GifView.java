@@ -31,6 +31,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.facebook.notifications.internal.utilities.GifDecoder;
+import com.facebook.notifications.internal.utilities.MeasureSpecHelpers;
 
 @SuppressLint("ViewConstructor")
 public class GifView extends View {
@@ -136,33 +137,8 @@ public class GifView extends View {
       return;
     }
 
-    boolean variableWidth = MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY;
-    boolean variableHeight = MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY;
-
-    int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
-    int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
-
-    float sourceWidth = decoder.getWidth();
-    float sourceHeight = decoder.getHeight();
-
-    float destWidth = measuredWidth;
-    float destHeight = measuredHeight;
-
-    float heightRatio = destHeight / sourceHeight;
-    float widthRatio = destWidth / sourceWidth;
-
-    if (variableWidth && variableHeight) {
-      float scale = Math.min(heightRatio, widthRatio);
-
-      measuredWidth = Math.round(measuredWidth * scale);
-      measuredHeight = Math.round(measuredHeight * scale);
-    } else if (variableWidth) {
-      measuredWidth = Math.round(measuredHeight * (sourceWidth / sourceHeight));
-    } else if (variableHeight) {
-      measuredHeight = Math.round(measuredWidth * (sourceHeight / sourceWidth));
-    }
-
-    setMeasuredDimension(measuredWidth, measuredHeight);
+    int[] size = MeasureSpecHelpers.calculateAspectFillSize(decoder.getWidth(), decoder.getHeight(), widthMeasureSpec, heightMeasureSpec);
+    setMeasuredDimension(size[0], size[1]);
   }
 
   @Override
@@ -188,25 +164,14 @@ public class GifView extends View {
 
     // Scale the frame that we have already in our bitmap and draw it.
     // This is the CENTER_CROP algorithm that we use for displaying images.
-    float sourceWidth = currentFrame.getWidth();
-    float sourceHeight = currentFrame.getHeight();
-
-    float destWidth = getWidth();
-    float destHeight = getHeight();
-
-    float heightRatio = destHeight / sourceHeight;
-    float widthRatio = destWidth / sourceWidth;
-
-    float scale = Math.max(heightRatio, widthRatio);
-
-    float targetWidth = sourceWidth * scale;
-    float targetHeight = sourceHeight * scale;
-
-    float offsetW = (destWidth - targetWidth) / 2f;
-    float offsetH = (destHeight - targetHeight) / 2f;
-
     sourceRect.set(0, 0, currentFrame.getWidth(), currentFrame.getHeight());
-    targetRect.set(offsetW, offsetH, offsetW + targetWidth, offsetH + targetHeight);
+    MeasureSpecHelpers.calculateAspectFillRect(
+      currentFrame.getWidth(),
+      currentFrame.getHeight(),
+      getWidth(),
+      getHeight(),
+      targetRect
+    );
 
     canvas.drawBitmap(currentFrame, sourceRect, targetRect, antiAliasPaint);
   }
