@@ -89,8 +89,12 @@ public class MainActivity extends AppCompatActivity {
       JSONObject json = new JSONObject(output.toString());
 
       Bundle bundle = new Bundle();
-      bundle.putString("fb_push_payload", json.getJSONObject("fb_push_payload").toString());
       bundle.putString("fb_push_card", json.getJSONObject("fb_push_card").toString());
+      JSONObject pushPayload = json.optJSONObject("fb_push_payload");
+      if (pushPayload != null) {
+        bundle.putString("fb_push_payload", pushPayload.toString());
+      }
+
 
       output.close();
       inputStream.close();
