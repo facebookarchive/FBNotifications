@@ -1,7 +1,4 @@
 {
-  "fb_push_payload" : {
-    "campaign" : "1"
-  },
   "fb_push_card": {
     "version" : "1.0",
     "dismissColor": "#334D5CFF",
