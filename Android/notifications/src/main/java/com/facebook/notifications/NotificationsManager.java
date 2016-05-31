@@ -105,13 +105,12 @@ public final class NotificationsManager {
   private NotificationsManager() {
   }
 
-  @NonNull
+  @Nullable
   private static JSONObject getPushJSON(@NonNull Bundle bundle) throws JSONException {
     String pushPayload = bundle.getString(PUSH_PAYLOAD_KEY);
     if (pushPayload == null) {
-      throw new IllegalArgumentException(PUSH_PAYLOAD_KEY);
+      return null;
     }
-
     return new JSONObject(pushPayload);
   }
 
@@ -128,12 +127,11 @@ public final class NotificationsManager {
   @Nullable
   private static Intent intentForBundle(
     @NonNull Context context,
-    @NonNull JSONObject pushJSON,
+    @Nullable JSONObject pushJSON,
     @NonNull JSONObject cardJSON,
     @NonNull AssetManager assetManager,
     @NonNull ContentManager contentManager
   ) throws JSONException {
-    String campaignIdentifier = AppEventsLogger.getCampaignIdentifier(pushJSON);
     Version cardVersion = Version.parse(cardJSON.optString("version"));
 
     if (cardVersion == null || cardVersion.compareTo(PAYLOAD_VERSION_OBJECT) > 0) {
@@ -141,7 +139,13 @@ public final class NotificationsManager {
     }
 
     Intent intent = new Intent(context, CardActivity.class);
-    intent.putExtra(CardActivity.EXTRA_CAMPAIGN_IDENTIFIER, campaignIdentifier);
+
+    if (pushJSON != null) {
+      String campaignIdentifier = AppEventsLogger.getCampaignIdentifier(pushJSON);
+      if (campaignIdentifier != null) {
+        intent.putExtra(CardActivity.EXTRA_CAMPAIGN_IDENTIFIER, campaignIdentifier);
+      }
+    }
     intent.putExtra(CardActivity.EXTRA_ASSET_MANAGER, assetManager);
     intent.putExtra(CardActivity.EXTRA_CONTENT_MANAGER, contentManager);
     intent.putExtra(CardActivity.EXTRA_CARD_PAYLOAD, cardJSON.toString());
@@ -181,7 +185,7 @@ public final class NotificationsManager {
    */
   public static boolean presentCard(@NonNull Activity activity, @NonNull Bundle notificationBundle) {
     try {
-      if (!notificationBundle.containsKey(CARD_PAYLOAD_KEY) || !notificationBundle.containsKey(PUSH_PAYLOAD_KEY)) {
+      if (!notificationBundle.containsKey(CARD_PAYLOAD_KEY)) {
         return false;
       }
 
