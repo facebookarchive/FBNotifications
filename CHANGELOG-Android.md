@@ -1,5 +1,21 @@
 # Facebook In-App Notifications for Android Changelog
 
+## [1.0.2] - 2016-06-01
+### Added
+- Added automatic logging for push opened and back button events.  
+  [#9](https://github.com/facebook/FBNotifications/pull/9)
+  by [Nikita Lutsenko](https://github.com/nlutsenko)
+
+### Updated
+- Removed requirement on containing a push campaign identifier in the payload.  
+  [#18](https://github.com/facebook/FBNotifications/pull/18)
+  by [Nikita Lutsenko](https://github.com/nlutsenko)
+- Updated Gradle to latest stable version (2.1.0).  
+  [#18](https://github.com/facebook/FBNotifications/pull/18)
+  by [Nikita Lutsenko](https://github.com/nlutsenko)
+
+View all issues and pull requests associated with this release [here](https://github.com/facebook/FBNotifications/issues?utf8=✓&q=milestone%3AAndroid-1.0.2)
+
 ## [1.0.1] - 2016-04-21
 ### Added
 - Added a method to check if a payload exists for a notification.  

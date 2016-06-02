@@ -84,7 +84,7 @@ public final class NotificationsManager {
   /**
    * The version of the In-App Notifications Library
    */
-  public static final String LIBRARY_VERSION = "1.0.1";
+  public static final String LIBRARY_VERSION = "1.0.2";
 
   private static final @NonNull Version PAYLOAD_VERSION_OBJECT = new Version(1, 0, 0);
 
