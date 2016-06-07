@@ -64,7 +64,18 @@ typedef void(^FBNLocalNotificationCreationCompletion)(UILocalNotification *_Null
  */
 + (instancetype)sharedManager;
 
+/**
+ Initializes a new instance.
+
+ @warning This method is unavaialble. Please use `sharedManager`.
+ */
 - (instancetype)init NS_UNAVAILABLE;
+
+/**
+ Allocates memory and initializes a new instance into it.
+
+ @warning This method is unavaialble. Please use `sharedManager`.
+ */
 + (instancetype)new NS_UNAVAILABLE;
 
 ///--------------------------------------

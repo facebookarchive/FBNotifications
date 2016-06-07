@@ -55,15 +55,46 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @interface FBNCardViewController : UIViewController
 
+/**
+ The delegate of the card view controller.
+ */
 @property (nonatomic, weak) id<FBNCardViewControllerDelegate> delegate;
 
 ///--------------------------------------
 #pragma mark - Unavailable Methods
 ///--------------------------------------
 
+/**
+ Allocates memory and initializes a new instance into it.
+
+ @warning This method is unavaialble. Please use `FBNotificationsManager` to create the view controller.
+ */
 + (instancetype)new NS_UNAVAILABLE;
+
+/**
+ Initializes a new instance.
+
+ @warning This method is unavaialble. Please use `FBNotificationsManager` to create the view controller.
+ */
 - (instancetype)init NS_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+
+/**
+ Returns an object initiailized from data in a given unarchiver.
+
+ @param decoder The unarchiver object.
+ 
+ @warning This method is unavaialble. Please use `FBNotificationsManager` to create the view controller.
+ */
+- (nullable instancetype)initWithCoder:(NSCoder *)decoder NS_UNAVAILABLE;
+
+/**
+ Returns a newly initialized view controller with the nib file in the specified bundle.
+
+ @param nibNameOrNil   The name of the nib file to associate with the view controller or `nil`.
+ @param nibBundleOrNil he bundle in which to search for the nib file or `nil`.
+ 
+ @warning This method is unavaialble. Please use `FBNotificationsManager` to create the view controller.
+ */
 - (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
 @end
