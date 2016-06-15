@@ -114,11 +114,11 @@ public final class NotificationsManager {
     return new JSONObject(pushPayload);
   }
 
-  @NonNull
+  @Nullable
   private static JSONObject getCardJSON(@NonNull Bundle bundle) throws JSONException {
     String cardPayload = bundle.getString(CARD_PAYLOAD_KEY);
     if (cardPayload == null) {
-      throw new IllegalArgumentException(CARD_PAYLOAD_KEY);
+      return null;
     }
 
     return new JSONObject(cardPayload);
@@ -185,13 +185,15 @@ public final class NotificationsManager {
    */
   public static boolean presentCard(@NonNull Activity activity, @NonNull Bundle notificationBundle) {
     try {
-      if (!notificationBundle.containsKey(CARD_PAYLOAD_KEY)) {
+      JSONObject cardJSON = getCardJSON(notificationBundle);
+      if (cardJSON == null) {
         return false;
       }
 
-      Intent presentationIntent = intentForBundle(
-        activity,
-        getPushJSON(notificationBundle), getCardJSON(notificationBundle),
+      JSONObject pushJSON = getPushJSON(notificationBundle);
+
+      Intent presentationIntent = intentForBundle(activity,
+        pushJSON, cardJSON,
         getAssetManager(activity), getContentManager(activity)
       );
       if (presentationIntent == null) {
@@ -229,8 +231,10 @@ public final class NotificationsManager {
       @Override
       public void run() {
         try {
-          String cardPayload = notificationBundle.getString(CARD_PAYLOAD_KEY);
-          JSONObject cardJSON = new JSONObject(cardPayload);
+          JSONObject cardJSON = getCardJSON(notificationBundle);
+          if (cardJSON == null) {
+            throw new NullPointerException("No content present in the notification bundle.");
+          }
           Version cardVersion = Version.parse(cardJSON.optString("version"));
           if (cardVersion == null || cardVersion.compareTo(PAYLOAD_VERSION_OBJECT) > 0) {
             throw new Exception("Payload version " + cardVersion + " not supported by this version of the notifications SDK.");
@@ -321,11 +325,11 @@ public final class NotificationsManager {
    *                           parameter to customize the contentIntent of the notification before
    *                           presenting it.
    */
-  public static void presentNotification(
+  public static boolean presentNotification(
     @NonNull Context context,
     @NonNull Bundle notificationBundle,
     @NonNull Intent launcherIntent) {
-    presentNotification(context, notificationBundle, launcherIntent, null);
+    return presentNotification(context, notificationBundle, launcherIntent, null);
   }
 
   /**
@@ -353,7 +357,7 @@ public final class NotificationsManager {
    *                             before displaying it. Use this to configure Icons, text, sounds,
    *                             etc. before we pass the notification off to the OS.
    */
-  public static void presentNotification(
+  public static boolean presentNotification(
     @NonNull final Context context,
     @NonNull final Bundle notificationBundle,
     @NonNull final Intent launcherIntent,
@@ -363,19 +367,21 @@ public final class NotificationsManager {
 
     try {
       String payload = notificationBundle.getString(CARD_PAYLOAD_KEY);
+      if (payload == null) {
+        return false;
+      }
+      payloadHash = payload.hashCode();
 
       JSONObject payloadObject = new JSONObject(payload);
       alert = payloadObject.optJSONObject("alert") != null
         ? payloadObject.optJSONObject("alert")
         : new JSONObject();
-
-      payloadHash = payload == null
-        ? 0
-        : payload.hashCode();
     } catch (JSONException ex) {
       Log.e(LOG_TAG, "Error while parsing notification bundle JSON", ex);
-      return;
+      return false;
     }
+
+    final boolean[] success = new boolean[1];
 
     final Thread backgroundThread = new Thread(new Runnable() {
       @Override
@@ -408,6 +414,7 @@ public final class NotificationsManager {
             }
 
             manager.notify(NOTIFICATION_TAG, payloadHash, builder.getNotification());
+            success[0] = true;
             Looper.myLooper().quit();
           }
 
@@ -428,7 +435,9 @@ public final class NotificationsManager {
       backgroundThread.join();
     } catch (InterruptedException ex) {
       Log.e(LOG_TAG, "Failed to wait for background thread", ex);
+      return false;
     }
+    return success[0];
   }
 
   /**
