@@ -153,70 +153,66 @@ Built-in values that should be handled are:
 
 ## Example Payload
 
-```
+```json
 {
   "fb_push_payload" : {
-    "campaign" : "100500"
+    "campaign" : "3"
   },
   "fb_push_card": {
+    "version": "1.0",
     "size": "medium",
-    "cornerRadius": 30.0,
-    "contentInset" : 20,
-    "backdropColor": "#00000094",
+    "cornerRadius": 16,
+    "contentInset" : 16,
+    "backdropColor": "#332D2DF0",
     "hero": {
       "background": {
         "_type": "GIF",
-        "url": "https://www.awwwards.com/awards/images/2011/07/gif-cinematic03.gif"
-      },
-      "content": {
-        "_type": "StyledText",
-        "size": 19,
-        "text": "THE 🔑 IS TO HAVE EVERY 🔑",
-        "align": "center",
-        "textColor": "#FFFFFFFF"
-      },
-      "contentAlign" : "bottom",
-      "height": 1.0
+        "url": "https://s3.amazonaws.com/f.cl.ly/items/3S3a3I0a0l2w3M2v2h30/fall.gif"
+      }
     },
     "body": {
       "background": {
         "_type": "Color",
-        "rgbaHex": "#2B2B2BFF"
+        "rgbaHex": "#FFFFFFFF"
       },
       "content": {
         "_type": "StyledText",
-        "size": 15,
-        "text": "Hey username, we thought you'd be stoked to check out the new hottness from Drake. Rolling Stone has called this 'the song of the summer' and we're inclined to agree.",
+        "size": 14,
+        "text": "September 22nd marks the first day of fall and the release of our new fall clothing line. We’re celebrating with a 20% off sale!",
         "align": "left",
-        "color": "#FFFFFFFF"
+        "color": "#33251FFF"
       }
     },
     "alert" : {
-      "title": "Bad Alert!",
-      "body" : "Open me for details!"
+      "title": "New Clothing Line",
+      "body" : "20% fall sale!"
     },
     "actions": {
       "style": "attached",
       "layoutStyle" : "horizontal", 
-      "contentInset" : 0.0,
-      "topInset": 0.0,
-      "height" : 50.0,
+      "contentInset" : 16.0,
+      "cornerRadius" : 6,
+      "background": {
+        "_type": "Color",
+        "rgbaHex": "#FFFFFFFF"
+      },
       "actions": [
         {
-          "backgroundColor": "#00D95AFF",
+          "backgroundColor": "#690200FF",
           "content": {
-            "_type" : "StyledText"
-            "text" : "Watch Now!",
+            "_type": "StyledText",
+            "size": 18,
+            "text": "Yes, please!",
             "color": "#FFFFFFFF"
-          }
+          },
           "url": "https://parse.com/"
         },
         {
-          "borderColor": "#294034FF",
-          "borderWidth": 2,
+          "backgroundColor": "#CCC4BCFF",
           "content": {
-            "_type" : "StyledText"
-            "text" : "Cancel",
+            "_type": "StyledText",
+            "size": 18,
+            "text": "No, thanks!",
             "color": "#FFFFFFFF"
           }
         }
@@ -225,4 +221,3 @@ Built-in values that should be handled are:
   }
 }
 ```
-
