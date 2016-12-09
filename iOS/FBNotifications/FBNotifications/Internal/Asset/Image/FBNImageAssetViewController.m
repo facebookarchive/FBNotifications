@@ -20,6 +20,10 @@
 
 #import "FBNImageAsset.h"
 
+#if __has_include(<SDWebImage/UIImageView+WebCache.h>)
+    #import <SDWebImage/UIImageView+WebCache.h>
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FBNImageAssetViewController ()
@@ -48,7 +52,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 - (void)loadView {
+#if __has_include(<SDWebImage/UIImageView+WebCache.h>)
+    UIImageView *view = [[UIImageView alloc] init];
+    [view setShowActivityIndicatorView:YES];
+    [view sd_setImageWithPreviousCachedImageWithURL:self.asset.url placeholderImage:nil options:nil progress:nil completed:nil];
+#else
     UIImageView *view = [[UIImageView alloc] initWithImage:self.asset.image];
+#endif
     view.contentMode = UIViewContentModeScaleAspectFill;
     self.view = view;
 }
