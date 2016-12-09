@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 #if __has_include(<SDWebImage/UIImageView+WebCache.h>)
     UIImageView *view = [[UIImageView alloc] init];
     [view setShowActivityIndicatorView:YES];
-    [view sd_setImageWithPreviousCachedImageWithURL:self.asset.url placeholderImage:nil options:nil progress:nil completed:nil];
+    [view sd_setImageWithPreviousCachedImageWithURL:self.asset.url placeholderImage:nil options:0 progress:nil completed:nil];
 #else
     UIImageView *view = [[UIImageView alloc] initWithImage:self.asset.image];
 #endif
