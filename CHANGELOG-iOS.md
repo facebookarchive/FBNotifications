@@ -1,5 +1,9 @@
 # Facebook In-App Notifications for iOS Changelog
 
+## [1.0.2] - 2016-12-09
+### Added
+- Added support for loading images using SDWebImage instead of using the internal cache loader
+
 ## [1.0.1] - 2016-05-10
 
 ### Added
