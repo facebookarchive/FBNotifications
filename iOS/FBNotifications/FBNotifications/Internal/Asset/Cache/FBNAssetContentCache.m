@@ -98,6 +98,11 @@
 }
 
 - (BOOL)hasCachedContentForURLs:(nullable NSSet<NSURL *> *)urls {
+    #if __has_include(<SDWebImage/UIImageView+WebCache.h>)
+      //We let SDWebImage handle the caching
+      return YES;
+    #endif
+
     for (NSURL *url in urls) {
         NSString *cacheKey = [self _cacheKeyForContentURL:url];
         if (![self _hasCachedDataForContentWithCacheKey:cacheKey]) {
