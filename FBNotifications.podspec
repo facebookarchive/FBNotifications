@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://developers.facebook.com/products/analytics'
   s.authors          = { 'Nikita Lutsenko' => 'nlutsenko@me.com' }
   
-  s.source       = { :git => 'https://github.com/facebook/FBNotifications.git', :tag => s.version.to_s }
+  s.source       = { :git => 'https://github.com/MobileConcepts/FBNotifications.git', :tag => s.version.to_s }
 
   s.requires_arc = true
 
