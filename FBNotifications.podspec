@@ -10,6 +10,8 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
+  s.dependency 'SDWebImage'
+  
   s.ios.deployment_target = '8.0'
   
   s.source_files = 'iOS/FBNotifications/FBNotifications/**/*.{h,m}'
