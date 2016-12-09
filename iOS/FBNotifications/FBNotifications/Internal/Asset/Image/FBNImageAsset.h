@@ -27,8 +27,10 @@ extern NSString *const FBNImageAssetType;
 @interface FBNImageAsset : NSObject <FBNAsset>
 
 @property (nonatomic, strong, readonly) UIImage *image;
+@property (nonatomic, strong, readonly) NSURL *url;
 
 - (instancetype)initWithImage:(UIImage *)image;
+- (instancetype)initWithURL:(NSURL *)url;
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
