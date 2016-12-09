@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.source_files = 'iOS/FBNotifications/FBNotifications/**/*.{h,m}'
   s.public_header_files = 'iOS/FBNotifications/FBNotifications/*.h'
 
-  s.frameworks = 'ImageIO', 'MobileCoreServices'
+  s.frameworks = 'ImageIO', 'MobileCoreServices','SDWebImage'
 end
