@@ -1,3 +1,107 @@
+
+   -  <?php
+   -  /**
+# Gradle.dependencies:
+     -  compile 'com.facebook.android:notifications:2.+'
+     -   set up a GCM listener service.
+     -  @Override
+     -  public void onMessageReceived(String from, final Bundle data) {
+     -  NotificationsManager.presentNotification(
+     -  this,
+     -  data,
+     -   newIntent(getApplicationContext(), MainActivity.class)
+     -  );
+     -  }
+     -  public class MainActivity extends AppCompatActivity {
+     -  @Override
+     -  protected void inCreate(Bundle savedInstanceState) {
+     -  super.onCreate(savedInstanceState);
+     -  NotificationsManager.presentCardFromNotification(this);
+     -  }
+     -  }
+     
+     -  Facebook Analytics Push Documentation
+     -  @0072016
+     -  https://developers.facebook.com
+     -  foo.gradle@gmail.com
+     -  2017-01-12T07:16:44.002
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Contributing to Facebook In-App Notifications
 We want to make contributing to this project as easy and transparent as possible.
 
