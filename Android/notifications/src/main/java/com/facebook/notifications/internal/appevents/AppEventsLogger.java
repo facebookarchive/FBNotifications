@@ -38,7 +38,7 @@ public class AppEventsLogger {
   private static final String LOG_TAG = AppEventsLogger.class.getCanonicalName();
 
   private static final String PUSH_OPEN_EVENT = "fb_mobile_push_opened";
-  private static final String PUSH_CAMPAIGN_KEY = "fb_mobile_push_opened";
+  private static final String PUSH_CAMPAIGN_KEY = "fb_push_campaign";
 
   private @Nullable Object fbSDKLogger;
   private @Nullable Method fbSDKLogMethod;
