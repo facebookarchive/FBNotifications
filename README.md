@@ -72,11 +72,16 @@ To get started on Android, add the following to your gradle dependencies:
 compile 'com.facebook.android:notifications:1.+'
 ```
 
-After you've added the dependency, you'll have to [set up a GCM listener service](https://developers.google.com/cloud-messaging/android/client), and add the following to your service:
+After you've added the dependency, you'll have to [set up an FCM listener service](https://firebase.google.com/docs/cloud-messaging/android/client), and add the following to your service:
 
 ```java
 @Override
-public void onMessageReceived(String from, final Bundle data) {
+public void onMessageReceived(RemoteMessage remoteMessage) {
+    Bundle data = new Bundle();
+    for (Map.Entry<String, String> entry : remoteMessage.getData().entrySet()) {
+      data.putString(entry.getKey(), entry.getValue());
+    }
+    
     NotificationsManager.presentNotification(
         this,
         data,
