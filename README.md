@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-For more help on getting started, take a look at our [Facebook Analytics Push Documentation](https://developers.facebook.com/docs/analytics/push-campaigns/android).
+For more help on getting started, take a look at our [Facebook Push Campaigns Documentation](https://developers.facebook.com/docs/push-campaigns).
 
 ## In-App Notifications Format
 
