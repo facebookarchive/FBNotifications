@@ -50,16 +50,16 @@ Using *Objective-C*:
 
 Using *Swift*:
 ```swift
-/// Present In-App Notification from remote notification (if present).
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-  FBNotificationsManager.sharedManager().presentPushCardForRemoteNotificationPayload(userInfo, fromViewController: nil) { viewController, error in
-    if let _ error = error {
-      completionHandler(.Failed)
-    } else {
-      completionHandler(.NewData)
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    /// Present In-App Notification from remote notification (if present).
+    FBNotificationsManager.shared().presentPushCard(forRemoteNotificationPayload: userInfo, from: nil) { viewController, error in
+            if error != nil {
+                completionHandler(.failed)
+            } else {
+                completionHandler(.newData)
+            }
+        }
     }
-  }
-}
 ```
 
 ## Getting Started on Android
