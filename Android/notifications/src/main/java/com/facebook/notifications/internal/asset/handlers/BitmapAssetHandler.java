@@ -191,7 +191,8 @@ public class BitmapAssetHandler implements AssetManager.AssetHandler<BitmapAsset
   public View createView(@NonNull BitmapAsset asset, @NonNull Context context) {
     ImageView imageView = new ImageView(context);
     imageView.setImageBitmap(asset.getBitmap());
-    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    imageView.setAdjustViewBounds(true);
 
     return imageView;
   }
