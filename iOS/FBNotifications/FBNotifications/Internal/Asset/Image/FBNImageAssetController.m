@@ -39,12 +39,19 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     NSURL *url = [NSURL URLWithString:dictionary[@"url"]];
+#if __has_include(<SDWebImage/UIImageView+WebCache.h>)
+    //We let SDWebImage handle the caching
+    FBNImageAsset *asset = [[FBNImageAsset alloc] initWithURL:url];
+    completion(asset);
+
+#else
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSData *data = [cache cachedDataForContentURL:url];
         UIImage *image = [[UIImage alloc] initWithData:data];
         FBNImageAsset *asset = [[FBNImageAsset alloc] initWithImage:image];
         completion(asset);
     });
+#endif
 }
 
 - (nullable NSSet<NSURL *> *)cacheURLsForAssetDictionary:(NSDictionary *)dictionary {

@@ -37,6 +37,15 @@ NSString *const FBNImageAssetType = @"Image";
 
     return self;
 }
+- (instancetype)initWithURL:(NSURL *)url {
+    self = [super init];
+    if (!self) return self;
+   
+    
+    _url = url;
+    
+    return self;
+}
 
 ///--------------------------------------
 #pragma mark - FBNAsset
