@@ -62,7 +62,7 @@ FBNCardContentVerticalAlignment FBNCardContentVerticalAlignmentFromString(NSStri
 }
 
 + (nullable instancetype)contentFromDictionary:(nullable NSDictionary<NSString *, id> *)dictionary {
-    if (!dictionary || [dictionary isEqual:[NSNull null]]) {
+    if (!dictionary || dictionary == NSNull.null) {
         return nil;
     }
     return [[self alloc] initFromDictionary:dictionary];
