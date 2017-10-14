@@ -83,11 +83,24 @@ public class ContentCache implements AssetManager.AssetCache {
       byte[] toDigest = urlString.getBytes(UTF8);
       byte[] digested = MD5.digest(toDigest);
 
+      String urlPath = url.getPath();
+      int extensionIndex = urlPath.lastIndexOf('.');
+      String pathExtension = extensionIndex != -1
+        ? urlPath.substring(extensionIndex)
+        : "";
+
       return String.format(
-        "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-        digested[0], digested[1], digested[2], digested[3], digested[4], digested[5], digested[6],
-        digested[7], digested[8], digested[9], digested[10], digested[11], digested[12],
-        digested[13], digested[14], digested[15]);
+        "%02x%02x%02x%02x" +
+        "%02x%02x%02x%02x" +
+        "%02x%02x%02x%02x" +
+        "%02x%02x%02x%02x" +
+        "%s",
+        digested[0], digested[1], digested[2], digested[3],
+        digested[4], digested[5], digested[6], digested[7],
+        digested[8], digested[9], digested[10], digested[11],
+        digested[12], digested[13], digested[14], digested[15],
+        pathExtension
+      );
     } catch (NoSuchAlgorithmException ex) {
       // If for some ungodly reason MD5 doesn't exist in this JVM, use the string's built-in hash
       // code.
