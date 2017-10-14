@@ -32,6 +32,8 @@
 #import "FBNImageAssetController.h"
 #import "FBNGIFAsset.h"
 #import "FBNGIFAssetController.h"
+#import "FBNVideoAsset.h"
+#import "FBNVideoAssetController.h"
 
 @interface FBNotificationsManager ()
 
@@ -74,6 +76,7 @@
     [controller registerAssetController:[[FBNColorAssetController alloc] init] forAssetType:FBNColorAssetType];
     [controller registerAssetController:[[FBNImageAssetController alloc] init] forAssetType:FBNImageAssetType];
     [controller registerAssetController:[[FBNGIFAssetController alloc] init] forAssetType:FBNGIFAssetType];
+    [controller registerAssetController:[[FBNVideoAssetController alloc] init] forAssetType:FBNVideoAssetType];
     return controller;
 }
 

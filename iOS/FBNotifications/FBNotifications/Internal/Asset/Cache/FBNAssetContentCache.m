@@ -97,6 +97,15 @@
                                     error:nil];
 }
 
+- (NSURL *)cachedContentURLForRemoteContentURL:(NSURL *)url {
+    NSString *cacheKey = [self _cacheKeyForContentURL:url];
+    NSString *path = [self _cacheFilePathForContentWithCacheKey:cacheKey];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        return nil;
+    }
+    return [NSURL fileURLWithPath:path];
+}
+
 - (BOOL)hasCachedContentForURLs:(nullable NSSet<NSURL *> *)urls {
     for (NSURL *url in urls) {
         NSString *cacheKey = [self _cacheKeyForContentURL:url];
@@ -141,7 +150,7 @@
 ///--------------------------------------
 
 - (NSString *)_cacheKeyForContentURL:(NSURL *)url {
-    return FBMD5HashFromString(url.absoluteString);
+    return [FBMD5HashFromString(url.absoluteString) stringByAppendingPathExtension:url.pathExtension];
 }
 
 ///--------------------------------------

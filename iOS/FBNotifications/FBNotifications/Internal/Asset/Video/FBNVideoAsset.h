@@ -18,21 +18,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBNCardPayload.h"
+#import "FBNAsset.h"
 
-@class FBNAssetsController;
+@class AVAsset;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FBNAssetContentCache : NSObject
+extern NSString *const FBNVideoAssetType;
 
-- (void)cacheContentForURLs:(NSSet<NSURL *> *)urls completion:(dispatch_block_t)completion;
-- (void)clearContentForURLs:(nullable NSSet<NSURL *> *)urls;
+@interface FBNVideoAsset : NSObject <FBNAsset>
 
-- (nullable NSData *)cachedDataForContentURL:(NSURL *)url;
-- (nullable NSURL *)cachedContentURLForRemoteContentURL:(NSURL *)url;
+@property (nonatomic, assign, readonly) CGSize presentationSize;
+@property (nonatomic, strong, readonly) AVAsset *avAsset;
 
-- (BOOL)hasCachedContentForURLs:(nullable NSSet<NSURL *> *)urls;
++ (void)loadFromURL:(NSURL *)url completion:(void(^)(FBNVideoAsset *_Nullable asset))completion;
 
 @end
 
