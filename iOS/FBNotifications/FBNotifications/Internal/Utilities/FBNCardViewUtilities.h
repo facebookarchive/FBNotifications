@@ -54,6 +54,6 @@ extern CGFloat FBNFloatAdjustToScreenScale(CGFloat value, NSRoundingMode roundin
 #pragma mark - Top Most View Controller
 ///--------------------------------------
 
-extern UIViewController *_Nullable FBNApplicationTopMostViewController();
+extern UIViewController *_Nullable FBNApplicationTopMostViewController(void);
 
 NS_ASSUME_NONNULL_END
