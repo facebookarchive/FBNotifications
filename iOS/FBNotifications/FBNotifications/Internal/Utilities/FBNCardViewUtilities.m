@@ -118,7 +118,7 @@ CGFloat FBNFloatAdjustToScreenScale(CGFloat value, NSRoundingMode roundingMode) 
     return value;
 }
 
-UIViewController *_Nullable FBNApplicationTopMostViewController() {
+UIViewController *_Nullable FBNApplicationTopMostViewController(void) {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     UIViewController *viewController = keyWindow.rootViewController;
     while (viewController.presentedViewController && !viewController.presentedViewController.isBeingDismissed) {
